@@ -20,8 +20,14 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()   # No arguments needed
 	look_at(get_global_mouse_position())
 	
+	if Input.is_action_just_pressed("LMB"):
+		fire()
+	
 func fire():
-	var bullet_instance = bullet.instance()
-	bullet_instance.position = get_global_position()
+	var bullet_instance = bullet.instantiate()
+	bullet_instance.global_position = global_position
 	bullet_instance.rotation_degrees = rotation_degrees
-	bullet_instance.apply_impulse(Vector2(), Vector2(bullet_speed, 0),rotated(rotation))
+	get_tree().get_root().call_deferred(add_child())
+	
+	# Apply impulse immediately AFTER adding
+	bullet_instance.apply_impulse(Vector2.ZERO, Vector2(bullet_speed, 0).rotated(rotation))
