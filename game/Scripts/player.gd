@@ -26,8 +26,6 @@ func _physics_process(delta: float) -> void:
 func fire():
 	var bullet_instance = bullet.instantiate()
 	bullet_instance.global_position = global_position
-	bullet_instance.rotation_degrees = rotation_degrees
-	get_tree().get_root().call_deferred(add_child())
+	bullet_instance.rotation = rotation
+	get_parent().add_child(bullet_instance)
 	
-	# Apply impulse immediately AFTER adding
-	bullet_instance.apply_impulse(Vector2.ZERO, Vector2(bullet_speed, 0).rotated(rotation))
