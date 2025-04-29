@@ -9,7 +9,7 @@ func _physics_process(delta):
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	print("Bullet hit: ", body.name)
+	call_deferred("queue_free")
 	if body.is_in_group("Enemy"):
 		if body.has_method("take_damage"):
 			body.take_damage()
-		call_deferred("queue_free")
