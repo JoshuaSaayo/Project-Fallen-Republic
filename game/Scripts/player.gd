@@ -29,3 +29,10 @@ func fire():
 	bullet_instance.rotation = rotation
 	get_parent().add_child(bullet_instance)
 	
+func kill():
+	get_tree().reload_current_scene()
+	
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if "Enemy" in body.name:
+		kill()
