@@ -11,6 +11,7 @@ size = Vector2(36, 37)
 
 [node name="Bullet" type="CharacterBody2D"]
 collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_oduel")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -21,7 +22,11 @@ shape = SubResource("RectangleShape2D_xjght")
 texture = ExtResource("1_xjght")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_oduel")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
