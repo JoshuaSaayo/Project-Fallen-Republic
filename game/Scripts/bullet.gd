@@ -1,10 +1,17 @@
 extends CharacterBody2D
 
 var speed = 2000
+var direction = Vector2.DOWN  # Set this when firing
 
 func _physics_process(delta):
 	velocity = Vector2(speed, 0).rotated(rotation)
 	move_and_slide()
+	var motion = direction.normalized() * speed * delta
+	var collision = move_and_collide(motion)
+
+	if collision:
+		print("wall col")
+		queue_free()  # Disappear when hitting anything (including TileMap)
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
