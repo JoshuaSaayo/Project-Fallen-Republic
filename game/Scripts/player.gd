@@ -1,8 +1,23 @@
 extends CharacterBody2D
 
+signal life_value
+
+var life = 100
 var movespeed = 500
 var bullet_speed = 2000
 var bullet = preload("res://Scenes/bullet.tscn")
+var attacked = false
+
+
+func _ready() -> void:
+	emit_signal("life_value", life)
+
+func _process(delta: float) -> void:
+	if attacked:
+		if life <= 0:
+			kill()
+		if $Timer.is_stopped():
+			$Timer.start()
 
 func _physics_process(delta: float) -> void:
 	var motion = Vector2()
@@ -35,4 +50,12 @@ func kill():
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if "Enemy" in body.name:
-		kill()
+		attacked = true
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if "Enemy" in body.name:
+		attacked = false
+
+func _on_timer_timeout() -> void:
+	life -= 1 
+	emit_signal("life_value", life)
