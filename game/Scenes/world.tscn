@@ -1,34 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4f3eo36ftght"]
+[gd_scene load_steps=5 format=3 uid="uid://c4f3eo36ftght"]
 
-[ext_resource type="Script" uid="uid://d04k6lbfactvy" path="res://Scripts/player.gd" id="1_go701"]
-[ext_resource type="Texture2D" uid="uid://br11vrwroob48" path="res://Assets/Player/player.jpg" id="2_5a7ea"]
+[ext_resource type="Script" uid="uid://bs4p0isy0hiqi" path="res://Scenes/world.gd" id="1_5a7ea"]
+[ext_resource type="PackedScene" uid="uid://qmfhx80ymt3g" path="res://Scenes/player.tscn" id="2_8j60k"]
 [ext_resource type="PackedScene" uid="uid://8sh7pkoscych" path="res://Scenes/enemy.tscn" id="3_5a7ea"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8j60k"]
-size = Vector2(64, 64)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fo5ed"]
-size = Vector2(70, 70)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fo5ed"]
+bg_color = Color(0.32477, 0.705123, 1.92523e-07, 1)
 
 [node name="world" type="Node2D"]
+script = ExtResource("1_5a7ea")
 
-[node name="Player" type="CharacterBody2D" parent="."]
-collision_mask = 4
-script = ExtResource("1_go701")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("RectangleShape2D_8j60k")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-texture = ExtResource("2_5a7ea")
-
-[node name="Area2D" type="Area2D" parent="Player"]
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
-shape = SubResource("RectangleShape2D_fo5ed")
+[node name="Player" parent="." instance=ExtResource("2_8j60k")]
+position = Vector2(338, 279)
 
 [node name="Enemy" parent="." instance=ExtResource("3_5a7ea")]
-position = Vector2(196, 1)
+position = Vector2(534, 280)
 
-[connection signal="body_entered" from="Player/Area2D" to="Player" method="_on_area_2d_body_entered"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+offset_left = 13.0
+offset_top = 15.0
+offset_right = 374.0
+offset_bottom = 74.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_fo5ed")
+value = 44.0
+
+[connection signal="life_value" from="Player" to="." method="_on_player_life_value"]
