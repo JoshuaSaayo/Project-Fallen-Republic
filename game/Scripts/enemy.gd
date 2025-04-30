@@ -9,10 +9,8 @@ func _ready() -> void:
 	progress_bar.value = life
 
 func _physics_process(delta: float) -> void:
-	var Player = get_parent().get_node("Player")
-	
+	var Player = get_parent().get_node("../Player")
 	position += (Player.position - position)/50
-	#look_at(Player.position)aaaaa
 	move_and_collide(motion)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

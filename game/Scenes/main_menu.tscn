@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://dupot7pwyio7x"]
+
+[ext_resource type="Script" uid="uid://cs65nhppphjfe" path="res://Scripts/main_menu.gd" id="1_28flt"]
+[ext_resource type="Texture2D" uid="uid://dlru68e8llc4" path="res://Assets/Game_vn/main_menu/main_menu.jpg" id="2_48xlc"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_28flt")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -7.0
+offset_top = -217.0
+offset_right = 1154.0
+offset_bottom = 944.0
+texture = ExtResource("2_48xlc")
+
+[node name="title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 285.0
+offset_top = 182.0
+offset_right = 813.0
+offset_bottom = 237.0
+theme_override_font_sizes/font_size = 40
+text = "PROJECT: FALLEN REPUBLIC"
+
+[node name="startBtn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 457.0
+offset_top = 287.0
+offset_right = 648.0
+offset_bottom = 393.0
+text = "START"
+
+[node name="quitBtn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 475.0
+offset_top = 459.0
+offset_right = 633.0
+offset_bottom = 563.0
+text = "QUIT"
+
+[connection signal="pressed" from="startBtn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="quitBtn" to="." method="_on_quit_btn_pressed"]

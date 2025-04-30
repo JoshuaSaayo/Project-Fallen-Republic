@@ -10,6 +10,7 @@ size = Vector2(64, 64)
 size = Vector2(70, 70)
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 5
 collision_mask = 4
 script = ExtResource("1_cvnsp")
 
@@ -28,6 +29,8 @@ shape = SubResource("RectangleShape2D_fo5ed")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="PlayerCamera" type="Camera2D" parent="."]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
