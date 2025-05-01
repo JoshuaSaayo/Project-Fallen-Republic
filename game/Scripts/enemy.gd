@@ -19,7 +19,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		queue_free()
 
 func take_damage():
-	life -= 1
+	life -= 10
 	progress_bar.value = life
 	if life <= 0:
 		queue_free()
