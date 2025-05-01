@@ -19,7 +19,7 @@ bg_color = Color(0, 0.726237, 0.171358, 1)
 [node name="Enemy" type="CharacterBody2D"]
 scale = Vector2(0.4, 0.4)
 collision_layer = 4
-collision_mask = 3
+collision_mask = 7
 script = ExtResource("1_1f0kj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

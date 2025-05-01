@@ -14,7 +14,7 @@ func _physics_process(delta):
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	#call_deferred("queue_free")
-	if body.name == "Enemy":
+	if body.is_in_group("Enemy"):
 		if body.has_method("take_damage"):
 			body.take_damage()
 	queue_free()
