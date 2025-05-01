@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://cohrbh2p8muin"]
+
+[ext_resource type="Script" uid="uid://c1hi1t2owu4ah" path="res://Scripts/campain_menu.gd" id="1_fm661"]
+
+[node name="campain_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fm661")
+
+[node name="campainBtns" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 486.0
+offset_top = 180.0
+offset_right = 607.0
+offset_bottom = 316.0
+scale = Vector2(1.7852, 1.7852)
+
+[node name="NewGame" type="Button" parent="campainBtns"]
+layout_mode = 2
+text = "NEW GAME"
+
+[node name="LoadGame" type="Button" parent="campainBtns"]
+layout_mode = 2
+text = "LOAD GAME
+"
+
+[node name="SelectLevels" type="Button" parent="campainBtns"]
+layout_mode = 2
+text = "SELECT LEVELS"
+
+[node name="Back" type="Button" parent="campainBtns"]
+layout_mode = 2
+text = "BACK
+"
+
+[connection signal="pressed" from="campainBtns/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="campainBtns/LoadGame" to="." method="_on_load_game_pressed"]
+[connection signal="pressed" from="campainBtns/SelectLevels" to="." method="_on_select_levels_pressed"]
+[connection signal="pressed" from="campainBtns/Back" to="." method="_on_back_pressed"]

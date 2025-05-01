@@ -9,7 +9,7 @@ func _ready() -> void:
 	progress_bar.value = life
 
 func _physics_process(delta: float) -> void:
-	var Player = get_parent().get_node("Player")
+	var Player = get_parent().get_node("../Player")
 	position += (Player.position - position)/50
 	move_and_collide(motion)
 

@@ -27,31 +27,21 @@ offset_bottom = 128.0
 theme_override_font_sizes/font_size = 40
 text = "PROJECT: FALLEN REPUBLIC"
 
-[node name="startBtn" type="Button" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 467.0
-offset_top = 179.0
-offset_right = 658.0
-offset_bottom = 285.0
-text = "START"
+offset_left = 430.0
+offset_top = 296.0
+offset_right = 512.0
+offset_bottom = 362.0
+scale = Vector2(2.92809, 2.92809)
 
-[node name="SelectMap" type="Button" parent="."]
-layout_mode = 0
-offset_left = 468.0
-offset_top = 310.0
-offset_right = 659.0
-offset_bottom = 416.0
-text = "SELECT CHAPTER
-"
+[node name="startBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "CAMPAIN"
 
-[node name="quitBtn" type="Button" parent="."]
-layout_mode = 0
-offset_left = 486.0
-offset_top = 448.0
-offset_right = 644.0
-offset_bottom = 552.0
+[node name="quitBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
 text = "QUIT"
 
-[connection signal="pressed" from="startBtn" to="." method="_on_start_btn_pressed"]
-[connection signal="pressed" from="SelectMap" to="." method="_on_select_map_pressed"]
-[connection signal="pressed" from="quitBtn" to="." method="_on_quit_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/startBtn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/quitBtn" to="." method="_on_quit_btn_pressed"]
