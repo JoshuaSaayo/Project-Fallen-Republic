@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmhbdnisvu8nq"]
+[gd_scene load_steps=2 format=3 uid="uid://d0ebopbcy1iyl"]
 
-[ext_resource type="Script" uid="uid://bpc2qtvd5w45k" path="res://Scripts/global.gd" id="1_koean"]
+[sub_resource type="GDScript" id="GDScript_hyxnm"]
+script/source = "extends Node2D
+
+var selected_map: String = \"\"
+"
 
 [node name="Global" type="Node2D"]
-script = ExtResource("1_koean")
+script = SubResource("GDScript_hyxnm")

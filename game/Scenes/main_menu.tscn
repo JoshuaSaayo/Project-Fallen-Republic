@@ -18,63 +18,40 @@ offset_right = 1154.0
 offset_bottom = 944.0
 texture = ExtResource("2_48xlc")
 
-[node name="LevelSelection" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Level1Btn" type="Button" parent="LevelSelection"]
-layout_mode = 2
-text = "SELECT CHAPTER"
-
-[node name="Label" type="Label" parent="LevelSelection/Level1Btn"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="prevImg" type="TextureRect" parent="LevelSelection/Level1Btn"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Level2Btn" type="Button" parent="LevelSelection"]
-layout_mode = 2
-text = "SELECT CHAPTER"
-
-[node name="Label" type="Label" parent="LevelSelection/Level2Btn"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="prevImg" type="TextureRect" parent="LevelSelection/Level2Btn"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="title" type="Label" parent="."]
 layout_mode = 0
-offset_left = 285.0
-offset_top = 182.0
-offset_right = 813.0
-offset_bottom = 237.0
+offset_left = 309.0
+offset_top = 73.0
+offset_right = 837.0
+offset_bottom = 128.0
 theme_override_font_sizes/font_size = 40
 text = "PROJECT: FALLEN REPUBLIC"
 
 [node name="startBtn" type="Button" parent="."]
 layout_mode = 0
-offset_left = 457.0
-offset_top = 287.0
-offset_right = 648.0
-offset_bottom = 393.0
+offset_left = 467.0
+offset_top = 179.0
+offset_right = 658.0
+offset_bottom = 285.0
 text = "START"
+
+[node name="SelectMap" type="Button" parent="."]
+layout_mode = 0
+offset_left = 468.0
+offset_top = 310.0
+offset_right = 659.0
+offset_bottom = 416.0
+text = "SELECT CHAPTER
+"
 
 [node name="quitBtn" type="Button" parent="."]
 layout_mode = 0
-offset_left = 476.0
-offset_top = 556.0
-offset_right = 634.0
-offset_bottom = 660.0
+offset_left = 486.0
+offset_top = 448.0
+offset_right = 644.0
+offset_bottom = 552.0
 text = "QUIT"
 
 [connection signal="pressed" from="startBtn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="SelectMap" to="." method="_on_select_map_pressed"]
 [connection signal="pressed" from="quitBtn" to="." method="_on_quit_btn_pressed"]

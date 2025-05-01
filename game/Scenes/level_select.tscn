@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://drahuq6jadps6"]
+
+[ext_resource type="Script" uid="uid://ciupsn28cgd6r" path="res://Scripts/level_select.gd" id="1_1fiak"]
+
+[node name="LevelSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_1fiak")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="map1Btn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "CHAPTER 1"
+
+[node name="map2Btn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "CHAPTER 2"
+
+[node name="backBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "CHAPTER 2"
