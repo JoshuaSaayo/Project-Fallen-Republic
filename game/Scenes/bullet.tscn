@@ -10,6 +10,7 @@ size = Vector2(31, 32)
 size = Vector2(36, 37)
 
 [node name="Bullet" type="CharacterBody2D"]
+scale = Vector2(0.399617, 0.399617)
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_oduel")
