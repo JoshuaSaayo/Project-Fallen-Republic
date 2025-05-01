@@ -18,6 +18,39 @@ offset_right = 1154.0
 offset_bottom = 944.0
 texture = ExtResource("2_48xlc")
 
+[node name="LevelSelection" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Level1Btn" type="Button" parent="LevelSelection"]
+layout_mode = 2
+text = "SELECT CHAPTER"
+
+[node name="Label" type="Label" parent="LevelSelection/Level1Btn"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="prevImg" type="TextureRect" parent="LevelSelection/Level1Btn"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Level2Btn" type="Button" parent="LevelSelection"]
+layout_mode = 2
+text = "SELECT CHAPTER"
+
+[node name="Label" type="Label" parent="LevelSelection/Level2Btn"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="prevImg" type="TextureRect" parent="LevelSelection/Level2Btn"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="title" type="Label" parent="."]
 layout_mode = 0
 offset_left = 285.0
@@ -37,10 +70,10 @@ text = "START"
 
 [node name="quitBtn" type="Button" parent="."]
 layout_mode = 0
-offset_left = 475.0
-offset_top = 459.0
-offset_right = 633.0
-offset_bottom = 563.0
+offset_left = 476.0
+offset_top = 556.0
+offset_right = 634.0
+offset_bottom = 660.0
 text = "QUIT"
 
 [connection signal="pressed" from="startBtn" to="." method="_on_start_btn_pressed"]
