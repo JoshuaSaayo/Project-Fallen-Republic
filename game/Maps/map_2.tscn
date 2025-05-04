@@ -779,11 +779,11 @@ position = Vector2(-373, -16)
 
 [node name="Enemies" type="Node" parent="." groups=["Enemy"]]
 
-[node name="Enemy" parent="Enemies" instance=ExtResource("6_b6xp1")]
+[node name="Enemy" parent="Enemies" groups=["Enemy"] instance=ExtResource("6_b6xp1")]
 position = Vector2(398, 209)
 
-[node name="Enemy2" parent="Enemies" instance=ExtResource("6_b6xp1")]
+[node name="Enemy2" parent="Enemies" groups=["Enemy"] instance=ExtResource("6_b6xp1")]
 position = Vector2(422, 153)
 
-[node name="Enemy3" parent="Enemies" instance=ExtResource("6_b6xp1")]
+[node name="Enemy3" parent="Enemies" groups=["Enemy"] instance=ExtResource("6_b6xp1")]
 position = Vector2(455, 247)
