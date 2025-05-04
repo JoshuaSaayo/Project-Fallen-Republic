@@ -1117,6 +1117,15 @@ position = Vector2(257, 272)
 [node name="Enemy" parent="Enemies" groups=["Enemy"] instance=ExtResource("3_5a7ea")]
 position = Vector2(534, 280)
 
+[node name="Enemy2" parent="Enemies" groups=["Enemy"] instance=ExtResource("3_5a7ea")]
+position = Vector2(-56, 311)
+
+[node name="Enemy3" parent="Enemies" groups=["Enemy"] instance=ExtResource("3_5a7ea")]
+position = Vector2(-348, 25)
+
+[node name="Enemy4" parent="Enemies" groups=["Enemy"] instance=ExtResource("3_5a7ea")]
+position = Vector2(-586, 338)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
