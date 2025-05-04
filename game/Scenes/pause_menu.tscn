@@ -22,17 +22,16 @@ offset_bottom = 43.0
 pivot_offset = Vector2(47, 14)
 text = "RESUME"
 
-[node name="Quit" type="Button" parent="MenuRect"]
+[node name="ReturnMainMenu" type="Button" parent="MenuRect"]
 z_index = 5
 layout_mode = 0
-offset_left = 128.0
+offset_left = 90.0
 offset_top = 54.0
-offset_right = 175.0
+offset_right = 219.0
 offset_bottom = 85.0
-text = "QUIT
-"
+text = "TO MAIN MENU"
 
-[node name="QuitConfirmDialog" type="ConfirmationDialog" parent="."]
+[node name="ReturnConfirmDialog" type="ConfirmationDialog" parent="."]
 
 [connection signal="pressed" from="MenuRect/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="MenuRect/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MenuRect/ReturnMainMenu" to="." method="_on_quit_pressed"]
