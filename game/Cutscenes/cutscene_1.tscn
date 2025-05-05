@@ -29,14 +29,6 @@ offset_bottom = 1004.02
 scale = Vector2(0.0540798, 0.0540798)
 texture = ExtResource("1_6h0wx")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 295.0
-offset_top = 298.0
-offset_right = 335.0
-offset_bottom = 321.0
-text = "LOREM"
-
 [node name="DialogueBoxPanel" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 13.0
@@ -44,14 +36,29 @@ offset_top = 409.0
 offset_right = 1127.0
 offset_bottom = 618.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="DialogueBoxPanel"]
+[node name="DialogueText" type="RichTextLabel" parent="DialogueBoxPanel"]
 layout_mode = 0
 offset_left = 2.0
-offset_top = 6.0
+offset_top = 29.0
 offset_right = 1112.0
 offset_bottom = 204.0
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 fit_content = true
+
+[node name="NamePanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 397.0
+offset_right = 126.0
+offset_bottom = 437.0
+
+[node name="NameLabel" type="Label" parent="NamePanel"]
+layout_mode = 0
+offset_right = 69.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "LOREM"
 
 [node name="Timer" type="Timer" parent="."]
 
