@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk5uri0uj1a3b"]
+
+[ext_resource type="Texture2D" uid="uid://ctr5uwtetbvj1" path="res://Assets/Game_vn/visual_intro/cutscene_1.jpg" id="1_6h0wx"]
+[ext_resource type="Script" uid="uid://c384duytqkrph" path="res://Cutscenes/cutscene_1.gd" id="1_ofc7y"]
+
+[node name="cutscene_1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ofc7y")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -11.0
+offset_top = 6.0
+offset_right = 43.0
+offset_bottom = 36.0
+scale = Vector2(21.9711, 21.9711)
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = -1.2744
+offset_top = -19.9808
+offset_right = 1022.73
+offset_bottom = 1004.02
+scale = Vector2(0.0540798, 0.0540798)
+texture = ExtResource("1_6h0wx")
+
+[node name="DialogueBoxPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 409.0
+offset_right = 1127.0
+offset_bottom = 618.0
+
+[node name="DialogueText" type="RichTextLabel" parent="DialogueBoxPanel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 29.0
+offset_right = 1112.0
+offset_bottom = 204.0
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+fit_content = true
+
+[node name="NamePanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 397.0
+offset_right = 126.0
+offset_bottom = 437.0
+
+[node name="NameLabel" type="Label" parent="NamePanel"]
+layout_mode = 0
+offset_right = 69.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "LOREM"
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="NextBtn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1038.0
+offset_top = 570.0
+offset_right = 1111.0
+offset_bottom = 601.0
+pivot_offset = Vector2(5, 4)
+text = "NEXT"
+
+[connection signal="pressed" from="NextBtn" to="." method="_on_next_btn_pressed"]
