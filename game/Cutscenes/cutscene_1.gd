@@ -12,19 +12,17 @@ var lines = [
 	{ "name": "TSPL"},
 	{ "text": "Kampura must choose solidarity or isolation."},
 	{ "text": '“The Kampura-Preyvatan Confederate Union, or KPCU, has rejected TSPL’s invitation—sparking rising tensions across shared borders.”'},
-	{ "text": "[VISUAL: CHAOTIC NEWS FEEDS, BORDER TOWN FOOTAGE, MASKED VILLAGERS]", "bg": "res://Assets/Game_vn/visual_intro/cutscene_2.jpg" },
-	{ "text": "[VO – Female Reporter (urgent tone)]:" },
-	{ "text": "“Breaking news: Mass illness is reported across Thanmyo’s eastern border towns... Local authorities blame toxic runoff from Kampura’s energy grid near Namkhet Valley.”" },
-	{ "text": "[TEXT: ‘POISONED WATERS – RIVER OF DEATH?’]" },
-	{ "text": "[VISUAL: Dead fish, villagers protesting, fire near irrigation lines]" },
-	{ "text": "[VO – TSPL Spokesman]:" },
+	{ "bg": "res://Assets/Game_vn/visual_intro/cutscene_1.3.jpg" },
+	{ "name": "Female Reporter"},
+	{ "text": "“Breaking news: Mass illness is reported across Thanmyo’s eastern border towns. Local authorities blame toxic runoff from Kampura’s energy grid near Namkhet Valley.”" },
+	{ "bg": "res://Assets/Game_vn/visual_intro/cutscene_2.jpg"},
+	{ "name": "TSPL Spokesman" },
 	{ "text": "“This is a deliberate act. The imperialist KPCU has poisoned our lands—again.”" },
-	{ "text": "[VISUAL: Poster – ‘KPCU IS THE WEST’S PUPPET!’]" },
-	{ "text": "[VO – Female Reporter]:" },
+	{ "bg": "res://Assets/Game_vn/visual_intro/cutscene_3.jpg" },
+	{ "name": "Female Reporter" },
 	{ "text": "“TSPL officials now claim rainfall is contaminated due to emissions from Chakranet 02 — calling it an ‘environmental war crime.’”" },
-	{ "text": "[VISUAL: Fake leaked footage of ‘chemical barrels’ dumped near water]" },
-	{ "text": "[BROADCAST ENDS IN STATIC]" },
-	{ "bg": "res://Assets/Game_vn/visual_intro/cutscene_2.jpg"}
+	{ "bg": "res://Assets/Game_vn/visual_intro/cutscene_4.jpg" },
+	{ "text": "lol" }
 ]
 
 
