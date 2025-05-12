@@ -6,7 +6,7 @@ extends CharacterBody2D
 func _physics_process(delta):
 	velocity = Vector2(speed, 0).rotated(rotation)
 	move_and_slide()
-
+	
 	for i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(i)
 		var body = collision.get_collider()
