@@ -10,8 +10,8 @@ size = Vector2(64, 64)
 script/source = "extends Area2D
 "
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o06y3"]
-size = Vector2(70, 70)
+[sub_resource type="CircleShape2D" id="CircleShape2D_1f0kj"]
+radius = 192.565
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1f0kj"]
 bg_color = Color(0, 0.726237, 0.171358, 1)
@@ -28,12 +28,12 @@ shape = SubResource("RectangleShape2D_5ukr8")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_hghv2")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="DetectionArea" type="Area2D" parent="."]
 collision_layer = 2
 script = SubResource("GDScript_1f0kj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_o06y3")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_1f0kj")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = -79.0
@@ -43,4 +43,4 @@ offset_bottom = -45.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_1f0kj")
 value = 58.0
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_area_2d_body_entered"]

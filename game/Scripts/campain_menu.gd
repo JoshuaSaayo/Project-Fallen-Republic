@@ -6,7 +6,7 @@ func _on_new_game_pressed() -> void:
 
 
 func _on_load_game_pressed() -> void:
-	pass # Replace with function body.
+	pass # Replace with function body.w
 
 
 func _on_select_levels_pressed() -> void:

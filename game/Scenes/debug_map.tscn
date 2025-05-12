@@ -1109,7 +1109,7 @@ sources/2 = SubResource("TileSetAtlasSource_gnyyd")
 [node name="debug_map" type="Node2D"]
 script = ExtResource("1_5a7ea")
 
-[node name="Player" parent="." instance=ExtResource("2_8j60k")]
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("2_8j60k")]
 position = Vector2(257, 272)
 
 [node name="Enemies" type="Node" parent="." groups=["Enemy"]]
