@@ -2,7 +2,7 @@ extends Control
 
 
 func _on_new_game_pressed() -> void:
-	get_tree().change_scene_to_file("res://Cutscenes/cutscene_1.tscn")
+	get_tree().change_scene_to_file("res://Maps/map_1.tscn")
 
 
 func _on_load_game_pressed() -> void:
