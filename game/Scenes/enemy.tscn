@@ -39,6 +39,7 @@ sprite_frames = SubResource("SpriteFrames_1f0kj")
 shape = SubResource("RectangleShape2D_5ukr8")
 
 [node name="NavAgent" type="NavigationAgent2D" parent="."]
+debug_enabled = true
 
 [node name="RoamTime" type="Timer" parent="."]
 
