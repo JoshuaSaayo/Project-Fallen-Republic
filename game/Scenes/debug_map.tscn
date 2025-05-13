@@ -1105,9 +1105,9 @@ sources/1 = SubResource("TileSetAtlasSource_5ukr8")
 sources/2 = SubResource("TileSetAtlasSource_gnyyd")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_gnyyd"]
-vertices = PackedVector2Array(-365.883, 281.797, -452, 280.18, -452, 214.898, -365.109, 214.094)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-356, 292, -462, 290, -462, 205, -355, 204)])
+vertices = PackedVector2Array(-592.547, -61.0234, -590.477, -15.3281, -884.703, -24.3984, -918.891, -61.9688, -917.891, 33, -885.867, 69.2891, -984.828, 72.2891, -1029.07, 33, -1030.93, 311, -988.172, 265.781, -897.156, 311, -897.844, 267.781, -447, 269.109, -357.398, 268.109, -358.602, 298.773, -469.852, 296.219, -467.148, 115, -447, 115)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 3, 2, 5), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 7, 6, 9), PackedInt32Array(10, 8, 9, 11), PackedInt32Array(12, 13, 14, 15), PackedInt32Array(12, 15, 16, 17)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-349, 309, -480, 306, -477, 105, -437, 105, -437, 259, -347, 258), PackedVector2Array(-888, 258, -887, 321, -1041, 321, -1039, 23, -928, 23, -929, -72, -583, -71, -580, -5, -874.829, -14.0918, -876, 79, -975, 82, -978, 256)])
 
 [node name="debug_map" type="Node2D"]
 script = ExtResource("1_5a7ea")
@@ -1140,7 +1140,7 @@ layer_1/tile_data = PackedInt32Array(917515, 524289, 6, 917516, 65537, 3, 917517
 [node name="pause_menu" parent="." instance=ExtResource("7_gnyyd")]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-position = Vector2(337, 38)
+position = Vector2(339, 44)
 navigation_polygon = SubResource("NavigationPolygon_gnyyd")
 
 [connection signal="life_value" from="Player" to="." method="_on_player_life_value"]

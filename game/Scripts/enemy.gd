@@ -59,11 +59,14 @@ func idle_behavior():
 	
 func chase_behavior(delta):
 	if !target: return
+	
+	nav_agent.target_position = target.global_position
 	# Move toward player
-	var next_pos = nav_agent.get_next_path_position()
-	var direction = (next_pos - global_position).normalized()
-	velocity = direction * move_speed
-	move_and_slide()
+	if !nav_agent.is_navigation_finished():
+		var next_pos = nav_agent.get_next_path_position()
+		var direction = (next_pos - global_position).normalized()
+		velocity = direction * move_speed
+		move_and_slide()
 	
 	# Rotate gun toward player
 	gun_pivot.look_at(target.global_position)
