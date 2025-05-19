@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://gk7fc4ry6dxm"]
 
 [ext_resource type="Script" uid="uid://t2t8iyxbwo4y" path="res://Scripts/enemy_bullet.gd" id="1_54jiv"]
-[ext_resource type="Texture2D" uid="uid://bio8y06k67aqx" path="res://Assets/Bullets/enemy_bullets.jpg" id="2_b6yqb"]
+[ext_resource type="Texture2D" uid="uid://043pfd01b6g1" path="res://Assets/Bullets/BULLET_TRACE.png" id="2_54jiv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tcvu8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_b6yqb")
+"texture": ExtResource("2_54jiv")
 }],
 "loop": true,
 "name": &"default",

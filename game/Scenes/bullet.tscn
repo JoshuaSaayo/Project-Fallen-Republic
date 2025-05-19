@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b61b13thec548"]
 
 [ext_resource type="Script" uid="uid://bmiv5qwgq8a3x" path="res://Scripts/bullet.gd" id="1_oduel"]
-[ext_resource type="Texture2D" uid="uid://fshv5006iw3p" path="res://Assets/Bullets/bullets.jpg" id="1_xjght"]
+[ext_resource type="Texture2D" uid="uid://043pfd01b6g1" path="res://Assets/Bullets/BULLET_TRACE.png" id="2_oduel"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xjght"]
 size = Vector2(10.0096, 10.0096)
@@ -16,4 +16,4 @@ position = Vector2(-1.19324e-06, 5.96618e-07)
 shape = SubResource("RectangleShape2D_xjght")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_xjght")
+texture = ExtResource("2_oduel")
