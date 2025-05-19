@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b02no0jqgnptb"]
+
+[ext_resource type="Script" uid="uid://disljinwbhfnj" path="res://Scripts/smg.gd" id="1_10c7e"]
+
+[node name="SMG" type="Node2D"]
+script = ExtResource("1_10c7e")
