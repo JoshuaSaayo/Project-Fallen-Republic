@@ -8,8 +8,6 @@ extends CanvasLayer
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	visible = false
-	resume_btn.pressed.connect(_on_resume_pressed)
-	return_main_menu_btn.pressed.connect(_on_quit_pressed)
 	return_confirm_dialog.confirmed.connect(_on_quit_confirmed)
 
 func _unhandled_input(event):
