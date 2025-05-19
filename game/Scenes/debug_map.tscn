@@ -1145,5 +1145,3 @@ position = Vector2(-348, 25)
 
 [node name="Enemy4" parent="NavigationRegion2D/Enemies" groups=["Enemy"] instance=ExtResource("3_5a7ea")]
 position = Vector2(-586, 338)
-
-[connection signal="life_value" from="Player" to="." method="_on_player_life_value"]

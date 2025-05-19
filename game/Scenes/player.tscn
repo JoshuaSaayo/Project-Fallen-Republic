@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://qmfhx80ymt3g"]
+[gd_scene load_steps=7 format=3 uid="uid://qmfhx80ymt3g"]
 
 [ext_resource type="Script" uid="uid://d04k6lbfactvy" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://br11vrwroob48" path="res://Assets/Player/player.jpg" id="2_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://dpbamewq777rn" path="res://Scenes/Guns/gun.tscn" id="2_vgqql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8j60k"]
 size = Vector2(16, 16)
@@ -16,6 +17,8 @@ bg_color = Color(0.32477, 0.705123, 1.92523e-07, 1)
 z_index = 5
 collision_mask = 28
 script = ExtResource("1_cvnsp")
+
+[node name="Gun" parent="." instance=ExtResource("2_vgqql")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8j60k")
@@ -45,6 +48,13 @@ offset_right = 374.0
 offset_bottom = 74.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_cvnsp")
 value = 44.0
+
+[node name="AmmoLabel" type="Label" parent="CanvasLayer"]
+offset_left = 103.0
+offset_top = 100.0
+offset_right = 214.0
+offset_bottom = 123.0
+text = "Ammo: 30 / 90"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 

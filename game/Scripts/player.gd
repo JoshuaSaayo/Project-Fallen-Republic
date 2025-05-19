@@ -2,7 +2,9 @@ extends CharacterBody2D
 
 signal life_value
 
+@onready var ammo_label: Label = $CanvasLayer/AmmoLabel
 @onready var health_bar: ProgressBar = $CanvasLayer/HealthBar
+@onready var gun: Node2D = $Gun
 
 var max_health := 100
 var current_health := max_health
@@ -54,12 +56,23 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("LMB"):
 		fire()
-	
+	if Input.is_action_just_pressed("reload"):
+		gun.reload()
+	if gun:
+		ammo_label.text = "Ammo: %d / %d" % [gun.ammo_in_mag, gun.total_reserve_ammo]
+	if gun.ammo_in_mag == 0:
+		ammo_label.modulate = Color.RED
+	else:
+		ammo_label.modulate = Color.WHITE
+	if gun.reloading:
+		ammo_label.text += " (Reloading...)"
+		# Continuous fire if gun is automatic
+	if gun and Input.is_action_pressed("LMB"):
+		gun.try_shoot(self)
 func fire():
-	var bullet_instance = bullet.instantiate()
-	bullet_instance.global_position = global_position
-	bullet_instance.rotation = rotation
-	get_parent().add_child(bullet_instance)
+	if gun.try_shoot(self):
+		# You can play sound or animation here
+		pass
 	
 func kill():
 	get_tree().reload_current_scene()
