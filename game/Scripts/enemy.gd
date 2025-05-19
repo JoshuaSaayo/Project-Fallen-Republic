@@ -99,6 +99,8 @@ func shoot():
 	bullet.direction = (target.global_position - $GunPivot.global_position).normalized()
 	get_parent().add_child(bullet)
 	
+	if $ShootSound:
+		$ShootSound.play()
 	# Animation placeholder (add later)
 	$GunPivot/MuzzleFlash.show()
 	await get_tree().create_timer(0.1).timeout

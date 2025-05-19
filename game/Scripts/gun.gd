@@ -21,7 +21,6 @@ func try_shoot(owner_node: Node2D):
 		return false
 
 	if ammo_in_mag <= 0:
-		print("no bullet")
 		return false
 
 	var time_since_last_shot = Time.get_ticks_msec() / 1000.0 - last_shot_time
@@ -39,12 +38,21 @@ func try_shoot(owner_node: Node2D):
 		bullet.set_direction(owner_node.get_global_mouse_position() - owner_node.global_position)
 	owner_node.get_parent().add_child(bullet)
 	
+	var shot_sound = get_node("ShotSound")
+	if shot_sound:
+		shot_sound.play()
 	return true
+	
+
 
 func reload():
 	if reloading or ammo_in_mag == mag_size or total_reserve_ammo == 0:
 		return
-		print("reloadinga")
+		
+	var reload_sound = get_node("ReloadSound")
+	if reload_sound:
+		reload_sound.play()
+		
 	reloading = true
 	can_shoot = false
 	await get_tree().create_timer(reload_time).timeout

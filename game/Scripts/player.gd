@@ -69,6 +69,7 @@ func _physics_process(delta: float) -> void:
 		# Continuous fire if gun is automatic
 	if gun and Input.is_action_pressed("LMB"):
 		gun.try_shoot(self)
+		
 func fire():
 	if gun.try_shoot(self):
 		# You can play sound or animation here
