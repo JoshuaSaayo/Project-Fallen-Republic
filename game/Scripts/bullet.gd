@@ -20,7 +20,7 @@ func _physics_process(delta):
 			queue_free()
 			return
 		
-		elif body is TileMap or body.name == "TileMap":
+		elif body is TileMap or body.name == "floor1":
 			queue_free()
 			return
 
