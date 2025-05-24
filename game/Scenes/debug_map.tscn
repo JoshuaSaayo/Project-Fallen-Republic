@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://c4f3eo36ftght"]
+[gd_scene load_steps=14 format=4 uid="uid://c4f3eo36ftght"]
 
 [ext_resource type="Script" uid="uid://bs4p0isy0hiqi" path="res://Scripts/world.gd" id="1_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://qmfhx80ymt3g" path="res://Scenes/player.tscn" id="2_8j60k"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://3qb0dcshhcdn" path="res://Assets/Tileset/Tilemap_day.png" id="5_fo5ed"]
 [ext_resource type="Texture2D" uid="uid://c85y5h461g4f6" path="res://Assets/Tileset/TILEMAPS_PROLOGUE.png" id="6_frd8m"]
 [ext_resource type="PackedScene" uid="uid://ltl3a2bm1ma4" path="res://Scenes/pause_menu.tscn" id="7_gnyyd"]
+[ext_resource type="Texture2D" uid="uid://cbjh1ma6v6a3r" path="res://Assets/Vehicles/HYUNDAI MX6.png" id="8_1on00"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gnyyd"]
 texture = ExtResource("4_8j60k")
@@ -1151,3 +1152,7 @@ position = Vector2(-348, 25)
 
 [node name="Enemy4" parent="NavigationRegion2D/Enemies" groups=["Enemy"] instance=ExtResource("3_5a7ea")]
 position = Vector2(-586, 338)
+
+[node name="HyundaiMx6" type="Sprite2D" parent="."]
+position = Vector2(-568, 102)
+texture = ExtResource("8_1on00")

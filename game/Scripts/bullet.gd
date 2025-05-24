@@ -2,8 +2,23 @@ extends CharacterBody2D
 
 @export var speed := 1000.0
 @export var damage := 10
-var direction = Vector2.ZERO
 
+var direction = Vector2.ZERO
+var lifetime: float = 1.5
+
+@onready var tracer_scene = preload("res://Scenes/bullet_tracer.tscn")
+
+func _ready():
+	var tracer = tracer_scene.instantiate()
+	get_parent().add_child(tracer)
+	var start_pos = global_position
+	var end_pos = global_position + (velocity.normalized() * 50)  # Adjust 50 to match bullet length
+	tracer.setup_tracer(start_pos, end_pos)
+
+	# Optional lifetime
+	await get_tree().create_timer(lifetime).timeout
+	queue_free()
+	
 func _physics_process(delta):
 	position += direction.normalized() * speed * delta
 	velocity = Vector2(speed, 0).rotated(rotation)
