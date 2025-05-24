@@ -1159,4 +1159,4 @@ position = Vector2(-568, 102)
 texture = ExtResource("8_1on00")
 
 [node name="PickableWeapon" parent="." instance=ExtResource("9_60603")]
-position = Vector2(53, 186)
+position = Vector2(255, 126)
