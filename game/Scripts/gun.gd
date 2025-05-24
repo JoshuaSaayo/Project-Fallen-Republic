@@ -7,12 +7,19 @@ class_name Gun
 @export var reload_time: float = 1.8
 @export var bullet_scene: PackedScene
 
+
 var ammo_in_mag: int
 var total_reserve_ammo: int = 90
 var can_shoot: bool = true
 var reloading: bool = false
 var last_shot_time: float = 0
 
+func spawn_tracer(start_pos: Vector2, end_pos: Vector2):
+	var tracer = preload("res://Scenes/bullet_tracer.tscn").instantiate()
+	get_parent().add_child(tracer)
+	tracer.global_position = Vector2.ZERO
+	tracer.setup_tracer(start_pos, end_pos)
+	
 func _ready():
 	ammo_in_mag = mag_size
 
@@ -21,6 +28,7 @@ func try_shoot(owner_node: Node2D):
 		return false
 
 	if ammo_in_mag <= 0:
+		reload()
 		return false
 
 	var time_since_last_shot = Time.get_ticks_msec() / 1000.0 - last_shot_time
@@ -41,6 +49,12 @@ func try_shoot(owner_node: Node2D):
 	var shot_sound = get_node("ShotSound")
 	if shot_sound:
 		shot_sound.play()
+		
+	if ammo_in_mag == 0:
+		reload()
+		
+	spawn_tracer(owner_node.global_position, owner_node.get_global_mouse_position())
+	
 	return true
 	
 
