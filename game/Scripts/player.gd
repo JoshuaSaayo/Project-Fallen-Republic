@@ -12,14 +12,33 @@ var movespeed = 200
 var bullet_speed = 2000
 var bullet = preload("res://Scenes/bullet.tscn")
 var attacked = false
-
+var inventory: Array = [null, null, null, null]
+var current_weapon_index := 0
+var current_weapon = null
 
 func _ready() -> void:
 	health_bar.max_value = max_health
 	health_bar.value = current_health
 
+func switch_weapon(index: int) -> void:
+	if index >= 0 and index < inventory.size():
+		if inventory[index] != null:
+			if current_weapon:
+				current_weapon.queue_free()
+			current_weapon_index = index
+			current_weapon = inventory[index].instantiate()
+			add_child(current_weapon)
 
-
+func _input(event):
+	if event.is_action_pressed("weapon_1"):
+		switch_weapon(0)
+	elif event.is_action_pressed("weapon_2"):
+		switch_weapon(1)
+	elif event.is_action_pressed("weapon_3"):
+		switch_weapon(2)
+	elif event.is_action_pressed("weapon_4"):
+		switch_weapon(3)
+		
 func take_damage(damage_amount: int):
 	current_health -= damage_amount
 	health_bar.value = current_health  # Update progress bar
