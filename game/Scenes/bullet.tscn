@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://b61b13thec548"]
 
 [ext_resource type="Script" uid="uid://bmiv5qwgq8a3x" path="res://Scripts/bullet.gd" id="1_oduel"]
-[ext_resource type="Texture2D" uid="uid://043pfd01b6g1" path="res://Assets/Bullets/BULLET_TRACE.png" id="2_oduel"]
+[ext_resource type="Texture2D" uid="uid://d4kx3jdbxi7d4" path="res://Assets/Bullets/BULLET_TRACE.png" id="2_oduel"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xjght"]
-size = Vector2(10.0096, 10.0096)
+size = Vector2(5, 2)
 
 [node name="Bullet" type="CharacterBody2D"]
 collision_layer = 2
@@ -12,8 +12,9 @@ collision_mask = 20
 script = ExtResource("1_oduel")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.19324e-06, 5.96618e-07)
+position = Vector2(9, -2)
 shape = SubResource("RectangleShape2D_xjght")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
 texture = ExtResource("2_oduel")

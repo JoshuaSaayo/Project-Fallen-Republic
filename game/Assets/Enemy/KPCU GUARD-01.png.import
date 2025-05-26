@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4kx3jdbxi7d4"
-path="res://.godot/imported/BULLET_TRACE.png-6c86bb27a3f9b17902b287fe57e0cbe3.ctex"
+uid="uid://dxuo06vycqspt"
+path="res://.godot/imported/KPCU GUARD-01.png-3256af1be287510e809cdacfbae58ac5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Bullets/BULLET_TRACE.png"
-dest_files=["res://.godot/imported/BULLET_TRACE.png-6c86bb27a3f9b17902b287fe57e0cbe3.ctex"]
+source_file="res://Assets/Enemy/KPCU GUARD-01.png"
+dest_files=["res://.godot/imported/KPCU GUARD-01.png-3256af1be287510e809cdacfbae58ac5.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://gk7fc4ry6dxm"]
 
 [ext_resource type="Script" uid="uid://t2t8iyxbwo4y" path="res://Scripts/enemy_bullet.gd" id="1_54jiv"]
-[ext_resource type="Texture2D" uid="uid://043pfd01b6g1" path="res://Assets/Bullets/BULLET_TRACE.png" id="2_54jiv"]
+[ext_resource type="Texture2D" uid="uid://d4kx3jdbxi7d4" path="res://Assets/Bullets/BULLET_TRACE.png" id="2_54jiv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tcvu8"]
 animations = [{
@@ -15,7 +15,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_54jiv"]
-size = Vector2(10, 10)
+size = Vector2(6, 2)
 
 [node name="EnemyBullet" type="Area2D"]
 collision_layer = 8
@@ -26,6 +26,7 @@ script = ExtResource("1_54jiv")
 sprite_frames = SubResource("SpriteFrames_tcvu8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(9, 0)
 shape = SubResource("RectangleShape2D_54jiv")
 
 [node name="Timer" type="Timer" parent="."]

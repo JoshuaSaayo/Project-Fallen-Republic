@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4kx3jdbxi7d4"
-path="res://.godot/imported/BULLET_TRACE.png-6c86bb27a3f9b17902b287fe57e0cbe3.ctex"
+uid="uid://d1hlm1sem5dva"
+path="res://.godot/imported/(TSP-UC) – Vulture Division.png-1513037f99adfc848f98dd6883eec88d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Bullets/BULLET_TRACE.png"
-dest_files=["res://.godot/imported/BULLET_TRACE.png-6c86bb27a3f9b17902b287fe57e0cbe3.ctex"]
+source_file="res://Assets/Player/player_meele/(TSP-UC) – Vulture Division.png"
+dest_files=["res://.godot/imported/(TSP-UC) – Vulture Division.png-1513037f99adfc848f98dd6883eec88d.ctex"]
 
 [params]
 

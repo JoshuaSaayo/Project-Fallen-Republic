@@ -10,6 +10,7 @@ var state = IDLE
 @export var attack_cooldown := 0.5
 @export var roam_radius := 100.0
 @export var roam_interval := 3.0
+@onready var enemy_anim: AnimatedSprite2D = $EnemyAnim
 
 # Nodes
 @onready var progress_bar: ProgressBar = $ProgressBar
@@ -30,6 +31,10 @@ func _ready() -> void:
 	detection_area.body_exited.connect(_on_player_lost)
 	progress_bar.value = life
 
+func _process(_delta):
+	if enemy_anim:
+		look_at(enemy_anim.global_position)
+	
 func _physics_process(delta: float) -> void:
 	match state:
 		IDLE:

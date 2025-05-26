@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://d04k6lbfactvy" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="PackedScene" uid="uid://dpbamewq777rn" path="res://Scenes/Guns/gun.tscn" id="2_vgqql"]
-[ext_resource type="Texture2D" uid="uid://dqccrbv206ww6" path="res://Assets/Player/player_meele/Player_Knife.png" id="3_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://d1hlm1sem5dva" path="res://Assets/Player/player_meele/(TSP-UC) – Vulture Division.png" id="3_6t5aa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8j60k"]
-size = Vector2(19, 18)
+size = Vector2(22, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fo5ed"]
-size = Vector2(20, 18)
+size = Vector2(22, 20)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvnsp"]
 bg_color = Color(0.32477, 0.705123, 1.92523e-07, 1)
@@ -19,19 +19,21 @@ collision_mask = 28
 script = ExtResource("1_cvnsp")
 
 [node name="Gun" parent="." instance=ExtResource("2_vgqql")]
+position = Vector2(15, -2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-6.5, 1)
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_8j60k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_6t5aa")
+offset = Vector2(12, 0)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-7, 1)
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_fo5ed")
 
 [node name="Timer" type="Timer" parent="."]
