@@ -12,8 +12,13 @@ func _ready():
 	# Connect collision signal
 	body_entered.connect(_on_body_entered)
 
+		# Rotate bullet to face its direction
+	if direction != Vector2.ZERO:
+		rotation = direction.angle()
+		
 func _physics_process(delta):
-	position += direction * speed * delta
+	if direction != Vector2.RIGHT:
+		position += direction * speed * delta
 
 func _on_body_entered(body):
 	if body.is_in_group("Player"):

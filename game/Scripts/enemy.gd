@@ -11,13 +11,13 @@ var state = IDLE
 @export var roam_radius := 100.0
 @export var roam_interval := 3.0
 @onready var enemy_anim: AnimatedSprite2D = $EnemyAnim
-
 # Nodes
 @onready var progress_bar: ProgressBar = $ProgressBar
 @onready var detection_area: Area2D = $DetectionArea
 @onready var nav_agent: NavigationAgent2D = $NavAgent
 @onready var gun_pivot: Marker2D = $GunPivot
 @onready var ray_cast_2d: RayCast2D = $GunPivot/RayCast2D
+@onready var muzzle_flash: Sprite2D = $GunPivot/MuzzleFlash
 
 # Variables
 var life = 100
@@ -25,16 +25,23 @@ var target: Node2D = null
 var attack_timer := 0.0
 var roam_target := Vector2.ZERO
 var roam_timer := 0.0
+var player: Node2D = null
 
 func _ready() -> void:
 	detection_area.body_entered.connect(_on_player_detected)
 	detection_area.body_exited.connect(_on_player_lost)
 	progress_bar.value = life
 
-func _process(_delta):
-	if enemy_anim:
-		look_at(enemy_anim.global_position)
-	
+func _process(delta):
+	if player:
+		var target_dir = (player.global_position - global_position).normalized()
+		var target_angle = target_dir.angle()
+		rotation = lerp_angle(rotation, target_angle, 5 * delta)
+	if target:
+		var to_target = target.global_position - ray_cast_2d.global_position
+		ray_cast_2d.target_position = to_target
+		ray_cast_2d.force_raycast_update()
+		
 func _physics_process(delta: float) -> void:
 	match state:
 		IDLE:
@@ -61,6 +68,10 @@ func idle_behavior():
 	var direction = (next_pos - global_position).normalized()
 	velocity = direction * move_speed * 0.5  # Move slower while roaming
 	move_and_slide()
+	
+		# Smooth rotation while roaming
+	var target_angle = direction.angle()
+	rotation = lerp_angle(rotation, target_angle, 5 * get_physics_process_delta_time())
 	
 func chase_behavior(delta):
 	if !target: return
@@ -100,8 +111,8 @@ func attack_behavior(delta):
 		
 func shoot():
 	var bullet = preload("res://Scenes/enemy_bullet.tscn").instantiate()
-	bullet.global_position = $GunPivot.global_position
-	bullet.direction = (target.global_position - $GunPivot.global_position).normalized()
+	bullet.global_position = muzzle_flash.global_position
+	bullet.direction = (target.global_position - muzzle_flash.global_position).normalized()
 	get_parent().add_child(bullet)
 	
 	if $ShootSound:
@@ -116,8 +127,25 @@ func shoot():
 
 func _on_player_detected(body):
 	if body.is_in_group("Player"):
-		target = body
-		state = CHASING
+		# Aim raycast at player
+		var to_target = body.global_position - ray_cast_2d.global_position
+		ray_cast_2d.target_position = to_target
+		ray_cast_2d.force_raycast_update()
+
+		if ray_cast_2d.is_colliding():
+			var collider = ray_cast_2d.get_collider()
+			if collider.is_in_group("Player"):
+				target = body
+				player = body
+				state = CHASING
+			else:
+				# Wall in between, don't chase
+				pass
+		else:
+			# No collision, clear line of sight
+			target = body
+			player = body
+			state = CHASING
 
 func _on_player_lost(body):
 	if body == target:
