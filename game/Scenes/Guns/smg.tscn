@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://b02no0jqgnptb"]
+[gd_scene load_steps=4 format=3 uid="uid://b02no0jqgnptb"]
 
 [ext_resource type="Script" uid="uid://disljinwbhfnj" path="res://Scripts/smg.gd" id="1_10c7e"]
+[ext_resource type="AudioStream" uid="uid://dld40jjpg4lxo" path="res://Assets/Sounds/bullet_sounds/M4A1_Sound.wav" id="2_jm58s"]
+[ext_resource type="AudioStream" uid="uid://bwhn3vvapyo14" path="res://Assets/Sounds/reload_sounds/Reload_Sound(AR).wav" id="3_wrhfg"]
 
 [node name="SMG" type="Node2D"]
 script = ExtResource("1_10c7e")
+
+[node name="ShotSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_jm58s")
+
+[node name="ReloadSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_wrhfg")
