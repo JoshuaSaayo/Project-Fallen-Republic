@@ -4,15 +4,16 @@ signal life_value
 
 @onready var ammo_label: Label = $CanvasLayer/AmmoLabel
 @onready var health_bar: ProgressBar = $CanvasLayer/HealthBar
-@onready var gun: Node2D = $Gun
+@onready var gun_socket: Node2D = $Gun
 
+var gun: Gun = null
 var max_health := 100
+var inventory: Array = []
 var current_health := max_health
 var movespeed = 200
 var bullet_speed = 2000
 var bullet = preload("res://Scenes/bullet.tscn")
 var attacked = false
-var inventory: Array = [null, null, null, null]
 var current_weapon_index := 0
 var current_weapon = null
 
@@ -20,6 +21,12 @@ func _ready() -> void:
 	health_bar.max_value = max_health
 	health_bar.value = current_health
 
+		# Fill inventory slots with weapons
+	inventory.append(preload("res://Scenes/Guns/assault.tscn"))
+	inventory.append(preload("res://Scenes/Guns/smg.tscn"))
+	
+	switch_weapon(0)  # Start with the first weapon
+	
 func switch_weapon(index: int) -> void:
 	if index >= 0 and index < inventory.size():
 		if inventory[index] != null:
@@ -27,7 +34,9 @@ func switch_weapon(index: int) -> void:
 				current_weapon.queue_free()
 			current_weapon_index = index
 			current_weapon = inventory[index].instantiate()
-			add_child(current_weapon)
+			gun_socket.add_child(current_weapon)
+			gun = current_weapon  # Now gun points to the active script
+			print("weapon switched")
 
 func _input(event):
 	if event.is_action_pressed("weapon_1"):

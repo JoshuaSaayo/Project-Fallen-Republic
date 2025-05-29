@@ -22,6 +22,7 @@ func spawn_tracer(start_pos: Vector2, end_pos: Vector2):
 	
 func _ready():
 	ammo_in_mag = mag_size
+	bullet_scene = preload("res://Scenes/bullet.tscn")
 
 func try_shoot(owner_node: Node2D):
 	if not can_shoot or reloading:
