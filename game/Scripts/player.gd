@@ -5,7 +5,7 @@ signal life_value
 @onready var ammo_label: Label = $CanvasLayer/AmmoLabel
 @onready var health_bar: ProgressBar = $CanvasLayer/HealthBar
 @onready var gun_socket: Node2D = $Gun
-@onready var weapon_popup: VBoxContainer = $WeaponInventoryPopup/VBoxContainer
+@onready var weapon_popup: Panel = $WeaponInventoryPopup/InventoryPanel
 
 var gun: Gun = null
 var max_health := 100
@@ -17,27 +17,33 @@ var bullet = preload("res://Scenes/bullet.tscn")
 var attacked = false
 var current_weapon_index := 0
 var current_weapon = null
-var assault_scene := preload("res://Scenes/Guns/assault.tscn")
-var smg_scene := preload("res://Scenes/Guns/smg.tscn")
 
 func _ready() -> void:
 	health_bar.max_value = max_health
 	health_bar.value = current_health
 
-		# Fill inventory slots with weapons
-	inventory[0] = assault_scene
-	inventory[1] = smg_scene
-	switch_weapon(0)  # Set initial weapon
+	# Instantiate and store actual weapon instances
+	inventory[0] = preload("res://Scenes/Guns/assault.tscn").instantiate()
+	inventory[1] = preload("res://Scenes/Guns/smg.tscn").instantiate()
+	
+	# Add all weapons as children but hide them
+	for weapon in inventory:
+		if weapon:
+			add_child(weapon)
+			weapon.visible = false
+	
+	# Equip first weapon by default
+	switch_weapon(0)
 	
 func switch_weapon(index: int) -> void:
 	if index >= 0 and index < inventory.size():
 		if inventory[index] != null:
 			if current_weapon:
-				current_weapon.queue_free()
+				current_weapon.visible = false  # Just hide the current
 			current_weapon_index = index
-			current_weapon = inventory[index].instantiate()
-			add_child(current_weapon)
-			gun = current_weapon  # Update gun reference
+			current_weapon = inventory[index]
+			current_weapon.visible = true
+			gun = current_weapon  # Also update your gun reference
 
 func _input(event):
 	if event.is_action_pressed("weapon_1"):

@@ -1165,6 +1165,7 @@ texture = ExtResource("8_1on00")
 position = Vector2(255, 126)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
 [node name="Crosshair" type="TextureRect" parent="CanvasLayer"]
 offset_right = 40.0
