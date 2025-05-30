@@ -1,12 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://qmfhx80ymt3g"]
+[gd_scene load_steps=9 format=3 uid="uid://qmfhx80ymt3g"]
 
 [ext_resource type="Script" uid="uid://d04k6lbfactvy" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="PackedScene" uid="uid://dpbamewq777rn" path="res://Scenes/Guns/gun.tscn" id="2_vgqql"]
 [ext_resource type="Texture2D" uid="uid://d1hlm1sem5dva" path="res://Assets/Player/player_meele/(TSP-UC) – Vulture Division.png" id="3_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://dftnttyogw5yy" path="res://Scenes/Guns/assault.tscn" id="3_fkybt"]
 [ext_resource type="PackedScene" uid="uid://b02no0jqgnptb" path="res://Scenes/Guns/smg.tscn" id="4_x3wgy"]
-[ext_resource type="Texture2D" uid="uid://fw10k60k1sur" path="res://Assets/Guns/gun_thumbnails/AR.png" id="6_3smsa"]
-[ext_resource type="Texture2D" uid="uid://diovndk6r8rck" path="res://Assets/Guns/gun_thumbnails/SMG.jpg" id="7_8erm5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8j60k"]
 size = Vector2(22, 20)
@@ -69,59 +67,6 @@ offset_bottom = 123.0
 text = "Ammo: 30 / 90"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
-[node name="WeaponInventoryPopup" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -64.0
-offset_top = -114.0
-offset_right = -24.0
-offset_bottom = -74.0
-
-[node name="InventoryPanel" type="Panel" parent="WeaponInventoryPopup"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ARContainer" type="HBoxContainer" parent="WeaponInventoryPopup/InventoryPanel"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="ARThumbnail" type="TextureRect" parent="WeaponInventoryPopup/InventoryPanel/ARContainer"]
-layout_mode = 2
-texture = ExtResource("6_3smsa")
-
-[node name="ARInfo" type="VBoxContainer" parent="WeaponInventoryPopup/InventoryPanel/ARContainer"]
-layout_mode = 2
-
-[node name="ARName" type="Label" parent="WeaponInventoryPopup/InventoryPanel/ARContainer/ARInfo"]
-layout_mode = 2
-text = "AR"
-
-[node name="ARAmmo" type="Label" parent="WeaponInventoryPopup/InventoryPanel/ARContainer/ARInfo"]
-layout_mode = 2
-
-[node name="SMGContainer" type="HBoxContainer" parent="WeaponInventoryPopup/InventoryPanel"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 61.0
-offset_right = 135.0
-offset_bottom = 122.0
-
-[node name="SMGContainer" type="TextureRect" parent="WeaponInventoryPopup/InventoryPanel/SMGContainer"]
-layout_mode = 2
-texture = ExtResource("7_8erm5")
-
-[node name="SMGInfo" type="VBoxContainer" parent="WeaponInventoryPopup/InventoryPanel/SMGContainer"]
-layout_mode = 2
-
-[node name="SMGName" type="Label" parent="WeaponInventoryPopup/InventoryPanel/SMGContainer/SMGInfo"]
-layout_mode = 2
-text = "SMG"
-
-[node name="SMGAmmo" type="Label" parent="WeaponInventoryPopup/InventoryPanel/SMGContainer/SMGInfo"]
-layout_mode = 2
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

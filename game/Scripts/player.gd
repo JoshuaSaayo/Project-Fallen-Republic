@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal life_value
 
+@onready var inventory_ui = preload("res://Scenes/inventory.tscn").instantiate()
 @onready var ammo_label: Label = $CanvasLayer/AmmoLabel
 @onready var health_bar: ProgressBar = $CanvasLayer/HealthBar
 @onready var gun_socket: Node2D = $Gun
@@ -19,6 +20,8 @@ var current_weapon_index := 0
 var current_weapon = null
 
 func _ready() -> void:
+	add_child(inventory_ui)
+	inventory_ui.hide()
 	health_bar.max_value = max_health
 	health_bar.value = current_health
 
@@ -54,8 +57,8 @@ func _input(event):
 		switch_weapon(2)
 	elif event.is_action_pressed("weapon_4"):
 		switch_weapon(3)
-	elif event.is_action_pressed("Inventory"):
-		weapon_popup.visible = !weapon_popup.visible
+	if event.is_action_pressed("Inventory"):
+		inventory_ui.visible = !inventory_ui.visible
 		
 func take_damage(damage_amount: int):
 	current_health -= damage_amount

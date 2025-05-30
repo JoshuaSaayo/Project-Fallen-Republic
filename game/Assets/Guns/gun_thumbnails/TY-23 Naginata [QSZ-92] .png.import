@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fw10k60k1sur"
-path="res://.godot/imported/AR.png-44f7d172e72769aee324d5ab992f1cd6.ctex"
+uid="uid://cqxbvtude22od"
+path="res://.godot/imported/TY-23 Naginata [QSZ-92] .png-afec85361d48fbacfdceaa8bb4227614.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/gun_thumbnails/AR.png"
-dest_files=["res://.godot/imported/AR.png-44f7d172e72769aee324d5ab992f1cd6.ctex"]
+source_file="res://Assets/Guns/gun_thumbnails/TY-23 Naginata [QSZ-92] .png"
+dest_files=["res://.godot/imported/TY-23 Naginata [QSZ-92] .png-afec85361d48fbacfdceaa8bb4227614.ctex"]
 
 [params]
 

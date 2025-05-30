@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1i322e5gpycx"
-path="res://.godot/imported/KR-85C1 - HK416.png-3fa8ed7c18d17177cd0beff5cbac9636.ctex"
+uid="uid://bpw6a5fgfost4"
+path="res://.godot/imported/KR-85C1 - HK416-PICKABLE.png-0a8bb2a31ab4ab563fa56c308dc2d30f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/gun_thumbnails/KR-85C1 - HK416.png"
-dest_files=["res://.godot/imported/KR-85C1 - HK416.png-3fa8ed7c18d17177cd0beff5cbac9636.ctex"]
+source_file="res://Assets/Guns/pickable_weapons/KR-85C1 - HK416-PICKABLE.png"
+dest_files=["res://.godot/imported/KR-85C1 - HK416-PICKABLE.png-0a8bb2a31ab4ab563fa56c308dc2d30f.ctex"]
 
 [params]
 

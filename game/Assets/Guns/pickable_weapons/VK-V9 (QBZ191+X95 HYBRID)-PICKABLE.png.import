@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4jd1kr1o2m7p"
-path="res://.godot/imported/df51d818-5853-4cc5-b33e-158365da004c.jpg-3f03fc371fb02990d458204a93cc2fc5.ctex"
+uid="uid://blcqtjkj0om64"
+path="res://.godot/imported/VK-V9 (QBZ191+X95 HYBRID)-PICKABLE.png-3fbeb238636336daae460a5e46b9e836.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/gun_thumbnails/df51d818-5853-4cc5-b33e-158365da004c.jpg"
-dest_files=["res://.godot/imported/df51d818-5853-4cc5-b33e-158365da004c.jpg-3f03fc371fb02990d458204a93cc2fc5.ctex"]
+source_file="res://Assets/Guns/pickable_weapons/VK-V9 (QBZ191+X95 HYBRID)-PICKABLE.png"
+dest_files=["res://.godot/imported/VK-V9 (QBZ191+X95 HYBRID)-PICKABLE.png-3fbeb238636336daae460a5e46b9e836.ctex"]
 
 [params]
 

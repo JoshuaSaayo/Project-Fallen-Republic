@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1i322e5gpycx"
-path="res://.godot/imported/KR-85C1 - HK416.png-3fa8ed7c18d17177cd0beff5cbac9636.ctex"
+uid="uid://b8yt1rswu6ymw"
+path="res://.godot/imported/VK-PDW (QBZ191+X95 HYBRID)-PICKABLE.png-b543e83c63a009cd2ef04a751732ea47.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/gun_thumbnails/KR-85C1 - HK416.png"
-dest_files=["res://.godot/imported/KR-85C1 - HK416.png-3fa8ed7c18d17177cd0beff5cbac9636.ctex"]
+source_file="res://Assets/Guns/pickable_weapons/VK-PDW (QBZ191+X95 HYBRID)-PICKABLE.png"
+dest_files=["res://.godot/imported/VK-PDW (QBZ191+X95 HYBRID)-PICKABLE.png-b543e83c63a009cd2ef04a751732ea47.ctex"]
 
 [params]
 
