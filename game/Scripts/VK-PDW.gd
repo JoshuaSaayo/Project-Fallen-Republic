@@ -11,6 +11,7 @@ func _ready():
 	fire_rate = FIRE_RATE
 	mag_size = MAG_SIZE
 	reload_time = RELOAD_TIME
+	total_reserve_ammo = MAG_RESERVE
 	bullet_scene = preload("res://Scenes/bullet.tscn")  # Add this if not set in Inspector
 
 	# Call the parent _ready() to initialize ammo
