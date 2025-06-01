@@ -1,10 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqb0bl8n7umx5"]
+[gd_scene load_steps=8 format=3 uid="uid://cqb0bl8n7umx5"]
 
 [ext_resource type="Texture2D" uid="uid://b8yt1rswu6ymw" path="res://Assets/Guns/pickable_weapons/VK-PDW (QBZ191+X95 HYBRID)-PICKABLE.png" id="1_0n8tc"]
 [ext_resource type="Script" uid="uid://dvmw1jjob3d4m" path="res://Scripts/inventory.gd" id="1_k1vlg"]
 [ext_resource type="Texture2D" uid="uid://cw3eaqhekyb6l" path="res://Assets/Guns/gun_thumbnails/VK-PDW (QBZ191+X95 HYBRID).png" id="1_wdn4f"]
 [ext_resource type="Texture2D" uid="uid://blcqtjkj0om64" path="res://Assets/Guns/pickable_weapons/VK-V9 (QBZ191+X95 HYBRID)-PICKABLE.png" id="2_k1vlg"]
 [ext_resource type="Texture2D" uid="uid://bpw6a5fgfost4" path="res://Assets/Guns/pickable_weapons/KR-85C1 - HK416-PICKABLE.png" id="3_c5ffv"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_k1vlg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c5ffv"]
+texture = SubResource("CanvasTexture_k1vlg")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -15,12 +24,13 @@ pivot_offset = Vector2(371, 25)
 script = ExtResource("1_k1vlg")
 
 [node name="MainLayout" type="PanelContainer" parent="."]
-self_modulate = Color(1, 0.3, 0, 1)
+self_modulate = Color(0.15, 0.10815, 0.069, 1)
 layout_mode = 0
 offset_left = 326.0
 offset_top = 43.0
 offset_right = 868.0
-offset_bottom = 583.0
+offset_bottom = 410.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_c5ffv")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainLayout"]
 layout_mode = 2
@@ -82,29 +92,36 @@ columns = 2
 
 [node name="WeaponType" type="Label" parent="MainLayout/HBoxContainer/DetailsPanel/WeaponStats"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
 text = "Weapon Type"
 
 [node name="WeaponMag" type="Label" parent="MainLayout/HBoxContainer/DetailsPanel/WeaponStats"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
 text = "Mag Size"
 
 [node name="WeaponDMG" type="Label" parent="MainLayout/HBoxContainer/DetailsPanel/WeaponStats"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
 text = "Damage"
 
 [node name="WeaponMaxMag" type="Label" parent="MainLayout/HBoxContainer/DetailsPanel/WeaponStats"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
 text = "Max Reserve"
 
 [node name="WeaponFireRate" type="Label" parent="MainLayout/HBoxContainer/DetailsPanel/WeaponStats"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
 text = "Fire Rate"
 
 [node name="WeaponReload" type="Label" parent="MainLayout/HBoxContainer/DetailsPanel/WeaponStats"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
 text = "Reload Time"
 
 [node name="Descriptions" type="RichTextLabel" parent="MainLayout/HBoxContainer/DetailsPanel"]
 layout_mode = 2
+theme_override_font_sizes/normal_font_size = 10
 text = "aLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
 fit_content = true

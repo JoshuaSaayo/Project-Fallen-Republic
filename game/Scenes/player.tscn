@@ -17,6 +17,7 @@ bg_color = Color(0.32477, 0.705123, 1.92523e-07, 1)
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
+position = Vector2(577, 325)
 collision_mask = 28
 script = ExtResource("1_cvnsp")
 
@@ -47,7 +48,8 @@ wait_time = 0.5
 one_shot = true
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
-zoom = Vector2(2.5, 2.5)
+scale = Vector2(1.99629, 1.76656)
+zoom = Vector2(1.5, 1.5)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
