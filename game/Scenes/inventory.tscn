@@ -66,7 +66,7 @@ theme_override_constants/separation = 20
 
 [node name="WeaponName" type="Label" parent="MainLayout/HBoxContainer/DetailsPanel"]
 layout_mode = 2
-text = "VK - PDW"
+text = "weapon name"
 
 [node name="WeaponImg" type="TextureRect" parent="MainLayout/HBoxContainer/DetailsPanel"]
 layout_mode = 2
@@ -79,27 +79,27 @@ columns = 2
 
 [node name="WeaponType" type="Label" parent="MainLayout/HBoxContainer/DetailsPanel/WeaponStats"]
 layout_mode = 2
-text = "lorem"
+text = "Weapon Type"
 
 [node name="WeaponMag" type="Label" parent="MainLayout/HBoxContainer/DetailsPanel/WeaponStats"]
 layout_mode = 2
-text = "lorem"
+text = "Mag Size"
 
 [node name="WeaponDMG" type="Label" parent="MainLayout/HBoxContainer/DetailsPanel/WeaponStats"]
 layout_mode = 2
-text = "lorem"
+text = "Damage"
 
 [node name="WeaponMaxMag" type="Label" parent="MainLayout/HBoxContainer/DetailsPanel/WeaponStats"]
 layout_mode = 2
-text = "lorem"
+text = "Max Reserve"
 
 [node name="WeaponFireRate" type="Label" parent="MainLayout/HBoxContainer/DetailsPanel/WeaponStats"]
 layout_mode = 2
-text = "lorem"
+text = "Fire Rate"
 
 [node name="WeaponReload" type="Label" parent="MainLayout/HBoxContainer/DetailsPanel/WeaponStats"]
 layout_mode = 2
-text = "lorem"
+text = "Reload Time"
 
 [node name="Descriptions" type="RichTextLabel" parent="MainLayout/HBoxContainer/DetailsPanel"]
 layout_mode = 2

@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://bpcud8cmt3sjw" path="res://pickable_weapon.gd" id="1_8ph43"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8ph43"]
-load_path = "res://.godot/imported/AR.jpg-00d7617944dbed66737a14e946ae031b.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nt4e6"]
 
