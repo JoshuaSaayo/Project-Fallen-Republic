@@ -23,8 +23,8 @@ func _ready() -> void:
 	health_bar.value = current_health
 
 	# Instantiate and store actual weapon instances
-	inventory[0] = preload("res://Scenes/Guns/assault.tscn").instantiate()
-	inventory[1] = preload("res://Scenes/Guns/smg.tscn").instantiate()
+	inventory[0] = preload("res://Scenes/Guns/VK-PDW.tscn").instantiate()
+	inventory[1] = preload("res://Scenes/Guns/VK-V9.tscn").instantiate()
 	
 	# Add all weapons as children but hide them
 	for weapon in inventory:

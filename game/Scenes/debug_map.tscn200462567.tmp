@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=4 uid="uid://c4f3eo36ftght"]
 
-[ext_resource type="Script" uid="uid://bs4p0isy0hiqi" path="res://Scripts/debug_world.gd" id="1_5a7ea"]
+[ext_resource type="Script" uid="uid://bs4p0isy0hiqi" path="res://Scripts/world.gd" id="1_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://qmfhx80ymt3g" path="res://Scenes/player.tscn" id="2_8j60k"]
 [ext_resource type="PackedScene" uid="uid://8sh7pkoscych" path="res://Scenes/enemy.tscn" id="3_5a7ea"]
 [ext_resource type="Texture2D" uid="uid://08magg045x6w" path="res://Assets/Tileset/world_tileset.png" id="4_8j60k"]

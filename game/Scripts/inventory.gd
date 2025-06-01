@@ -12,6 +12,9 @@ extends Control
 @onready var weapon_max_mag: Label = $MainLayout/HBoxContainer/DetailsPanel/WeaponStats/WeaponMaxMag
 @onready var weapon_fire_rate: Label = $MainLayout/HBoxContainer/DetailsPanel/WeaponStats/WeaponFireRate
 @onready var weapon_reload: Label = $MainLayout/HBoxContainer/DetailsPanel/WeaponStats/WeaponReload
+@onready var weapon_1: Button = $MainLayout/HBoxContainer/WeaponListPanel/GridContainer/Weapon1
+@onready var weapon_2: Button = $MainLayout/HBoxContainer/WeaponListPanel/GridContainer/Weapon2
+@onready var weapon_3: Button = $MainLayout/HBoxContainer/WeaponListPanel/GridContainer/Weapon3
 
 
 var weapon_data = {
@@ -23,7 +26,17 @@ var weapon_data = {
 		"mag_size": 40,
 		"max_reserve": 240,
 		"reload_time": 2.9,
-		"description": "VK-PDW is a modified variant..."
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+	},
+		"VK-V9": {
+		"thumbnail": preload("res://Assets/Guns/gun_thumbnails/VK-V9 (QBZ191+X95 HYBRID).png"),
+		"type": "SMG",
+		"damage": 26,
+		"fire_rate": "850 RPM",
+		"mag_size": 40,
+		"max_reserve": 240,
+		"reload_time": 2.9,
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	},
 	# Add other weapons similarly
 }
@@ -54,3 +67,15 @@ func show_weapon_info(weapon_id: String):
 	weapon_reload.text = "Reload Time: %s" % data["reload_time"]
 	# Add other stats...
 	descriptions.text = data["description"]
+
+
+func _on_weapon_1_pressed() -> void:
+	weapon_1.pressed.connect(func(): show_weapon_info("VK-PDW"))
+
+
+func _on_weapon_2_pressed() -> void:
+	weapon_2.pressed.connect(func(): show_weapon_info("VK-V9"))
+
+
+func _on_weapon_3_pressed() -> void:
+	pass # Replace with function body.

@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://d04k6lbfactvy" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="PackedScene" uid="uid://dpbamewq777rn" path="res://Scenes/Guns/gun.tscn" id="2_vgqql"]
 [ext_resource type="Texture2D" uid="uid://d1hlm1sem5dva" path="res://Assets/Player/player_meele/(TSP-UC) – Vulture Division.png" id="3_6t5aa"]
-[ext_resource type="PackedScene" uid="uid://dftnttyogw5yy" path="res://Scenes/Guns/assault.tscn" id="3_fkybt"]
-[ext_resource type="PackedScene" uid="uid://b02no0jqgnptb" path="res://Scenes/Guns/smg.tscn" id="4_x3wgy"]
+[ext_resource type="PackedScene" uid="uid://dftnttyogw5yy" path="res://Scenes/Guns/VK-PDW.tscn" id="3_fkybt"]
+[ext_resource type="PackedScene" uid="uid://b02no0jqgnptb" path="res://Scenes/Guns/VK-V9.tscn" id="4_x3wgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8j60k"]
 size = Vector2(22, 20)

@@ -28,8 +28,8 @@ self_modulate = Color(0.15, 0.10815, 0.069, 1)
 layout_mode = 0
 offset_left = 326.0
 offset_top = 43.0
-offset_right = 868.0
-offset_bottom = 410.0
+offset_right = 888.0
+offset_bottom = 374.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_c5ffv")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainLayout"]
@@ -123,5 +123,9 @@ text = "Reload Time"
 [node name="Descriptions" type="RichTextLabel" parent="MainLayout/HBoxContainer/DetailsPanel"]
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 10
-text = "aLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 fit_content = true
+
+[connection signal="pressed" from="MainLayout/HBoxContainer/WeaponListPanel/GridContainer/Weapon1" to="." method="_on_weapon_1_pressed"]
+[connection signal="pressed" from="MainLayout/HBoxContainer/WeaponListPanel/GridContainer/Weapon2" to="." method="_on_weapon_2_pressed"]
+[connection signal="pressed" from="MainLayout/HBoxContainer/WeaponListPanel/GridContainer/Weapon3" to="." method="_on_weapon_3_pressed"]
