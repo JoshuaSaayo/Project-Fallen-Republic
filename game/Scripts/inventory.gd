@@ -1,4 +1,7 @@
 extends Control
+@onready var inventory: Control = $"."
+
+
 
 @onready var weapon_name: Label = $MainLayout/HBoxContainer/DetailsPanel/WeaponName
 @onready var weapon_img: TextureRect = $MainLayout/HBoxContainer/DetailsPanel/WeaponImg
@@ -25,6 +28,21 @@ var weapon_data = {
 	# Add other weapons similarly
 }
 
+func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS  # allows processing when paused
+	visible = false
+	
+func _input(event):
+	if event.is_action_pressed("Inventory"):
+		inventory.visible = !inventory.visible
+
+		if inventory.visible:
+			get_tree().paused = true
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		else:
+			get_tree().paused = false
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	
 func show_weapon_info(weapon_id: String):
 	var data = weapon_data[weapon_id]
 	weapon_name.text = weapon_id

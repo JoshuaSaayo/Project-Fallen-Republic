@@ -11,13 +11,16 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+pivot_offset = Vector2(371, 25)
 script = ExtResource("1_k1vlg")
 
 [node name="MainLayout" type="PanelContainer" parent="."]
 self_modulate = Color(1, 0.3, 0, 1)
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 326.0
+offset_top = 43.0
+offset_right = 868.0
+offset_bottom = 583.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainLayout"]
 layout_mode = 2
