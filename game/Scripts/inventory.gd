@@ -16,6 +16,7 @@ extends Control
 @onready var weapon_2: Button = $MainLayout/HBoxContainer/WeaponListPanel/GridContainer/Weapon2
 @onready var weapon_3: Button = $MainLayout/HBoxContainer/WeaponListPanel/GridContainer/Weapon3
 
+var selected_index := -1  # Default = nothing selected
 
 var weapon_data = {
 	"VK-PDW": {
@@ -55,7 +56,7 @@ func _input(event):
 		else:
 			get_tree().paused = false
 			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	
+			
 func show_weapon_info(weapon_id: String):
 	var data = weapon_data[weapon_id]
 	weapon_name.text = weapon_id
@@ -68,6 +69,9 @@ func show_weapon_info(weapon_id: String):
 	# Add other stats...
 	descriptions.text = data["description"]
 
+func _on_weapon_selected(index: int) -> void:
+	selected_index = index
+	# You can also update the DetailsPanel here
 
 func _on_weapon_1_pressed() -> void:
 	weapon_1.pressed.connect(func(): show_weapon_info("VK-PDW"))
@@ -79,3 +83,20 @@ func _on_weapon_2_pressed() -> void:
 
 func _on_weapon_3_pressed() -> void:
 	pass # Replace with function body.
+
+
+func _on_equip_btn_pressed() -> void:
+	if selected_index != -1:
+		# Call equip_weapon() on player
+		var player = get_tree().get_root().get_node("res://Scenes/player.tscn")  # Adjust path as needed
+		if player:
+			player.equip_weapon(selected_index)
+
+
+func _on_close_btn_pressed() -> void:
+	hide()  # Hide the inventory when the button is clicked
+	get_tree().paused = false  # Resume the game if paused
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)  # Optional: recapture mouse
+	var crosshair_manager = get_tree().get_root().get_node("debug_map/CanvasLayer/Crosshair")  # Replace with correct node
+	if crosshair_manager:
+		crosshair_manager.hide_system_cursor()

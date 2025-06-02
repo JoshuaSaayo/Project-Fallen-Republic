@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bhyr726uenttx"]
 
-[ext_resource type="Script" uid="uid://bpcud8cmt3sjw" path="res://pickable_weapon.gd" id="1_8ph43"]
+[ext_resource type="Script" uid="uid://bpcud8cmt3sjw" path="res://Scripts/pickable_weapon.gd" id="1_8ph43"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8ph43"]
 

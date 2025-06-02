@@ -25,11 +25,11 @@ script = ExtResource("1_k1vlg")
 
 [node name="MainLayout" type="PanelContainer" parent="."]
 self_modulate = Color(0.15, 0.10815, 0.069, 1)
-layout_mode = 0
+layout_mode = 1
 offset_left = 326.0
 offset_top = 43.0
 offset_right = 888.0
-offset_bottom = 374.0
+offset_bottom = 425.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_c5ffv")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainLayout"]
@@ -126,6 +126,20 @@ theme_override_font_sizes/normal_font_size = 10
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 fit_content = true
 
+[node name="EquipBtn" type="Button" parent="MainLayout/HBoxContainer/DetailsPanel"]
+layout_mode = 2
+text = "Equip"
+
+[node name="CloseBtn" type="Button" parent="MainLayout"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Close"
+icon_alignment = 1
+
 [connection signal="pressed" from="MainLayout/HBoxContainer/WeaponListPanel/GridContainer/Weapon1" to="." method="_on_weapon_1_pressed"]
 [connection signal="pressed" from="MainLayout/HBoxContainer/WeaponListPanel/GridContainer/Weapon2" to="." method="_on_weapon_2_pressed"]
 [connection signal="pressed" from="MainLayout/HBoxContainer/WeaponListPanel/GridContainer/Weapon3" to="." method="_on_weapon_3_pressed"]
+[connection signal="pressed" from="MainLayout/HBoxContainer/DetailsPanel/EquipBtn" to="." method="_on_equip_btn_pressed"]
+[connection signal="pressed" from="MainLayout/CloseBtn" to="." method="_on_close_btn_pressed"]
