@@ -1169,7 +1169,7 @@ offset_bottom = 0.0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 5
 
-[node name="Crosshair" type="TextureRect" parent="CanvasLayer"]
+[node name="Crosshair" type="TextureRect" parent="CanvasLayer" groups=["Crosshair"]]
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("10_ctkch")

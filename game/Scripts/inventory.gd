@@ -46,6 +46,10 @@ func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS  # allows processing when paused
 	visible = false
 	
+	weapon_1.pressed.connect(_on_weapon_1_pressed)
+	weapon_2.pressed.connect(_on_weapon_2_pressed)
+	weapon_3.pressed.connect(_on_weapon_3_pressed)
+	
 func _input(event):
 	if event.is_action_pressed("Inventory"):
 		inventory.visible = !inventory.visible
@@ -74,11 +78,13 @@ func _on_weapon_selected(index: int) -> void:
 	# You can also update the DetailsPanel here
 
 func _on_weapon_1_pressed() -> void:
-	weapon_1.pressed.connect(func(): show_weapon_info("VK-PDW"))
+	show_weapon_info("VK-PDW")
+	selected_index = 0  # Assuming this is index 0
 
 
 func _on_weapon_2_pressed() -> void:
-	weapon_2.pressed.connect(func(): show_weapon_info("VK-V9"))
+	show_weapon_info("VK-V9")
+	selected_index = 1  # Assuming this is index 
 
 
 func _on_weapon_3_pressed() -> void:
@@ -88,7 +94,9 @@ func _on_weapon_3_pressed() -> void:
 func _on_equip_btn_pressed() -> void:
 	if selected_index != -1:
 		# Call equip_weapon() on player
-		var player = get_tree().get_root().get_node("res://Scenes/player.tscn")  # Adjust path as needed
+		var player = get_tree().get_root().get_first_node_in_group("Player")  # Make sure your player is in a "player" group
+		# OR if your player is at a specific path:
+		# var player = get_node("/root/YourSceneName/PlayerPath")
 		if player:
 			player.equip_weapon(selected_index)
 
@@ -97,6 +105,12 @@ func _on_close_btn_pressed() -> void:
 	hide()  # Hide the inventory when the button is clicked
 	get_tree().paused = false  # Resume the game if paused
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)  # Optional: recapture mouse
-	var crosshair_manager = get_tree().get_root().get_node("debug_map/CanvasLayer/Crosshair")  # Replace with correct node
-	if crosshair_manager:
-		crosshair_manager.hide_system_cursor()
+	
+	var crosshairs = get_tree().get_nodes_in_group("Crosshair")
+	if crosshairs.size() > 0:
+		var crosshair = crosshairs[0]
+		# Choose appropriate action:
+		crosshair.visible = true  # If you just want to show it
+		# OR if you need to call a specific function:
+		if crosshair.has_method("show_crosshair"):
+			crosshair.show_crosshair()
