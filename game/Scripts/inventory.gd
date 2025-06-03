@@ -16,6 +16,13 @@ extends Control
 @onready var weapon_2: Button = $MainLayout/HBoxContainer/WeaponListPanel/GridContainer/Weapon2
 @onready var weapon_3: Button = $MainLayout/HBoxContainer/WeaponListPanel/GridContainer/Weapon3
 
+# Map button indices to weapon IDs
+var weapon_index_map = {
+	0: "vk-pdw",
+	1: "vk-v9",
+	2: ""  # Add more as needed
+}
+
 var selected_index := -1  # Default = nothing selected
 
 var weapon_data = {
@@ -46,10 +53,16 @@ func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS  # allows processing when paused
 	visible = false
 	
-	weapon_1.pressed.connect(_on_weapon_1_pressed)
-	weapon_2.pressed.connect(_on_weapon_2_pressed)
-	weapon_3.pressed.connect(_on_weapon_3_pressed)
+	weapon_1.pressed.connect(_on_weapon_button_pressed.bind(0))
+	weapon_2.pressed.connect(_on_weapon_button_pressed.bind(1))
+	weapon_3.pressed.connect(_on_weapon_button_pressed.bind(2))
 	
+func _on_weapon_button_pressed(index: int) -> void:
+	var weapon_id = weapon_index_map.get(index, "")
+	if weapon_id != "" and weapon_data.has(weapon_id):
+		show_weapon_info(weapon_id)
+		selected_index = index
+		
 func _input(event):
 	if event.is_action_pressed("Inventory"):
 		inventory.visible = !inventory.visible
@@ -93,12 +106,14 @@ func _on_weapon_3_pressed() -> void:
 
 func _on_equip_btn_pressed() -> void:
 	if selected_index != -1:
-		# Call equip_weapon() on player
-		var player = get_tree().get_root().get_first_node_in_group("Player")  # Make sure your player is in a "player" group
-		# OR if your player is at a specific path:
-		# var player = get_node("/root/YourSceneName/PlayerPath")
-		if player:
-			player.equip_weapon(selected_index)
+		var weapon_id = weapon_index_map.get(selected_index, "")
+		if weapon_id != "":
+			var player = get_tree().get_first_node_in_group("Player")
+			if player and player.has_method("equip_weapon"):
+				player.equip_weapon(weapon_id)
+				hide()
+				get_tree().paused = false
+				Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 
 func _on_close_btn_pressed() -> void:

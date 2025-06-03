@@ -17,6 +17,8 @@ var bullet = preload("res://Scenes/bullet.tscn")
 var attacked = false
 var current_weapon_index: String = ""
 var current_weapon: Node = null
+var current_weapons := {}  # Dictionary to store all weapon instances
+var current_weapon_id: String = ""
 var inventory := {
 	"vk-pdw": preload("res://Scenes/Guns/VK-PDW.tscn"),
 	"vk-v9": preload("res://Scenes/Guns/VK-V9.tscn")
@@ -25,27 +27,38 @@ var inventory := {
 func _ready() -> void:
 	health_bar.max_value = max_health
 	health_bar.value = current_health
-
-	equip_weapon("vk-pdw")  # start with VK-PDW
 	
-	# Add all weapons as children but hide them
+	# Pre-instantiate all weapons
 	for weapon_id in inventory:
 		var weapon_scene = inventory[weapon_id]
 		var weapon_instance = weapon_scene.instantiate()
 		weapon_instance.visible = false
-		add_child(weapon_instance)
+		weapon_slot.add_child(weapon_instance)
+		current_weapons[weapon_id] = weapon_instance
 	
-	# Equip first weapon by default
+	equip_weapon("vk-pdw")  # Default weapon
 	
 func equip_weapon(weapon_id: String) -> void:
-	if current_weapon:
-		current_weapon.queue_free()
-
-	if inventory.has(weapon_id):
-		var new_weapon = inventory[weapon_id].instantiate()
-		weapon_slot.add_child(new_weapon)  # Or just `add_child()` if you don't use a socket
-		current_weapon = new_weapon
-		gun = current_weapon  # update your gun reference
+	if weapon_id == current_weapon_id:
+		return  # Already equipped
+	
+	# Validate weapon exists
+	if not inventory.has(weapon_id):
+		push_error("Attempted to equip invalid weapon: " + weapon_id)
+		return
+	
+	# Hide current weapon
+	if current_weapon_id != "" and current_weapons.has(current_weapon_id):
+		current_weapons[current_weapon_id].visible = false
+	
+	# Show new weapon
+	if current_weapons.has(weapon_id):
+		current_weapons[weapon_id].visible = true
+		current_weapon = current_weapons[weapon_id]
+		gun = current_weapon
+		current_weapon_id = weapon_id
+	else:
+		push_error("Weapon not found in current_weapons: " + weapon_id)
 
 func _input(event):
 	if event.is_action_pressed("weapon_1"):
