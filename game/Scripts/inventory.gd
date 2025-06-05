@@ -129,3 +129,14 @@ func _on_close_btn_pressed() -> void:
 		# OR if you need to call a specific function:
 		if crosshair.has_method("show_crosshair"):
 			crosshair.show_crosshair()
+
+func update_weapon_buttons():
+	var player = get_tree().get_first_node_in_group("Player")
+	if not player:
+		return
+	
+	weapon_1.visible = player.available_weapons.has("vk-pdw")
+	weapon_2.visible = player.available_weapons.has("vk-v9")
+	weapon_3.visible = false  # Set this based on your weapons
+	
+	# You might want to update thumbnails/text here too

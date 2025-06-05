@@ -19,6 +19,7 @@ var current_weapon_index: String = ""
 var current_weapon: Node = null
 var current_weapons := {}  # Dictionary to store all weapon instances
 var current_weapon_id: String = ""
+var available_weapons := {}  # Tracks which weapons player has unlocked
 var inventory := {
 	"vk-pdw": preload("res://Scenes/Guns/VK-PDW.tscn"),
 	"vk-v9": preload("res://Scenes/Guns/VK-V9.tscn")
@@ -27,7 +28,8 @@ var inventory := {
 func _ready() -> void:
 	health_bar.max_value = max_health
 	health_bar.value = current_health
-	
+		# Initialize with starting weapons
+	available_weapons["vk-pdw"] = true  # Starting weapon
 	# Pre-instantiate all weapons
 	for weapon_id in inventory:
 		var weapon_scene = inventory[weapon_id]
@@ -59,6 +61,42 @@ func equip_weapon(weapon_id: String) -> void:
 		current_weapon_id = weapon_id
 	else:
 		push_error("Weapon not found in current_weapons: " + weapon_id)
+
+func add_weapon_to_inventory(weapon_id: String, ammo: int = 0):
+	if not available_weapons.has(weapon_id):
+		available_weapons[weapon_id] = true
+		# Add to inventory if it's a new weapon
+		inventory[weapon_id] = load("res://Scenes/Guns/%s.tscn" % weapon_id.capitalize())
+		
+		# Instantiate but hide the new weapon
+		var weapon_scene = inventory[weapon_id]
+		var weapon_instance = weapon_scene.instantiate()
+		weapon_instance.visible = false
+		weapon_slot.add_child(weapon_instance)
+		current_weapons[weapon_id] = weapon_instance
+	
+	# Add ammo if the weapon is currently equipped
+	if weapon_id == current_weapon_id and current_weapon:
+		current_weapon.add_ammo(ammo)
+	
+	# Show notification
+	show_notification("Picked up: " + weapon_id)
+
+func show_pickup_prompt(show: bool, weapon_name: String = ""):
+	# Implement this to show/hide a UI prompt
+	if has_node("CanvasLayer/PickupPrompt"):
+		var prompt = $CanvasLayer/PickupPrompt
+		prompt.visible = show
+		if show:
+			prompt.text = "Press E to pick up " + weapon_name
+
+func show_notification(message: String):
+	# Implement a temporary notification system
+	if has_node("CanvasLayer/Notification"):
+		var notif = $CanvasLayer/Notification
+		notif.text = message
+		notif.visible = true
+		get_tree().create_timer(2.0).timeout.connect(func(): notif.visible = false)
 
 func _input(event):
 	if event.is_action_pressed("weapon_1"):

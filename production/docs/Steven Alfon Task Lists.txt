@@ -1,0 +1,39 @@
+Game researcher tasks
+
+✅ character descriptions
+	✅Lucas
+	✅Henry
+	✅Adore
+	✅Kathy
+🔳 story board
+	🔳cutscene 1
+	🔳cutscene 2
+	🔳cutscene 3
+🔳 weapon descriptions
+	✅VK-PDW
+	🔳VK-V9
+	🔳TY-23
+	🔳KP-12
+	🔳KR-85C1
+🔳 story dialogues
+
+Assets maker tasks
+🔳 tilesets
+	🔳night outdoor
+	🔳powerplant
+🔳 animated objects
+	🔳vehicles
+	🔳poles
+	🔳lamps
+✅ weapon thumbnails
+	✅VK-PDW
+	✅VK-V9
+	✅TY-23
+	✅KP-12
+	✅KR-85C1
+✅ pickable weapons
+	✅VK-PDW
+	✅VK-V9
+	✅TY-23
+	✅KP-12
+	✅KR-85C1
