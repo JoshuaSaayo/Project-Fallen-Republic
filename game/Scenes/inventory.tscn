@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cqb0bl8n7umx5"]
 
-[ext_resource type="Script" uid="uid://dvmw1jjob3d4m" path="res://Scripts/inventory.gd" id="1_k1vlg"]
+[ext_resource type="Script" uid="uid://dvmw1jjob3d4m" path="res://Scenes/inventory.gd" id="1_k1vlg"]
 [ext_resource type="Texture2D" uid="uid://cw3eaqhekyb6l" path="res://Assets/Guns/gun_thumbnails/VK-PDW (QBZ191+X95 HYBRID).png" id="1_wdn4f"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_k1vlg"]

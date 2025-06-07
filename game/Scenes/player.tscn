@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://qmfhx80ymt3g"]
 
-[ext_resource type="Script" uid="uid://d04k6lbfactvy" path="res://Scripts/player.gd" id="1_cvnsp"]
+[ext_resource type="Script" uid="uid://d04k6lbfactvy" path="res://Scenes/player.gd" id="1_cvnsp"]
 [ext_resource type="PackedScene" uid="uid://dpbamewq777rn" path="res://Scenes/Guns/gun.tscn" id="2_vgqql"]
 [ext_resource type="Texture2D" uid="uid://d1hlm1sem5dva" path="res://Assets/Player/player_meele/(TSP-UC) – Vulture Division.png" id="3_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://dftnttyogw5yy" path="res://Scenes/Guns/VK-PDW.tscn" id="3_fkybt"]
