@@ -3,6 +3,17 @@ extends Control
 
 ### Constants
 const WEAPON_DATA := {
+	"kp-12": {
+		"display_name": "KP-12",
+		"thumbnail": preload("res://Assets/Guns/gun_thumbnails/KP-12 Chetrra [TT-33 Tokarev].png"),
+		"type": "Pistol",
+		"damage": 28,
+		"fire_rate": "300 RPM",
+		"mag_size": 8,
+		"max_reserve": 40,
+		"reload_time": 1.8,
+		"description": "Compact and durable sidearm with a long history."
+	},
 	"vk-pdw": {
 		"display_name": "VK-PDW",
 		"thumbnail": preload("res://Assets/Guns/gun_thumbnails/VK-PDW (QBZ191+X95 HYBRID).png"),
@@ -25,17 +36,6 @@ const WEAPON_DATA := {
 		"reload_time": 2.4,
 		"description": "A modular battle rifle platform built for adaptability."
 	},
-	"kp-12": {
-		"display_name": "KP-12",
-		"thumbnail": preload("res://Assets/Guns/gun_thumbnails/KP-12 Chetrra [TT-33 Tokarev].png"),
-		"type": "Pistol",
-		"damage": 28,
-		"fire_rate": "300 RPM",
-		"mag_size": 8,
-		"max_reserve": 40,
-		"reload_time": 1.8,
-		"description": "Compact and durable sidearm with a long history."
-	}
 }
 
 ### Nodes

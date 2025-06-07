@@ -18,7 +18,7 @@ var available_weapons := {
 var inventory := {
 	"vk-pdw": preload("res://Scenes/Guns/VK-PDW.tscn"),
 	"vk-v9": preload("res://Scenes/Guns/VK-V9.tscn"),
-	"kp-12": preload("res://Scenes/Guns/VK-V9.tscn")
+	"kp-12": preload("res://Scenes/Guns/kp_12.tscn")
 }
 
 func _ready() -> void:
@@ -90,11 +90,11 @@ func show_notification(message: String) -> void:
 
 func _input(event):
 	if event.is_action_pressed("weapon_1"):
-		equip_weapon("vk-pdw")
+		equip_weapon("kp-12")
 	elif event.is_action_pressed("weapon_2"):
 		equip_weapon("vk-v9")
 	elif event.is_action_pressed("weapon_3"):
-		equip_weapon("kp-12")
+		equip_weapon("vk-pdw")
 		
 func take_damage(damage_amount: int):
 	current_health -= damage_amount

@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://jatimcejgowc"]
+[gd_scene load_steps=2 format=3 uid="uid://jatimcejgowc"]
+
+[ext_resource type="Texture2D" uid="uid://b8yt1rswu6ymw" path="res://Assets/Guns/pickable_weapons/VK-PDW (QBZ191+X95 HYBRID)-PICKABLE.png" id="1_ul5mx"]
 
 [node name="weapon_button" type="Control"]
 layout_mode = 3
@@ -10,8 +12,12 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+texture = ExtResource("1_ul5mx")
 
 [node name="WeaponButton" type="Button" parent="."]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 87.0
+offset_top = 5.0
+offset_right = 216.0
+offset_bottom = 36.0
+text = "WEAPON NAME"
