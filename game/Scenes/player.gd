@@ -58,9 +58,9 @@ func add_weapon_to_inventory(weapon_id: String, ammo: int = 0) -> void:
 		current_weapons[weapon_id] = weapon_instance
 		
 		# Update inventory UI
-		var inventory = get_tree().get_first_node_in_group("Inventory")
-		if inventory and inventory.has_method("add_weapon_to_list"):
-			inventory.add_weapon_to_list(weapon_id)
+		var inventory_ui = get_tree().get_first_node_in_group("Inventory")
+		if inventory_ui and inventory_ui.has_method("add_weapon_to_list"):
+			inventory_ui.add_weapon_to_list(weapon_id)
 	
 	# Add ammo if the weapon is currently equipped
 	if weapon_id == current_weapon_id and current_weapons.has(weapon_id):
@@ -76,10 +76,10 @@ func update_ammo_display() -> void:
 		if gun.reloading:
 			ammo_label.text += " (Reloading...)"
 
-func show_pickup_prompt(show: bool, weapon_name: String = "") -> void:
-	if show:
+func show_pickup_prompt(should_show: bool, weapon_name: String = "") -> void:
+	if should_show:
 		pickup_prompt.text = "Press E to pick up %s" % weapon_name
-	pickup_prompt.visible = show
+	pickup_prompt.visible = should_show
 
 func show_notification(message: String) -> void:
 	if has_node("CanvasLayer/Notification"):
@@ -109,7 +109,7 @@ func die():
 	await $Timer.timeout
 	get_tree().reload_current_scene()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta) -> void:
 	var motion = Vector2()
 	if Input.is_action_pressed("up"):
 		motion.y -= 1

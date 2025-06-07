@@ -63,7 +63,7 @@ func idle_behavior() -> void:
 		move_and_slide()
 		rotation = lerp_angle(rotation, direction.angle(), 5 * get_physics_process_delta_time())
 
-func chase_behavior(delta: float) -> void:
+func chase_behavior(_delta) -> void:
 	if !target: return
 	
 	nav_agent.target_position = target.global_position
