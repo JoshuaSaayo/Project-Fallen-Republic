@@ -6,6 +6,7 @@ const WEAPON_DATA := {
 	"kp-12": {
 		"display_name": "KP-12",
 		"thumbnail": preload("res://Assets/Guns/gun_thumbnails/KP-12 Chetrra [TT-33 Tokarev].png"),
+		"weapon_thumbnail": preload("res://Assets/Guns/pickable_weapons/KP-12 Chettra-PICKABLE.png"),
 		"type": "Pistol",
 		"damage": 28,
 		"fire_rate": "300 RPM",
@@ -17,6 +18,7 @@ const WEAPON_DATA := {
 	"vk-pdw": {
 		"display_name": "VK-PDW",
 		"thumbnail": preload("res://Assets/Guns/gun_thumbnails/VK-PDW (QBZ191+X95 HYBRID).png"),
+		"weapon_thumbnail": preload("res://Assets/Guns/pickable_weapons/VK-PDW (QBZ191+X95 HYBRID)-PICKABLE.png"),
 		"type": "SMG",
 		"damage": 24,
 		"fire_rate": "850 RPM",
@@ -28,6 +30,7 @@ const WEAPON_DATA := {
 	"vk-v9": {
 		"display_name": "VK-V9",
 		"thumbnail": preload("res://Assets/Guns/gun_thumbnails/VK-V9 (QBZ191+X95 HYBRID).png"),
+		"weapon_thumbnail": preload("res://Assets/Guns/pickable_weapons/VK-V9 (QBZ191+X95 HYBRID)-PICKABLE.png"),
 		"type": "SMG",
 		"damage": 30,
 		"fire_rate": "720 RPM",
@@ -91,7 +94,7 @@ func add_weapon_to_list(weapon_id: String) -> void:
 	var thumbnail = new_button.get_node("WeaponThumbnail")
 	var button = new_button.get_node("WeaponButton")
 	
-	thumbnail.texture = WEAPON_DATA[weapon_id]["thumbnail"]
+	thumbnail.texture = WEAPON_DATA[weapon_id]["weapon_thumbnail"]
 	button.text = WEAPON_DATA[weapon_id]["display_name"]
 	button.pressed.connect(_on_weapon_button_pressed.bind(weapon_id))
 	
