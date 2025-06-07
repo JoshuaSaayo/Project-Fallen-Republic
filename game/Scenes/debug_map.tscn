@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://c4f3eo36ftght"]
+[gd_scene load_steps=20 format=4 uid="uid://c4f3eo36ftght"]
 
 [ext_resource type="Script" uid="uid://bs4p0isy0hiqi" path="res://Scenes/debug_world.gd" id="1_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://qmfhx80ymt3g" path="res://Scenes/player.tscn" id="2_8j60k"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://boe6jqw4j4jm4" path="res://Assets/UI/crosshair/CROSSHAIR.png" id="10_ctkch"]
 [ext_resource type="PackedScene" uid="uid://cqb0bl8n7umx5" path="res://Scenes/inventory.tscn" id="11_i7f47"]
 [ext_resource type="Texture2D" uid="uid://b0xmau7cn0vwh" path="res://Assets/Vehicles/LandRanger.png" id="12_tyore"]
+[ext_resource type="Texture2D" uid="uid://blcqtjkj0om64" path="res://Assets/Guns/pickable_weapons/VK-V9 (QBZ191+X95 HYBRID)-PICKABLE.png" id="13_bxtru"]
+[ext_resource type="Texture2D" uid="uid://b8yt1rswu6ymw" path="res://Assets/Guns/pickable_weapons/VK-PDW (QBZ191+X95 HYBRID)-PICKABLE.png" id="13_gip7s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gnyyd"]
 texture = ExtResource("4_8j60k")
@@ -1189,5 +1191,14 @@ position = Vector2(-46, 662)
 rotation = -1.30664
 texture = ExtResource("12_tyore")
 
-[node name="PickableWeapon" parent="." instance=ExtResource("9_60603")]
+[node name="PickableWeapons" type="Node" parent="."]
+
+[node name="PickableWeapon" parent="PickableWeapons" instance=ExtResource("9_60603")]
 position = Vector2(174, 212)
+weapon_texture = ExtResource("13_gip7s")
+
+[node name="PickableWeapon2" parent="PickableWeapons" instance=ExtResource("9_60603")]
+position = Vector2(59, 662)
+weapon_id = "vk-v9"
+weapon_name = "VK-V9"
+weapon_texture = ExtResource("13_bxtru")

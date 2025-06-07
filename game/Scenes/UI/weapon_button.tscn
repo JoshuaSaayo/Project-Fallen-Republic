@@ -27,6 +27,7 @@ theme_override_constants/separation = 20
 [node name="WeaponThumbnail" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("1_ul5mx")
+stretch_mode = 2
 
 [node name="WeaponButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2

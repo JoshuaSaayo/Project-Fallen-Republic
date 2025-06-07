@@ -35,6 +35,7 @@ theme_override_constants/separation = 50
 
 [node name="WeaponListPanel" type="VBoxContainer" parent="MainLayout/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 20
 
 [node name="INV" type="Label" parent="MainLayout/HBoxContainer/WeaponListPanel"]
@@ -48,6 +49,7 @@ theme_override_constants/v_separation = 15
 
 [node name="DetailsPanel" type="VBoxContainer" parent="MainLayout/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 20
 
 [node name="WeaponName" type="Label" parent="MainLayout/HBoxContainer/DetailsPanel"]
