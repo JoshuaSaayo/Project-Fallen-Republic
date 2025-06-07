@@ -99,3 +99,4 @@ interact={
 2d_physics/layer_3="enemy"
 2d_physics/layer_4="enemy_bullets"
 2d_physics/layer_5="world"
+2d_physics/layer_6="pickable_items"

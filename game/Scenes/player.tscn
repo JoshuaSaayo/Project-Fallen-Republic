@@ -17,7 +17,7 @@ bg_color = Color(0.32477, 0.705123, 1.92523e-07, 1)
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
-collision_mask = 28
+collision_mask = 60
 script = ExtResource("1_cvnsp")
 
 [node name="Gun" parent="." instance=ExtResource("2_vgqql")]
