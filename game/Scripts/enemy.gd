@@ -1,17 +1,15 @@
 extends CharacterBody2D
 
-# States
 enum {IDLE, CHASING, ATTACKING}
 var state = IDLE
 
-# Configurations
 @export var move_speed := 80.0
 @export var attack_range := 150.0
 @export var attack_cooldown := 0.5
 @export var roam_radius := 100.0
 @export var roam_interval := 3.0
+
 @onready var enemy_anim: AnimatedSprite2D = $EnemyAnim
-# Nodes
 @onready var progress_bar: ProgressBar = $ProgressBar
 @onready var detection_area: Area2D = $DetectionArea
 @onready var nav_agent: NavigationAgent2D = $NavAgent
@@ -19,29 +17,24 @@ var state = IDLE
 @onready var ray_cast_2d: RayCast2D = $GunPivot/RayCast2D
 @onready var muzzle_flash: Sprite2D = $GunPivot/MuzzleFlash
 
-# Variables
-var life = 100
+var life := 100
 var target: Node2D = null
 var attack_timer := 0.0
 var roam_target := Vector2.ZERO
 var roam_timer := 0.0
-var player: Node2D = null
 
 func _ready() -> void:
 	detection_area.body_entered.connect(_on_player_detected)
 	detection_area.body_exited.connect(_on_player_lost)
 	progress_bar.value = life
 
-func _process(delta):
-	if player:
-		var target_dir = (player.global_position - global_position).normalized()
-		var target_angle = target_dir.angle()
-		rotation = lerp_angle(rotation, target_angle, 5 * delta)
+func _process(delta: float) -> void:
 	if target:
-		var to_target = target.global_position - ray_cast_2d.global_position
-		ray_cast_2d.target_position = to_target
+		var target_dir = (target.global_position - global_position).normalized()
+		rotation = lerp_angle(rotation, target_dir.angle(), 5 * delta)
+		ray_cast_2d.target_position = target.global_position - ray_cast_2d.global_position
 		ray_cast_2d.force_raycast_update()
-		
+
 func _physics_process(delta: float) -> void:
 	match state:
 		IDLE:
@@ -51,65 +44,56 @@ func _physics_process(delta: float) -> void:
 		ATTACKING:
 			attack_behavior(delta)
 
-func idle_behavior():
+func idle_behavior() -> void:
 	roam_timer -= get_process_delta_time()
 	
-	# If it's time to choose a new roam target
 	if roam_timer <= 0.0:
-		var random_offset = Vector2(randf_range(-roam_radius, roam_radius), randf_range(-roam_radius, roam_radius))
+		var random_offset = Vector2(
+			randf_range(-roam_radius, roam_radius),
+			randf_range(-roam_radius, roam_radius)
+		)
 		roam_target = global_position + random_offset
 		nav_agent.target_position = roam_target
 		roam_timer = roam_interval
 
-	# Move toward roam target
-	if nav_agent.is_navigation_finished(): return
-	
-	var next_pos = nav_agent.get_next_path_position()
-	var direction = (next_pos - global_position).normalized()
-	velocity = direction * move_speed * 0.5  # Move slower while roaming
-	move_and_slide()
-	
-		# Smooth rotation while roaming
-	var target_angle = direction.angle()
-	rotation = lerp_angle(rotation, target_angle, 5 * get_physics_process_delta_time())
-	
-func chase_behavior(delta):
-	if !target: return
-	
-	nav_agent.target_position = target.global_position
-	# Move toward player
 	if !nav_agent.is_navigation_finished():
 		var next_pos = nav_agent.get_next_path_position()
 		var direction = (next_pos - global_position).normalized()
-		velocity = direction * move_speed
+		velocity = direction * move_speed * 0.5
+		move_and_slide()
+		rotation = lerp_angle(rotation, direction.angle(), 5 * get_physics_process_delta_time())
+
+func chase_behavior(delta: float) -> void:
+	if !target: return
+	
+	nav_agent.target_position = target.global_position
+	
+	if !nav_agent.is_navigation_finished():
+		var next_pos = nav_agent.get_next_path_position()
+		velocity = (next_pos - global_position).normalized() * move_speed
 		move_and_slide()
 	
-	# Rotate gun toward player
 	gun_pivot.look_at(target.global_position)
 	
-	# Transition to attack if in range
 	if global_position.distance_to(target.global_position) < attack_range:
 		state = ATTACKING
 
-func attack_behavior(delta):
+func attack_behavior(delta: float) -> void:
 	if !target: 
 		state = IDLE
 		return
 	
-	# Face player while attacking
 	gun_pivot.look_at(target.global_position)
 	
-	# Cooldown management
 	attack_timer -= delta
 	if attack_timer <= 0.0:
 		shoot()
 		attack_timer = attack_cooldown
 		
-	# Return to chase if player moves away
 	if global_position.distance_to(target.global_position) > attack_range * 1.2:
 		state = CHASING
 		
-func shoot():
+func shoot() -> void:
 	var bullet = preload("res://Scenes/enemy_bullet.tscn").instantiate()
 	bullet.global_position = muzzle_flash.global_position
 	bullet.direction = (target.global_position - muzzle_flash.global_position).normalized()
@@ -117,42 +101,27 @@ func shoot():
 	
 	if $ShootSound:
 		$ShootSound.play()
-	# Animation placeholder (add later)
-	$GunPivot/MuzzleFlash.show()
-	await get_tree().create_timer(0.1).timeout
-	$GunPivot/MuzzleFlash.hide()
 	
-	# Play shoot animation here later
-	# $AnimationPlayer.play("shoot")
+	muzzle_flash.show()
+	await get_tree().create_timer(0.1).timeout
+	muzzle_flash.hide()
 
-func _on_player_detected(body):
+func _on_player_detected(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		# Aim raycast at player
 		var to_target = body.global_position - ray_cast_2d.global_position
 		ray_cast_2d.target_position = to_target
 		ray_cast_2d.force_raycast_update()
 
-		if ray_cast_2d.is_colliding():
-			var collider = ray_cast_2d.get_collider()
-			if collider.is_in_group("Player"):
-				target = body
-				player = body
-				state = CHASING
-			else:
-				# Wall in between, don't chase
-				pass
-		else:
-			# No collision, clear line of sight
+		if !ray_cast_2d.is_colliding() or ray_cast_2d.get_collider().is_in_group("Player"):
 			target = body
-			player = body
 			state = CHASING
 
-func _on_player_lost(body):
+func _on_player_lost(body: Node2D) -> void:
 	if body == target:
 		target = null
 		state = IDLE
 		
-func take_damage(amount):
+func take_damage(amount: int) -> void:
 	life -= amount
 	progress_bar.value = life
 	if life <= 0:
