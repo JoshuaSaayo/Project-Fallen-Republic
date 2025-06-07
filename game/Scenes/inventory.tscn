@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqb0bl8n7umx5"]
+[gd_scene load_steps=5 format=3 uid="uid://cqb0bl8n7umx5"]
 
-[ext_resource type="Texture2D" uid="uid://b8yt1rswu6ymw" path="res://Assets/Guns/pickable_weapons/VK-PDW (QBZ191+X95 HYBRID)-PICKABLE.png" id="1_0n8tc"]
 [ext_resource type="Script" uid="uid://dvmw1jjob3d4m" path="res://Scripts/inventory.gd" id="1_k1vlg"]
 [ext_resource type="Texture2D" uid="uid://cw3eaqhekyb6l" path="res://Assets/Guns/gun_thumbnails/VK-PDW (QBZ191+X95 HYBRID).png" id="1_wdn4f"]
 
@@ -46,33 +45,6 @@ text = "INV"
 layout_mode = 2
 theme_override_constants/h_separation = 15
 columns = 2
-
-[node name="WeaponThumbnail1" type="TextureRect" parent="MainLayout/HBoxContainer/WeaponListPanel/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_0n8tc")
-stretch_mode = 2
-
-[node name="Weapon1" type="Button" parent="MainLayout/HBoxContainer/WeaponListPanel/GridContainer"]
-layout_mode = 2
-text = "VK-PDW"
-
-[node name="WeaponThumbnail2" type="TextureRect" parent="MainLayout/HBoxContainer/WeaponListPanel/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_0n8tc")
-stretch_mode = 2
-
-[node name="Weapon2" type="Button" parent="MainLayout/HBoxContainer/WeaponListPanel/GridContainer"]
-layout_mode = 2
-text = "VK-PDW"
-
-[node name="WeaponThumbnail3" type="TextureRect" parent="MainLayout/HBoxContainer/WeaponListPanel/GridContainer"]
-layout_mode = 2
-texture = ExtResource("1_0n8tc")
-stretch_mode = 2
-
-[node name="Weapon3" type="Button" parent="MainLayout/HBoxContainer/WeaponListPanel/GridContainer"]
-layout_mode = 2
-text = "VK-PDW"
 
 [node name="DetailsPanel" type="VBoxContainer" parent="MainLayout/HBoxContainer"]
 layout_mode = 2
@@ -140,8 +112,5 @@ size_flags_vertical = 0
 text = "Close"
 icon_alignment = 1
 
-[connection signal="pressed" from="MainLayout/HBoxContainer/WeaponListPanel/GridContainer/Weapon1" to="." method="_on_weapon_1_pressed"]
-[connection signal="pressed" from="MainLayout/HBoxContainer/WeaponListPanel/GridContainer/Weapon2" to="." method="_on_weapon_1_pressed"]
-[connection signal="pressed" from="MainLayout/HBoxContainer/WeaponListPanel/GridContainer/Weapon3" to="." method="_on_weapon_1_pressed"]
 [connection signal="pressed" from="MainLayout/HBoxContainer/DetailsPanel/EquipBtn" to="." method="_on_equip_btn_pressed"]
 [connection signal="pressed" from="MainLayout/CloseBtn" to="." method="_on_close_btn_pressed"]

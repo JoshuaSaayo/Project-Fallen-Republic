@@ -77,6 +77,10 @@ offset_bottom = 40.0
 
 [node name="WeaponSlot" type="Node" parent="."]
 
+[node name="PickupPrompt" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

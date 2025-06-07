@@ -1,32 +1,7 @@
 extends Control
 ## Inventory system for a top-down shooter game
 
-# UI References
-@onready var weapon_name: Label = $MainLayout/HBoxContainer/DetailsPanel/WeaponName
-@onready var weapon_img: TextureRect = $MainLayout/HBoxContainer/DetailsPanel/WeaponImg
-@onready var descriptions: RichTextLabel = $MainLayout/HBoxContainer/DetailsPanel/Descriptions
-@onready var weapon_type: Label = $MainLayout/HBoxContainer/DetailsPanel/WeaponStats/WeaponType
-@onready var weapon_mag: Label = $MainLayout/HBoxContainer/DetailsPanel/WeaponStats/WeaponMag
-@onready var weapon_dmg: Label = $MainLayout/HBoxContainer/DetailsPanel/WeaponStats/WeaponDMG
-@onready var weapon_max_mag: Label = $MainLayout/HBoxContainer/DetailsPanel/WeaponStats/WeaponMaxMag
-@onready var weapon_fire_rate: Label = $MainLayout/HBoxContainer/DetailsPanel/WeaponStats/WeaponFireRate
-@onready var weapon_reload: Label = $MainLayout/HBoxContainer/DetailsPanel/WeaponStats/WeaponReload
-
-@onready var weapon_buttons := [
-	$MainLayout/HBoxContainer/WeaponListPanel/GridContainer/Weapon1,
-	$MainLayout/HBoxContainer/WeaponListPanel/GridContainer/Weapon2,
-	$MainLayout/HBoxContainer/WeaponListPanel/GridContainer/Weapon3
-]
-
-# Weapon data
-const WEAPON_INDEX_MAP := {
-	0: "vk-pdw",
-	1: "vk-v9",
-	2: "kp-12"
-}
-
-var selected_index := -1  # -1 means nothing selected
-
+### Constants
 const WEAPON_DATA := {
 	"vk-pdw": {
 		"display_name": "VK-PDW",
@@ -37,7 +12,7 @@ const WEAPON_DATA := {
 		"mag_size": 40,
 		"max_reserve": 140,
 		"reload_time": 2.0,
-		"description": "A compact PDW tailored for CQC operations in dense urban zones. Derived from the VK-V9 rifle family with modular internals. Lightweight, accurate, and perfect for fast engagements. Favored by recon troops and security units."
+		"description": "A compact PDW tailored for CQC operations in dense urban zones."
 	},
 	"vk-v9": {
 		"display_name": "VK-V9",
@@ -48,7 +23,7 @@ const WEAPON_DATA := {
 		"mag_size": 30,
 		"max_reserve": 120,
 		"reload_time": 2.4,
-		"description": "A modular battle rifle platform built for adaptability in both jungle warfare and urban assaults. Balanced recoil and good weight distribution make it easy to handle. Built on lessons from captured foreign designs. Durable, field-ready, and widely deployed."
+		"description": "A modular battle rifle platform built for adaptability."
 	},
 	"kp-12": {
 		"display_name": "KP-12",
@@ -59,89 +34,83 @@ const WEAPON_DATA := {
 		"mag_size": 8,
 		"max_reserve": 40,
 		"reload_time": 1.8,
-		"description": "Compact and durable, the KP-12 is a sidearm with a long history of military service. It sacrifices magazine capacity for ease of concealment and reliability. Ideal for officers and backup roles. Snappy recoil and low profile"
+		"description": "Compact and durable sidearm with a long history."
 	}
 }
 
-func _ready() -> void:
-	process_mode = Node.PROCESS_MODE_ALWAYS  # Process even when game is paused
-	visible = false
-	
-	# Connect weapon buttons
-	for i in weapon_buttons.size():
-		weapon_buttons[i].pressed.connect(_on_weapon_button_pressed.bind(i))
-	
-	update_weapon_buttons()
+### Nodes
+@onready var details_panel = {
+	"name": $MainLayout/HBoxContainer/DetailsPanel/WeaponName,
+	"image": $MainLayout/HBoxContainer/DetailsPanel/WeaponImg,
+	"description": $MainLayout/HBoxContainer/DetailsPanel/Descriptions
+}
 
-#region Input Handling
+@onready var stats_panel = {
+	"type": $MainLayout/HBoxContainer/DetailsPanel/WeaponStats/WeaponType,
+	"damage": $MainLayout/HBoxContainer/DetailsPanel/WeaponStats/WeaponDMG,
+	"mag_size": $MainLayout/HBoxContainer/DetailsPanel/WeaponStats/WeaponMag,
+	"max_reserve": $MainLayout/HBoxContainer/DetailsPanel/WeaponStats/WeaponMaxMag,
+	"fire_rate": $MainLayout/HBoxContainer/DetailsPanel/WeaponStats/WeaponFireRate,
+	"reload_time": $MainLayout/HBoxContainer/DetailsPanel/WeaponStats/WeaponReload
+}
+
+@onready var grid_container: GridContainer = $MainLayout/HBoxContainer/WeaponListPanel/GridContainer
+@onready var weapon_button_scene = preload("res://Scenes/UI/weapon_button.tscn")
+
+### Variables
+var selected_weapon_id: String = ""
+var weapon_buttons := {}  # Dictionary to track created buttons
+
+### Lifecycle Methods
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	visible = false
+	initialize_inventory()
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Inventory"):
 		toggle_inventory()
 
+### Public Methods
+func initialize_inventory() -> void:
+	clear_weapon_list()
+	
+	var player = get_tree().get_first_node_in_group("Player")
+	if player:
+		for weapon_id in player.available_weapons:
+			add_weapon_to_list(weapon_id)
+
+func add_weapon_to_list(weapon_id: String) -> void:
+	if not WEAPON_DATA.has(weapon_id) or weapon_buttons.has(weapon_id):
+		return
+	
+	var new_button = weapon_button_scene.instantiate()
+	grid_container.add_child(new_button)
+	
+	# Configure button
+	var thumbnail = new_button.get_node("WeaponThumbnail")
+	var button = new_button.get_node("WeaponButton")
+	
+	thumbnail.texture = WEAPON_DATA[weapon_id]["thumbnail"]
+	button.text = WEAPON_DATA[weapon_id]["display_name"]
+	button.pressed.connect(_on_weapon_button_pressed.bind(weapon_id))
+	
+	weapon_buttons[weapon_id] = new_button
+	
+	# Auto-select first weapon
+	if selected_weapon_id.is_empty():
+		_on_weapon_button_pressed(weapon_id)
+
+### UI Methods
 func toggle_inventory() -> void:
 	visible = !visible
 	
 	if visible:
 		get_tree().paused = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		initialize_inventory()  # Refresh inventory when opened
 	else:
-		get_tree().paused = false
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-		restore_crosshair()
-#endregion
-
-#region Weapon Display
-func show_weapon_info(weapon_id: String) -> void:
-	var data = WEAPON_DATA.get(weapon_id, {})
-	if data.is_empty():
-		return
-	
-	weapon_name.text = data.get("display_name", weapon_id)
-	weapon_img.texture = data.get("thumbnail", null)
-	weapon_type.text = "Type: %s" % data.get("type", "N/A")
-	weapon_dmg.text = "Damage: %s" % data.get("damage", 0)
-	weapon_fire_rate.text = "Fire Rate: %s" % data.get("fire_rate", "N/A")
-	weapon_mag.text = "Mag Size: %s" % data.get("mag_size", 0)
-	weapon_max_mag.text = "Max Reserve: %s" % data.get("max_reserve", 0)
-	weapon_reload.text = "Reload Time: %s" % data.get("reload_time", 0)
-	descriptions.text = data.get("description", "")
-#endregion
-
-#region Button Handlers
-func _on_weapon_button_pressed(index: int) -> void:
-	var weapon_id = WEAPON_INDEX_MAP.get(index, "")
-	if weapon_id.is_empty() || !WEAPON_DATA.has(weapon_id):
-		return
-	
-	show_weapon_info(weapon_id)
-	selected_index = index
-
-func _on_equip_btn_pressed() -> void:
-	if selected_index == -1:
-		return
-	
-	var weapon_id = WEAPON_INDEX_MAP.get(selected_index, "")
-	if weapon_id.is_empty():
-		return
-	
-	var player = get_tree().get_first_node_in_group("Player")
-	if player and player.has_method("equip_weapon"):
-		player.equip_weapon(weapon_id)
 		close_inventory()
-
-func _on_close_btn_pressed() -> void:
-	close_inventory()
-#endregion
-
-#region Utility Functions
-func update_weapon_buttons() -> void:
-	var player = get_tree().get_first_node_in_group("Player")
-	if not player:
-		return
-	
-	for i in weapon_buttons.size():
-		var weapon_id = WEAPON_INDEX_MAP.get(i, "")
-		weapon_buttons[i].visible = player.available_weapons.has(weapon_id) if weapon_id else false
 
 func close_inventory() -> void:
 	hide()
@@ -149,13 +118,52 @@ func close_inventory() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	restore_crosshair()
 
-func restore_crosshair() -> void:
-	var crosshairs = get_tree().get_nodes_in_group("Crosshair")
-	if crosshairs.is_empty():
+func show_weapon_info(weapon_id: String) -> void:
+	var data = WEAPON_DATA.get(weapon_id, {})
+	if data.is_empty():
 		return
 	
-	var crosshair = crosshairs[0]
-	crosshair.visible = true
-	if crosshair.has_method("show_crosshair"):
-		crosshair.show_crosshair()
-#endregion
+	# Update details panel
+	details_panel.name.text = data.get("display_name", weapon_id)
+	details_panel.image.texture = data.get("thumbnail", null)
+	details_panel.description.text = data.get("description", "")
+	
+	# Update stats panel
+	stats_panel.type.text = "Type: %s" % data.get("type", "N/A")
+	stats_panel.damage.text = "Damage: %s" % data.get("damage", 0)
+	stats_panel.mag_size.text = "Mag Size: %s" % data.get("mag_size", 0)
+	stats_panel.max_reserve.text = "Max Reserve: %s" % data.get("max_reserve", 0)
+	stats_panel.fire_rate.text = "Fire Rate: %s" % data.get("fire_rate", "N/A")
+	stats_panel.reload_time.text = "Reload Time: %s" % data.get("reload_time", 0)
+	
+	selected_weapon_id = weapon_id
+
+### Helper Methods
+func clear_weapon_list() -> void:
+	for child in grid_container.get_children():
+		child.queue_free()
+	weapon_buttons.clear()
+
+func restore_crosshair() -> void:
+	var crosshairs = get_tree().get_nodes_in_group("Crosshair")
+	if not crosshairs.is_empty():
+		var crosshair = crosshairs[0]
+		crosshair.visible = true
+		if crosshair.has_method("show_crosshair"):
+			crosshair.show_crosshair()
+
+### Signal Handlers
+func _on_weapon_button_pressed(weapon_id: String) -> void:
+	show_weapon_info(weapon_id)
+
+func _on_equip_btn_pressed() -> void:
+	if selected_weapon_id.is_empty():
+		return
+	
+	var player = get_tree().get_first_node_in_group("Player")
+	if player and player.has_method("equip_weapon"):
+		player.equip_weapon(selected_weapon_id)
+		close_inventory()
+
+func _on_close_btn_pressed() -> void:
+	close_inventory()

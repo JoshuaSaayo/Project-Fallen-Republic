@@ -1155,10 +1155,6 @@ position = Vector2(500, 113)
 [node name="Enemy4" parent="NavigationRegion2D/Enemies" groups=["Enemy"] instance=ExtResource("3_5a7ea")]
 position = Vector2(-586, 338)
 
-[node name="PickableWeapon" parent="." instance=ExtResource("9_60603")]
-position = Vector2(63, 246)
-weapon_id = "kp-12"
-
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Inventory" parent="UI" instance=ExtResource("11_i7f47")]
@@ -1192,3 +1188,6 @@ texture = ExtResource("12_tyore")
 position = Vector2(-46, 662)
 rotation = -1.30664
 texture = ExtResource("12_tyore")
+
+[node name="PickableWeapon" parent="." instance=ExtResource("9_60603")]
+position = Vector2(174, 212)
