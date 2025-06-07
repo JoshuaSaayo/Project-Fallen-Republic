@@ -7,11 +7,20 @@ extends Area2D
 var can_pick_up := false
 
 func _ready():
-	# Set the correct sprite/texture for this weapon
-	$Sprite2D.texture = load("res://Assets/Guns/pickable_weapons/VK-PDW (QBZ191+X95 HYBRID)-PICKABLE.png" % weapon_id.to_upper())
+	# Safe texture loading
+	var weapon_texture = _get_weapon_texture(weapon_id)
+	if weapon_texture:
+		$Sprite2D.texture = weapon_texture
 	
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
+
+func _get_weapon_texture(id: String) -> Texture2D:
+	var texture_path = "res://Assets/Guns/pickable_weapons/VK-PDW (QBZ191+X95 HYBRID)-PICKABLE.png".format([id.to_upper()])
+	if ResourceLoader.exists(texture_path):
+		return load(texture_path)
+	push_error("Weapon texture not found: ", texture_path)
+	return null
 
 func _on_body_entered(body: Node2D):
 	if body.is_in_group("Player"):
