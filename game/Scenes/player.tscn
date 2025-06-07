@@ -17,7 +17,6 @@ bg_color = Color(0.32477, 0.705123, 1.92523e-07, 1)
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
-position = Vector2(577, 325)
 collision_mask = 28
 script = ExtResource("1_cvnsp")
 

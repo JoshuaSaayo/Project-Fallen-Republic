@@ -22,7 +22,8 @@ var current_weapon_id: String = ""
 var available_weapons := {}  # Tracks which weapons player has unlocked
 var inventory := {
 	"vk-pdw": preload("res://Scenes/Guns/VK-PDW.tscn"),
-	"vk-v9": preload("res://Scenes/Guns/VK-V9.tscn")
+	"vk-v9": preload("res://Scenes/Guns/VK-V9.tscn"),
+	"kp-12": preload("res://Scenes/Guns/VK-V9.tscn")
 }
 
 func _ready() -> void:
@@ -103,6 +104,8 @@ func _input(event):
 		equip_weapon("vk-pdw")
 	elif event.is_action_pressed("weapon_2"):
 		equip_weapon("vk-v9")
+	elif event.is_action_pressed("weapon_3"):
+		equip_weapon("kp-12")
 		
 func take_damage(damage_amount: int):
 	current_health -= damage_amount

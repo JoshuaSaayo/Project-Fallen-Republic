@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4o4h0ejypuo3"]
+
+[ext_resource type="AudioStream" uid="uid://dld40jjpg4lxo" path="res://Assets/Sounds/bullet_sounds/M4A1_Sound.wav" id="1_r3ou5"]
+[ext_resource type="Script" uid="uid://p5tsrndkr5rc" path="res://Scenes/Guns/kp_12.gd" id="1_vdfpa"]
+[ext_resource type="AudioStream" uid="uid://bwhn3vvapyo14" path="res://Assets/Sounds/reload_sounds/Reload_Sound(AR).wav" id="2_vdfpa"]
+
+[node name="KP-12" type="Node2D"]
+script = ExtResource("1_vdfpa")
+
+[node name="ShotSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_r3ou5")
+
+[node name="ReloadSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_vdfpa")

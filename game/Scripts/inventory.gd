@@ -20,7 +20,7 @@ extends Control
 var weapon_index_map = {
 	0: "vk-pdw",
 	1: "vk-v9",
-	2: ""  # Add more as needed
+	2: "kp-12"  # Add more as needed
 }
 
 var selected_index := -1  # Default = nothing selected
@@ -29,22 +29,32 @@ var weapon_data = {
 	"VK-PDW": {
 		"thumbnail": preload("res://Assets/Guns/gun_thumbnails/VK-PDW (QBZ191+X95 HYBRID).png"),
 		"type": "SMG",
-		"damage": 26,
+		"damage": 24,
 		"fire_rate": "850 RPM",
 		"mag_size": 40,
-		"max_reserve": 240,
-		"reload_time": 2.9,
-		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+		"max_reserve": 140,
+		"reload_time": 2.0,
+		"description": "A compact PDW tailored for CQC operations in dense urban zones. Derived from the VK-V9 rifle family with modular internals. Lightweight, accurate, and perfect for fast engagements. Favored by recon troops and security units."
 	},
 		"VK-V9": {
 		"thumbnail": preload("res://Assets/Guns/gun_thumbnails/VK-V9 (QBZ191+X95 HYBRID).png"),
 		"type": "SMG",
-		"damage": 26,
-		"fire_rate": "850 RPM",
-		"mag_size": 40,
-		"max_reserve": 240,
-		"reload_time": 2.9,
-		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+		"damage": 30,
+		"fire_rate": "720 RPM",
+		"mag_size": 30,
+		"max_reserve": 120,
+		"reload_time": 2.4,
+		"description": "A modular battle rifle platform built for adaptability in both jungle warfare and urban assaults. Balanced recoil and good weight distribution make it easy to handle. Built on lessons from captured foreign designs. Durable, field-ready, and widely deployed."
+	},
+		"KP-12": {
+		"thumbnail": preload("res://Assets/Guns/gun_thumbnails/KP-12 Chetrra [TT-33 Tokarev].png"),
+		"type": "Pistol",
+		"damage": 28,
+		"fire_rate": "300 RPM",
+		"mag_size": 8,
+		"max_reserve": 40,
+		"reload_time": 1.8,
+		"description": "Compact and durable, the KP-12 is a sidearm with a long history of military service. It sacrifices magazine capacity for ease of concealment and reliability. Ideal for officers and backup roles. Snappy recoil and low profile"
 	},
 	# Add other weapons similarly
 }
@@ -101,7 +111,8 @@ func _on_weapon_2_pressed() -> void:
 
 
 func _on_weapon_3_pressed() -> void:
-	pass # Replace with function body.
+	show_weapon_info("KP-12")
+	selected_index = 1  # Assuming this is index 
 
 
 func _on_equip_btn_pressed() -> void:
