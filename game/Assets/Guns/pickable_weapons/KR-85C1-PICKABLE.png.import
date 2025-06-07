@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2cuf1d2w0wyk"
-path="res://.godot/imported/TY-23 Naginata-PICKABLE.png-26c611f16b6e1c2857b5ebf18dc49e24.ctex"
+uid="uid://bpw6a5fgfost4"
+path="res://.godot/imported/KR-85C1-PICKABLE.png-f4c6fda060bb259ecc8242a0ccad395c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/pickable_weapons/TY-23 Naginata-PICKABLE.png"
-dest_files=["res://.godot/imported/TY-23 Naginata-PICKABLE.png-26c611f16b6e1c2857b5ebf18dc49e24.ctex"]
+source_file="res://Assets/Guns/pickable_weapons/KR-85C1-PICKABLE.png"
+dest_files=["res://.godot/imported/KR-85C1-PICKABLE.png-f4c6fda060bb259ecc8242a0ccad395c.ctex"]
 
 [params]
 

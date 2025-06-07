@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cew86yfvmh1ni"
-path="res://.godot/imported/KP-12 Chettra-PICKABLE.png-0c713dc3567b748ad45fa4c24cf0bb3f.ctex"
+uid="uid://c2cuf1d2w0wyk"
+path="res://.godot/imported/TY-23-PICKABLE.png-90d4155048d65e1e31439d287bc85515.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/pickable_weapons/KP-12 Chettra-PICKABLE.png"
-dest_files=["res://.godot/imported/KP-12 Chettra-PICKABLE.png-0c713dc3567b748ad45fa4c24cf0bb3f.ctex"]
+source_file="res://Assets/Guns/pickable_weapons/TY-23-PICKABLE.png"
+dest_files=["res://.godot/imported/TY-23-PICKABLE.png-90d4155048d65e1e31439d287bc85515.ctex"]
 
 [params]
 
