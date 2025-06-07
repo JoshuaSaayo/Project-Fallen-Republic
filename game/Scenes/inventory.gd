@@ -120,9 +120,18 @@ func toggle_inventory() -> void:
 		get_tree().paused = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		initialize_inventory()  # Refresh inventory when opened
+		hide_crosshair()
 	else:
 		close_inventory()
 
+func hide_crosshair() -> void:
+	var crosshairs = get_tree().get_nodes_in_group("Crosshair")
+	if not crosshairs.is_empty():
+		var crosshair = crosshairs[0]
+		crosshair.visible = false
+		if crosshair.has_method("hide_crosshair"):
+			crosshair.hide_crosshair()
+			
 func close_inventory() -> void:
 	hide()
 	get_tree().paused = false
