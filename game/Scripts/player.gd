@@ -4,19 +4,11 @@ signal life_value
 
 @onready var ammo_label: Label = $CanvasLayer/AmmoLabel
 @onready var health_bar: ProgressBar = $CanvasLayer/HealthBar
-@onready var gun_socket: Node2D = $Gun
-@onready var weapon_popup: Panel = $WeaponInventoryPopup/InventoryPanel
 @onready var weapon_slot: Node = $WeaponSlot  # where weapon scene is added
 
-var gun: Gun = null
 var max_health := 100
 var current_health := max_health
-var movespeed = 200
-var bullet_speed = 2000
-var bullet = preload("res://Scenes/bullet.tscn")
-var attacked = false
-var current_weapon_index: String = ""
-var current_weapon: Node = null
+var movespeed := 200
 var current_weapons := {}  # Dictionary to store all weapon instances
 var current_weapon_id: String = ""
 var available_weapons := {}  # Tracks which weapons player has unlocked
@@ -29,12 +21,11 @@ var inventory := {
 func _ready() -> void:
 	health_bar.max_value = max_health
 	health_bar.value = current_health
-		# Initialize with starting weapons
 	available_weapons["vk-pdw"] = true  # Starting weapon
+	
 	# Pre-instantiate all weapons
 	for weapon_id in inventory:
-		var weapon_scene = inventory[weapon_id]
-		var weapon_instance = weapon_scene.instantiate()
+		var weapon_instance = inventory[weapon_id].instantiate()
 		weapon_instance.visible = false
 		weapon_slot.add_child(weapon_instance)
 		current_weapons[weapon_id] = weapon_instance
@@ -45,7 +36,6 @@ func equip_weapon(weapon_id: String) -> void:
 	if weapon_id == current_weapon_id:
 		return  # Already equipped
 	
-	# Validate weapon exists
 	if not inventory.has(weapon_id):
 		push_error("Attempted to equip invalid weapon: " + weapon_id)
 		return
@@ -57,8 +47,6 @@ func equip_weapon(weapon_id: String) -> void:
 	# Show new weapon
 	if current_weapons.has(weapon_id):
 		current_weapons[weapon_id].visible = true
-		current_weapon = current_weapons[weapon_id]
-		gun = current_weapon
 		current_weapon_id = weapon_id
 	else:
 		push_error("Weapon not found in current_weapons: " + weapon_id)
@@ -66,33 +54,18 @@ func equip_weapon(weapon_id: String) -> void:
 func add_weapon_to_inventory(weapon_id: String, ammo: int = 0):
 	if not available_weapons.has(weapon_id):
 		available_weapons[weapon_id] = true
-		# Add to inventory if it's a new weapon
-		inventory[weapon_id] = load("res://Scenes/Guns/%s.tscn" % weapon_id.capitalize())
-		
-		# Instantiate but hide the new weapon
-		var weapon_scene = inventory[weapon_id]
-		var weapon_instance = weapon_scene.instantiate()
+		var weapon_instance = load("res://Scenes/Guns/%s.tscn" % weapon_id.capitalize()).instantiate()
 		weapon_instance.visible = false
 		weapon_slot.add_child(weapon_instance)
 		current_weapons[weapon_id] = weapon_instance
 	
 	# Add ammo if the weapon is currently equipped
-	if weapon_id == current_weapon_id and current_weapon:
-		current_weapon.add_ammo(ammo)
+	if weapon_id == current_weapon_id and current_weapons.has(weapon_id):
+		current_weapons[weapon_id].add_ammo(ammo)
 	
-	# Show notification
 	show_notification("Picked up: " + weapon_id)
 
-func show_pickup_prompt(show: bool, weapon_name: String = ""):
-	# Implement this to show/hide a UI prompt
-	if has_node("CanvasLayer/PickupPrompt"):
-		var prompt = $CanvasLayer/PickupPrompt
-		prompt.visible = show
-		if show:
-			prompt.text = "Press E to pick up " + weapon_name
-
 func show_notification(message: String):
-	# Implement a temporary notification system
 	if has_node("CanvasLayer/Notification"):
 		var notif = $CanvasLayer/Notification
 		notif.text = message
@@ -109,10 +82,7 @@ func _input(event):
 		
 func take_damage(damage_amount: int):
 	current_health -= damage_amount
-	health_bar.value = current_health  # Update progress bar
-	
-	# Optional visual feedback
-	#$AnimationPlayer.play("hit_flash")
+	health_bar.value = current_health
 	
 	if current_health <= 0:
 		die()
@@ -120,10 +90,8 @@ func take_damage(damage_amount: int):
 func die():
 	if $Timer.is_stopped():
 		$Timer.start()
-	# Your death handling code here
 	await $Timer.timeout
 	get_tree().reload_current_scene()
-
 
 func _physics_process(delta: float) -> void:
 	var motion = Vector2()
@@ -136,45 +104,22 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("left"):
 		motion.x -= 1
 		
-	motion = motion.normalized() * movespeed
-	velocity = motion  # Set the built-in "velocity" property
-	move_and_slide()   # No arguments needed
+	velocity = motion.normalized() * movespeed
+	move_and_slide()
 	look_at(get_global_mouse_position())
 	
-	if Input.is_action_just_pressed("LMB"):
-		fire()
-	if Input.is_action_just_pressed("reload"):
-		gun.reload()
-	if gun:
-		ammo_label.text = "Ammo: %d / %d" % [gun.ammo_in_mag, gun.total_reserve_ammo]
-	if gun.ammo_in_mag == 0:
-		ammo_label.modulate = Color.RED
-	else:
-		ammo_label.modulate = Color.WHITE
-	if gun.reloading:
-		ammo_label.text += " (Reloading...)"
-		# Continuous fire if gun is automatic
-	if gun and Input.is_action_pressed("LMB"):
-		gun.try_shoot(self)
+	if current_weapons.has(current_weapon_id):
+		var gun = current_weapons[current_weapon_id]
+		if Input.is_action_just_pressed("reload"):
+			gun.reload()
+		if Input.is_action_pressed("LMB"):
+			gun.try_shoot(self)
 		
-func fire():
-	if gun.try_shoot(self):
-		# You can play sound or animation here
-		pass
-	
-func kill():
-	get_tree().reload_current_scene()
-	
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if "Enemy" in body.name:
-		attacked = true
-
-func _on_area_2d_body_exited(body: Node2D) -> void:
-	if "Enemy" in body.name:
-		attacked = false
+		ammo_label.text = "Ammo: %d / %d" % [gun.ammo_in_mag, gun.total_reserve_ammo]
+		ammo_label.modulate = Color.RED if gun.ammo_in_mag == 0 else Color.WHITE
+		if gun.reloading:
+			ammo_label.text += " (Reloading...)"
 
 func _on_timer_timeout() -> void:
 	max_health -= 1 
 	emit_signal("life_value", max_health)
-	
