@@ -69,6 +69,9 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	visible = false
 	initialize_inventory()
+	grid_container.columns = 1  # Force single column layout
+	grid_container.set("custom_constants/hseparation", 0)
+	grid_container.set("custom_constants/vseparation", 10)  # Space between rows
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Inventory"):
@@ -90,9 +93,14 @@ func add_weapon_to_list(weapon_id: String) -> void:
 	var new_button = weapon_button_scene.instantiate()
 	grid_container.add_child(new_button)
 	
-	# Configure button
-	var thumbnail = new_button.get_node("WeaponThumbnail")
-	var button = new_button.get_node("WeaponButton")
+	# Configure elements
+	var hbox = new_button.get_node("HBoxContainer")
+	var thumbnail = hbox.get_node("WeaponThumbnail")
+	var button = hbox.get_node("WeaponButton")
+	
+	# Size settings
+	thumbnail.custom_minimum_size = Vector2(64, 64)  # Fixed thumbnail size
+	button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	
 	thumbnail.texture = WEAPON_DATA[weapon_id]["weapon_thumbnail"]
 	button.text = WEAPON_DATA[weapon_id]["display_name"]

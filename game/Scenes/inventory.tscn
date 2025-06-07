@@ -44,7 +44,7 @@ text = "INV"
 [node name="GridContainer" type="GridContainer" parent="MainLayout/HBoxContainer/WeaponListPanel"]
 layout_mode = 2
 theme_override_constants/h_separation = 15
-columns = 2
+theme_override_constants/v_separation = 15
 
 [node name="DetailsPanel" type="VBoxContainer" parent="MainLayout/HBoxContainer"]
 layout_mode = 2
