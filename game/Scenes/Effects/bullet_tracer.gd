@@ -1,6 +1,6 @@
-extends Node2D  # Matches your scene root
+extends Node2D
 
-@onready var line: Line2D = $Line2D  # Reference to child Line2D
+@onready var line: Line2D = $Line2D
 @onready var kill_timer: Timer = $KillTimer
 
 @export var fade_time: float = 0.2
@@ -9,32 +9,34 @@ extends Node2D  # Matches your scene root
 
 func setup_tracer(start_pos: Vector2, end_pos: Vector2):
 	var space_state = get_world_2d().direct_space_state
-
+	
+	# Corrected raycast parameters for layer 5
 	var query = PhysicsRayQueryParameters2D.create(start_pos, end_pos)
-	query.collide_with_areas = false  # Only collide with physics bodies
-	query.collision_mask = 1 << 5  # Adjust if your tilemap uses a different layer
-
+	query.collide_with_areas = false
+	query.collide_with_bodies = true
+	query.collision_mask = 1 << 4  # Layer 5 is bit 4 (0-based index)
+	
 	var result = space_state.intersect_ray(query)
+	
+	# Debug output
+	
 	var hit_point = result.position if result else end_pos
-
-	# Draw the line up to the hit point
+	
+	# Clear and draw line
+	line.clear_points()
+	line.add_point(start_pos - global_position)
+	line.add_point(hit_point - global_position)
 	line.width = line_width
 	line.default_color = line_color
-	line.clear_points()
-	line.add_point(to_local(start_pos))
-	line.add_point(to_local(hit_point))
-
-	# Fade out
+	line.modulate.a = 1.0  # Ensure full opacity before fade
+	
+	# Fade and destroy
 	var tween = create_tween()
 	tween.tween_property(line, "modulate:a", 0.0, fade_time)
-	await tween.finished
-	queue_free()
+	tween.tween_callback(queue_free)
 
-# Optional: Initialize with fade-in
 func _ready():
 	line.modulate.a = 0.0
 	var tween = create_tween()
 	tween.tween_property(line, "modulate:a", 1.0, 0.05)
-	
-	# Safety: Auto-delete if something goes wrong
 	kill_timer.timeout.connect(queue_free)

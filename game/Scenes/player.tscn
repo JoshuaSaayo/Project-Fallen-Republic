@@ -22,6 +22,7 @@ script = ExtResource("1_cvnsp")
 
 [node name="Gun" parent="." instance=ExtResource("2_vgqql")]
 position = Vector2(15, -2)
+bullet_scene = null
 
 [node name="Assault" parent="Gun" instance=ExtResource("3_fkybt")]
 
