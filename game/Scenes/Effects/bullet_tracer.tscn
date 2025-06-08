@@ -5,8 +5,10 @@
 [node name="BulletTracer" type="Node2D"]
 script = ExtResource("1_ilps4")
 line_width = 1.0
+line_color = Color(1, 0.8, 0, 0)
 
 [node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(1149, -1)
 width = 1.0
 
 [node name="KillTimer" type="Timer" parent="."]

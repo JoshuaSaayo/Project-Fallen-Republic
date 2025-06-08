@@ -1,10 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://qmfhx80ymt3g"]
+[gd_scene load_steps=6 format=3 uid="uid://qmfhx80ymt3g"]
 
 [ext_resource type="Script" uid="uid://d04k6lbfactvy" path="res://Scenes/player.gd" id="1_cvnsp"]
-[ext_resource type="PackedScene" uid="uid://dpbamewq777rn" path="res://Scenes/Guns/gun.tscn" id="2_vgqql"]
 [ext_resource type="Texture2D" uid="uid://d1hlm1sem5dva" path="res://Assets/Player/player_meele/(TSP-UC) – Vulture Division.png" id="3_6t5aa"]
-[ext_resource type="PackedScene" uid="uid://dftnttyogw5yy" path="res://Scenes/Guns/VK-PDW.tscn" id="3_fkybt"]
-[ext_resource type="PackedScene" uid="uid://b02no0jqgnptb" path="res://Scenes/Guns/VK-V9.tscn" id="4_x3wgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8j60k"]
 size = Vector2(22, 20)
@@ -19,14 +16,6 @@ bg_color = Color(0.32477, 0.705123, 1.92523e-07, 1)
 z_index = 5
 collision_mask = 60
 script = ExtResource("1_cvnsp")
-
-[node name="Gun" parent="." instance=ExtResource("2_vgqql")]
-position = Vector2(15, -2)
-bullet_scene = null
-
-[node name="Assault" parent="Gun" instance=ExtResource("3_fkybt")]
-
-[node name="SMG" parent="Gun" instance=ExtResource("4_x3wgy")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)
