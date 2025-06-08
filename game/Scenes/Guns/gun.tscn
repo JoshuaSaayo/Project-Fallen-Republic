@@ -1,13 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpbamewq777rn"]
+[gd_scene load_steps=4 format=3 uid="uid://dpbamewq777rn"]
 
-[ext_resource type="Script" uid="uid://d5cdy8vj62ix" path="res://Scripts/gun.gd" id="1_nxj5y"]
-[ext_resource type="PackedScene" uid="uid://b61b13thec548" path="res://Scenes/bullet.tscn" id="2_y6gcb"]
+[ext_resource type="Script" uid="uid://d5cdy8vj62ix" path="res://Scenes/gun.gd" id="1_nxj5y"]
 [ext_resource type="AudioStream" uid="uid://dld40jjpg4lxo" path="res://Assets/Sounds/bullet_sounds/M4A1_Sound.wav" id="3_ft1ip"]
 [ext_resource type="AudioStream" uid="uid://bwhn3vvapyo14" path="res://Assets/Sounds/reload_sounds/Reload_Sound(AR).wav" id="4_5utim"]
 
 [node name="Gun" type="Node2D"]
 script = ExtResource("1_nxj5y")
-bullet_scene = ExtResource("2_y6gcb")
 
 [node name="ShotSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_ft1ip")

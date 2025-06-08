@@ -5,24 +5,25 @@ signal life_value
 @onready var ammo_label: Label = $CanvasLayer/AmmoLabel
 @onready var health_bar: ProgressBar = $CanvasLayer/HealthBar
 @onready var weapon_slot: Node = $WeaponSlot  # where weapon scene is added
+@onready var pickup_prompt: Label = $PickupPrompt
 
 var max_health := 100
 var current_health := max_health
 var movespeed := 200
 var current_weapons := {}  # Dictionary to store all weapon instances
 var current_weapon_id: String = ""
-var available_weapons := {}  # Tracks which weapons player has unlocked
+var available_weapons := {
+	"kp-12": true  # Player starts with KP-12
+}  # Tracks which weapons player has unlocked
 var inventory := {
 	"vk-pdw": preload("res://Scenes/Guns/VK-PDW.tscn"),
 	"vk-v9": preload("res://Scenes/Guns/VK-V9.tscn"),
-	"kp-12": preload("res://Scenes/Guns/VK-V9.tscn")
+	"kp-12": preload("res://Scenes/Guns/kp_12.tscn")
 }
 
 func _ready() -> void:
 	health_bar.max_value = max_health
 	health_bar.value = current_health
-	available_weapons["vk-pdw"] = true  # Starting weapon
-	
 	# Pre-instantiate all weapons
 	for weapon_id in inventory:
 		var weapon_instance = inventory[weapon_id].instantiate()
@@ -30,14 +31,10 @@ func _ready() -> void:
 		weapon_slot.add_child(weapon_instance)
 		current_weapons[weapon_id] = weapon_instance
 	
-	equip_weapon("vk-pdw")  # Default weapon
+	equip_weapon("kp-12")  # Default starting weapon
 	
 func equip_weapon(weapon_id: String) -> void:
-	if weapon_id == current_weapon_id:
-		return  # Already equipped
-	
-	if not inventory.has(weapon_id):
-		push_error("Attempted to equip invalid weapon: " + weapon_id)
+	if weapon_id == current_weapon_id or not available_weapons.has(weapon_id):
 		return
 	
 	# Hide current weapon
@@ -48,16 +45,22 @@ func equip_weapon(weapon_id: String) -> void:
 	if current_weapons.has(weapon_id):
 		current_weapons[weapon_id].visible = true
 		current_weapon_id = weapon_id
-	else:
-		push_error("Weapon not found in current_weapons: " + weapon_id)
+		update_ammo_display()
 
-func add_weapon_to_inventory(weapon_id: String, ammo: int = 0):
+func add_weapon_to_inventory(weapon_id: String, ammo: int = 0) -> void:
 	if not available_weapons.has(weapon_id):
 		available_weapons[weapon_id] = true
-		var weapon_instance = load("res://Scenes/Guns/%s.tscn" % weapon_id.capitalize()).instantiate()
+		
+		# Add weapon instance
+		var weapon_instance = load("res://Scenes/Guns/%s.tscn" % weapon_id).instantiate()
 		weapon_instance.visible = false
 		weapon_slot.add_child(weapon_instance)
 		current_weapons[weapon_id] = weapon_instance
+		
+		# Update inventory UI
+		var inventory_ui = get_tree().get_first_node_in_group("Inventory")
+		if inventory_ui and inventory_ui.has_method("add_weapon_to_list"):
+			inventory_ui.add_weapon_to_list(weapon_id)
 	
 	# Add ammo if the weapon is currently equipped
 	if weapon_id == current_weapon_id and current_weapons.has(weapon_id):
@@ -65,7 +68,20 @@ func add_weapon_to_inventory(weapon_id: String, ammo: int = 0):
 	
 	show_notification("Picked up: " + weapon_id)
 
-func show_notification(message: String):
+func update_ammo_display() -> void:
+	if current_weapons.has(current_weapon_id):
+		var gun = current_weapons[current_weapon_id]
+		ammo_label.text = "Ammo: %d / %d" % [gun.ammo_in_mag, gun.total_reserve_ammo]
+		ammo_label.modulate = Color.RED if gun.ammo_in_mag == 0 else Color.WHITE
+		if gun.reloading:
+			ammo_label.text += " (Reloading...)"
+
+func show_pickup_prompt(should_show: bool, weapon_name: String = "") -> void:
+	if should_show:
+		pickup_prompt.text = "Press E to pick up %s" % weapon_name
+	pickup_prompt.visible = should_show
+
+func show_notification(message: String) -> void:
 	if has_node("CanvasLayer/Notification"):
 		var notif = $CanvasLayer/Notification
 		notif.text = message
@@ -74,11 +90,11 @@ func show_notification(message: String):
 
 func _input(event):
 	if event.is_action_pressed("weapon_1"):
-		equip_weapon("vk-pdw")
+		equip_weapon("kp-12")
 	elif event.is_action_pressed("weapon_2"):
 		equip_weapon("vk-v9")
 	elif event.is_action_pressed("weapon_3"):
-		equip_weapon("kp-12")
+		equip_weapon("vk-pdw")
 		
 func take_damage(damage_amount: int):
 	current_health -= damage_amount
@@ -93,7 +109,7 @@ func die():
 	await $Timer.timeout
 	get_tree().reload_current_scene()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta) -> void:
 	var motion = Vector2()
 	if Input.is_action_pressed("up"):
 		motion.y -= 1

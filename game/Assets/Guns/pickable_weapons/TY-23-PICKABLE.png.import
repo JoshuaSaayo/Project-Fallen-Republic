@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c2cuf1d2w0wyk"
-path="res://.godot/imported/TY-23 Naginata-PICKABLE.png-26c611f16b6e1c2857b5ebf18dc49e24.ctex"
+path="res://.godot/imported/TY-23-PICKABLE.png-90d4155048d65e1e31439d287bc85515.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/pickable_weapons/TY-23 Naginata-PICKABLE.png"
-dest_files=["res://.godot/imported/TY-23 Naginata-PICKABLE.png-26c611f16b6e1c2857b5ebf18dc49e24.ctex"]
+source_file="res://Assets/Guns/pickable_weapons/TY-23-PICKABLE.png"
+dest_files=["res://.godot/imported/TY-23-PICKABLE.png-90d4155048d65e1e31439d287bc85515.ctex"]
 
 [params]
 

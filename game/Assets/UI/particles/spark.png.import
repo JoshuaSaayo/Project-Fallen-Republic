@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blcqtjkj0om64"
-path="res://.godot/imported/VK-V9 (QBZ191+X95 HYBRID)-PICKABLE.png-3fbeb238636336daae460a5e46b9e836.ctex"
+uid="uid://djcbv3dj6ipke"
+path="res://.godot/imported/spark.png-d396295661a9b9cfa5f3e5273e7db735.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/pickable_weapons/VK-V9 (QBZ191+X95 HYBRID)-PICKABLE.png"
-dest_files=["res://.godot/imported/VK-V9 (QBZ191+X95 HYBRID)-PICKABLE.png-3fbeb238636336daae460a5e46b9e836.ctex"]
+source_file="res://Assets/UI/particles/spark.png"
+dest_files=["res://.godot/imported/spark.png-d396295661a9b9cfa5f3e5273e7db735.ctex"]
 
 [params]
 

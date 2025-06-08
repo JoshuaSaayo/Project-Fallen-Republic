@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://8sh7pkoscych"]
 
-[ext_resource type="Script" uid="uid://dmj1to8avacy7" path="res://Scripts/enemy.gd" id="1_1f0kj"]
+[ext_resource type="Script" uid="uid://dmj1to8avacy7" path="res://Scenes/enemy.gd" id="1_1f0kj"]
 [ext_resource type="AudioStream" uid="uid://dld40jjpg4lxo" path="res://Assets/Sounds/bullet_sounds/M4A1_Sound.wav" id="2_afpow"]
 [ext_resource type="Texture2D" uid="uid://dxuo06vycqspt" path="res://Assets/Enemy/KPCU GUARD-01.png" id="3_afpow"]
 

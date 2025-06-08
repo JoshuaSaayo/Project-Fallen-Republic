@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8yt1rswu6ymw"
-path="res://.godot/imported/VK-PDW (QBZ191+X95 HYBRID)-PICKABLE.png-b543e83c63a009cd2ef04a751732ea47.ctex"
+uid="uid://cew86yfvmh1ni"
+path="res://.godot/imported/KP-12-PICKABLE.png-f0216520fa083cee78877dfbc707e706.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/pickable_weapons/VK-PDW (QBZ191+X95 HYBRID)-PICKABLE.png"
-dest_files=["res://.godot/imported/VK-PDW (QBZ191+X95 HYBRID)-PICKABLE.png-b543e83c63a009cd2ef04a751732ea47.ctex"]
+source_file="res://Assets/Guns/pickable_weapons/KP-12-PICKABLE.png"
+dest_files=["res://.godot/imported/KP-12-PICKABLE.png-f0216520fa083cee78877dfbc707e706.ctex"]
 
 [params]
 

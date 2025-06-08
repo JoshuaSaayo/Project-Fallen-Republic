@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b61b13thec548"]
+[gd_scene load_steps=5 format=3 uid="uid://b61b13thec548"]
 
-[ext_resource type="Script" uid="uid://bmiv5qwgq8a3x" path="res://Scripts/bullet.gd" id="1_oduel"]
+[ext_resource type="Script" uid="uid://bmiv5qwgq8a3x" path="res://Scenes/bullet.gd" id="1_oduel"]
 [ext_resource type="Texture2D" uid="uid://d4kx3jdbxi7d4" path="res://Assets/Bullets/BULLET_TRACE.png" id="2_oduel"]
+[ext_resource type="Script" uid="uid://bpiugi1n4leml" path="res://Scenes/bullet_trace.gd" id="3_ycag2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xjght"]
 size = Vector2(5, 2)
@@ -18,3 +19,9 @@ shape = SubResource("RectangleShape2D_xjght")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -2)
 texture = ExtResource("2_oduel")
+
+[node name="BulletTrace" type="Line2D" parent="Sprite2D"]
+top_level = true
+width = 1.0
+default_color = Color(1, 1, 0.988235, 0.180392)
+script = ExtResource("3_ycag2")
