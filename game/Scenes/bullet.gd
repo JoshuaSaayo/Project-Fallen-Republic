@@ -3,10 +3,12 @@ extends CharacterBody2D
 @export var speed := 1000.0
 @export var damage := 10
 @export var max_distance := 1000.0  # Match tracer length
+
 var direction = Vector2.ZERO
 var lifetime: float = 1.5
 var distance_traveled := 0.0
 var has_hit := false
+
 @onready var tracer_scene = preload("res://Scenes/Effects/bullet_tracer.tscn")
 
 func _ready():
