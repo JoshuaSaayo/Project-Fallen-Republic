@@ -7,7 +7,7 @@ var direction = Vector2.ZERO
 var lifetime: float = 1.5
 var distance_traveled := 0.0
 var has_hit := false
-@onready var tracer_scene = preload("res://Scenes/bullet_tracer.tscn")
+@onready var tracer_scene = preload("res://Scenes/Effects/bullet_tracer.tscn")
 
 func _ready():
 	# Make sure direction is already set before _ready() runs

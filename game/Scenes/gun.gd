@@ -15,7 +15,7 @@ var reloading: bool = false
 var last_shot_time: float = 0
 
 func spawn_tracer(start_pos: Vector2, end_pos: Vector2):
-	var tracer = preload("res://Scenes/bullet_tracer.tscn").instantiate()
+	var tracer = preload("res://Scenes/Effects/bullet_tracer.tscn").instantiate()
 	get_tree().current_scene.add_child(tracer)
 	tracer.setup_tracer(start_pos, end_pos)
 	

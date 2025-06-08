@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://u0o5eyixd0ho"]
 
-[ext_resource type="Script" uid="uid://2jl68cm3wpo2" path="res://Scenes/bullet_tracer.gd" id="1_ilps4"]
+[ext_resource type="Script" uid="uid://2jl68cm3wpo2" path="res://Scenes/Effects/bullet_tracer.gd" id="1_ilps4"]
 
 [node name="BulletTracer" type="Node2D"]
 script = ExtResource("1_ilps4")
