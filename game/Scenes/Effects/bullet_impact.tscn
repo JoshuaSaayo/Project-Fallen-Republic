@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://jaxwhis5luuf"]
+
+[ext_resource type="Script" uid="uid://cfgji3fapf0bc" path="res://Scenes/Effects/bullet_impact.gd" id="1_e1pnb"]
+
+[node name="bullet_impact" type="Node2D"]
+script = ExtResource("1_e1pnb")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+explosiveness = 1.0

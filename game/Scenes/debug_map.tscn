@@ -1192,9 +1192,9 @@ texture = ExtResource("12_tyore")
 [node name="PickableWeapons" type="Node" parent="."]
 
 [node name="PickableWeapon" parent="PickableWeapons" instance=ExtResource("9_60603")]
-position = Vector2(174, 212)
+position = Vector2(55, 669)
 
 [node name="PickableWeapon2" parent="PickableWeapons" instance=ExtResource("9_60603")]
-position = Vector2(59, 662)
+position = Vector2(175, 277)
 weapon_id = "vk-v9"
 weapon_name = "VK-V9"

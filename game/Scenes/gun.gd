@@ -16,8 +16,7 @@ var last_shot_time: float = 0
 
 func spawn_tracer(start_pos: Vector2, end_pos: Vector2):
 	var tracer = preload("res://Scenes/bullet_tracer.tscn").instantiate()
-	get_parent().add_child(tracer)
-	tracer.global_position = Vector2.ZERO
+	get_tree().current_scene.add_child(tracer)
 	tracer.setup_tracer(start_pos, end_pos)
 	
 func _ready():
@@ -36,30 +35,36 @@ func try_shoot(owner_node: Node2D):
 	if time_since_last_shot < fire_rate:
 		return false
 
-	# Fire
+	# Fire logic
 	last_shot_time = Time.get_ticks_msec() / 1000.0
 	ammo_in_mag -= 1
 
-	var bullet = bullet_scene.instantiate()
-	bullet.global_position = owner_node.global_position
-	bullet.rotation = owner_node.rotation
-	if bullet.has_method("set_direction"):
-		bullet.set_direction(owner_node.get_global_mouse_position() - owner_node.global_position)
-	owner_node.get_parent().add_child(bullet)
+	# Get firing positions
+	var fire_position = owner_node.global_position
+	var target_position = owner_node.get_global_mouse_position()
+	var direction = (target_position - fire_position).normalized()
 	
-	var shot_sound = get_node("ShotSound")
+	# Spawn bullet
+	var bullet = bullet_scene.instantiate()
+	bullet.global_position = fire_position
+	bullet.rotation = direction.angle()
+	if bullet.has_method("set_direction"):
+		bullet.set_direction(direction)
+	owner_node.get_tree().current_scene.add_child(bullet)
+	
+	# Spawn tracer with proper length (use actual bullet range)
+	spawn_tracer(fire_position, fire_position + direction * 1000)  # Increased length
+
+	# Sound
+	var shot_sound = get_node_or_null("ShotSound")
 	if shot_sound:
 		shot_sound.play()
-		
+
 	if ammo_in_mag == 0:
 		reload()
-		
-	spawn_tracer(owner_node.global_position, owner_node.get_global_mouse_position())
-	
+
 	return true
 	
-
-
 func reload():
 	if reloading or ammo_in_mag == mag_size or total_reserve_ammo == 0:
 		return
