@@ -1,6 +1,9 @@
 extends Node2D
 
+@onready var timer = $Timer
+
 func _ready():
-	# Auto-delete after particles finish
-	await get_tree().create_timer(0.5).timeout
+	timer.start()
+
+func _on_Timer_timeout():
 	queue_free()
