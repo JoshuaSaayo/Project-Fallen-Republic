@@ -4,8 +4,8 @@ var previous_position: Vector2 = Vector2.ZERO
 var bullet_radius := 0.0
 
 func _ready() -> void:
-	var texture = get_parent().texture
-	bullet_radius = texture.get_size().x * 0.5
+	var bullet_texture = get_parent().texture
+	bullet_radius = bullet_texture.get_size().x * 0.5
 	previous_position = get_parent().global_position
 	
 func _process(_delta) -> void:

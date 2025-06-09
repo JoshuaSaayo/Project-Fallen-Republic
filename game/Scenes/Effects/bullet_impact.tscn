@@ -11,6 +11,7 @@ initial_velocity_max = 50.0
 gravity = Vector3(0, -50, 0)
 scale_min = 0.3
 scale_max = 0.6
+color = Color(1, 1, 1, 0.392157)
 
 [node name="bullet_impact" type="Node2D"]
 script = ExtResource("1_e1pnb")
