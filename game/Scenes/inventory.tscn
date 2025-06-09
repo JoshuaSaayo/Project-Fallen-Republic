@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqb0bl8n7umx5"]
+[gd_scene load_steps=7 format=3 uid="uid://cqb0bl8n7umx5"]
 
 [ext_resource type="Script" uid="uid://dvmw1jjob3d4m" path="res://Scenes/inventory.gd" id="1_k1vlg"]
 [ext_resource type="Texture2D" uid="uid://cw3eaqhekyb6l" path="res://Assets/Guns/gun_thumbnails/VK-PDW (QBZ191+X95 HYBRID).png" id="1_wdn4f"]
+[ext_resource type="FontFile" uid="uid://dx7jut1h280y8" path="res://Assets/Fonts/ANDALEMO.TTF" id="2_0n8tc"]
+[ext_resource type="FontFile" uid="uid://dwbwitgdeqx42" path="res://Scenes/ANDALEMO.TTF" id="4_k1vlg"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_k1vlg"]
 
@@ -40,6 +42,7 @@ theme_override_constants/separation = 20
 
 [node name="INV" type="Label" parent="MainLayout/HBoxContainer/WeaponListPanel"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0n8tc")
 text = "INV"
 
 [node name="GridContainer" type="GridContainer" parent="MainLayout/HBoxContainer/WeaponListPanel"]
@@ -54,7 +57,8 @@ theme_override_constants/separation = 20
 
 [node name="WeaponName" type="Label" parent="MainLayout/HBoxContainer/DetailsPanel"]
 layout_mode = 2
-text = "weapon name"
+theme_override_fonts/font = ExtResource("2_0n8tc")
+text = "WEAPON NAME"
 
 [node name="WeaponImg" type="TextureRect" parent="MainLayout/HBoxContainer/DetailsPanel"]
 layout_mode = 2
@@ -68,42 +72,54 @@ columns = 2
 
 [node name="WeaponType" type="Label" parent="MainLayout/HBoxContainer/DetailsPanel/WeaponStats"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0n8tc")
 theme_override_font_sizes/font_size = 10
 text = "Weapon Type"
 
 [node name="WeaponMag" type="Label" parent="MainLayout/HBoxContainer/DetailsPanel/WeaponStats"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0n8tc")
 theme_override_font_sizes/font_size = 10
 text = "Mag Size"
 
 [node name="WeaponDMG" type="Label" parent="MainLayout/HBoxContainer/DetailsPanel/WeaponStats"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0n8tc")
 theme_override_font_sizes/font_size = 10
 text = "Damage"
 
 [node name="WeaponMaxMag" type="Label" parent="MainLayout/HBoxContainer/DetailsPanel/WeaponStats"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0n8tc")
 theme_override_font_sizes/font_size = 10
 text = "Max Reserve"
 
 [node name="WeaponFireRate" type="Label" parent="MainLayout/HBoxContainer/DetailsPanel/WeaponStats"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0n8tc")
 theme_override_font_sizes/font_size = 10
 text = "Fire Rate"
 
 [node name="WeaponReload" type="Label" parent="MainLayout/HBoxContainer/DetailsPanel/WeaponStats"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0n8tc")
 theme_override_font_sizes/font_size = 10
 text = "Reload Time"
 
 [node name="Descriptions" type="RichTextLabel" parent="MainLayout/HBoxContainer/DetailsPanel"]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_k1vlg")
+theme_override_fonts/mono_font = ExtResource("4_k1vlg")
+theme_override_fonts/italics_font = ExtResource("4_k1vlg")
+theme_override_fonts/bold_italics_font = ExtResource("4_k1vlg")
+theme_override_fonts/bold_font = ExtResource("4_k1vlg")
 theme_override_font_sizes/normal_font_size = 10
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 fit_content = true
 
 [node name="EquipBtn" type="Button" parent="MainLayout/HBoxContainer/DetailsPanel"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0n8tc")
 text = "Equip"
 
 [node name="CloseBtn" type="Button" parent="MainLayout"]
@@ -111,7 +127,8 @@ clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
-text = "Close"
+theme_override_fonts/font = ExtResource("2_0n8tc")
+text = "X"
 icon_alignment = 1
 
 [connection signal="pressed" from="MainLayout/HBoxContainer/DetailsPanel/EquipBtn" to="." method="_on_equip_btn_pressed"]
