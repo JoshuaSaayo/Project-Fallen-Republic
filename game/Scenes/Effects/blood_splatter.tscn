@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cq2erbv6b0tw6"]
+
+[ext_resource type="Texture2D" uid="uid://bysmqe14l65gm" path="res://Assets/UI/particles/blood_splatter.png" id="1_25m2e"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l0xak"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l0xak"]
+particle_flag_disable_z = true
+spread = 20.0
+initial_velocity_min = 20.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 50, 0)
+color_ramp = SubResource("GradientTexture1D_l0xak")
+
+[node name="blood_splatter" type="Node2D"]
+
+[node name="Blood" type="GPUParticles2D" parent="."]
+emitting = false
+texture = ExtResource("1_25m2e")
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_l0xak")
