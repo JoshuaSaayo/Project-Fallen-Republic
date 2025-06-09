@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bycwyk530u3pf"
-path="res://.godot/imported/VEHICLE_LANDRANGER[NO-LIGHT].png-5878c00280a0773ea5a600789b6cd7bb.ctex"
+uid="uid://h6l7dstwoqjd"
+path="res://.godot/imported/CRATES-48x48.png-c620c5d2f5f7040050ac72849b5e4df3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Vehicles/VEHICLE_LANDRANGER[NO-LIGHT].png"
-dest_files=["res://.godot/imported/VEHICLE_LANDRANGER[NO-LIGHT].png-5878c00280a0773ea5a600789b6cd7bb.ctex"]
+source_file="res://Assets/Objects/CRATES-48x48.png"
+dest_files=["res://.godot/imported/CRATES-48x48.png-c620c5d2f5f7040050ac72849b5e4df3.ctex"]
 
 [params]
 

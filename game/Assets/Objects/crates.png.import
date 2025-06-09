@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0xmau7cn0vwh"
-path="res://.godot/imported/LandRanger.png-c8254546b1306c59b873bd87adf1c383.ctex"
+uid="uid://cpr7g5wafq0th"
+path="res://.godot/imported/crates.png-6851a0467b24d55bf96c6a01cf21117e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Vehicles/LandRanger.png"
-dest_files=["res://.godot/imported/LandRanger.png-c8254546b1306c59b873bd87adf1c383.ctex"]
+source_file="res://Assets/Objects/crates.png"
+dest_files=["res://.godot/imported/crates.png-6851a0467b24d55bf96c6a01cf21117e.ctex"]
 
 [params]
 
