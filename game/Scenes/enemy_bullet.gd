@@ -1,27 +1,22 @@
 extends Area2D
 
-# Configuration
 @export var speed := 1000.0
 @export var damage := 10
 var direction := Vector2.RIGHT
 
 func _ready():
-	# Auto-destroy after timer ends
 	$Timer.timeout.connect(queue_free)
-	
-	# Connect collision signal
 	body_entered.connect(_on_body_entered)
 
-		# Rotate bullet to face its direction
+	# Rotate bullet to face its direction
 	if direction != Vector2.ZERO:
 		rotation = direction.angle()
-		
+
 func _physics_process(delta):
-	if direction != Vector2.RIGHT:
-		position += direction * speed * delta
+	position += direction.normalized() * speed * delta
 
 func _on_body_entered(body):
-	if body.is_in_group("Player"):
-		if body.has_method("take_damage"):
-			body.take_damage(damage)
-	queue_free()  # Destroy on hit
+	if body.is_in_group("Player") and body.has_method("take_damage"):
+		body.take_damage(damage, global_position, direction)
+
+	queue_free()
