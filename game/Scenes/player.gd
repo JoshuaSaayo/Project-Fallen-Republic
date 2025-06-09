@@ -96,18 +96,41 @@ func _input(event):
 	elif event.is_action_pressed("weapon_3"):
 		equip_weapon("vk-pdw")
 		
-func take_damage(damage_amount: int):
+func take_damage(damage_amount: int, hit_position: Vector2, hit_direction: Vector2):
 	current_health -= damage_amount
 	health_bar.value = current_health
 	
+	spawn_blood_effect(hit_position, hit_direction)
+	
 	if current_health <= 0:
 		die()
+
+func spawn_blood_effect(hit_position: Vector2, direction: Vector2):
+	# Blood splatter particles
+	var splatter = load("res://Scenes/Effects/blood_splatter.tscn").instantiate()
+	splatter.global_position = hit_position
+	splatter.rotation = direction.angle()
+
+	var blood_node = splatter.get_node("Blood")
+	if blood_node:
+		blood_node.emitting = true
+
+	get_tree().current_scene.add_child(splatter)
+
+	# Blood decal on player
+	var blood_decal = load("res://Scenes/Effects/blood_decal.tscn").instantiate()
+	blood_decal.global_position = position
+	blood_decal.rotation = randf() * TAU
+	blood_decal.scale = Vector2.ONE * randf_range(0.8, 1.2)
+	blood_decal.z_index = -1
+	
+	get_tree().current_scene.add_child(blood_decal)
 
 func die():
 	if $Timer.is_stopped():
 		$Timer.start()
 	await $Timer.timeout
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file(get_tree().current_scene.scene_file_path)
 
 func _physics_process(_delta) -> void:
 	var motion = Vector2()

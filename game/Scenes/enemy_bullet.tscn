@@ -1,18 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://gk7fc4ry6dxm"]
+[gd_scene load_steps=7 format=3 uid="uid://gk7fc4ry6dxm"]
 
 [ext_resource type="Script" uid="uid://t2t8iyxbwo4y" path="res://Scenes/enemy_bullet.gd" id="1_54jiv"]
-[ext_resource type="Texture2D" uid="uid://d4kx3jdbxi7d4" path="res://Assets/Bullets/BULLET_TRACE.png" id="2_54jiv"]
+[ext_resource type="Texture2D" uid="uid://d4kx3jdbxi7d4" path="res://Assets/Bullets/BULLET_TRACE.png" id="2_b6yqb"]
+[ext_resource type="Script" uid="uid://bpiugi1n4leml" path="res://Scenes/bullet_trace.gd" id="3_b6yqb"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_tcvu8"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_54jiv")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="Curve" id="Curve_72t2l"]
+_data = [Vector2(0.00549451, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_mrehe"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.392157)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_54jiv"]
 size = Vector2(6, 2)
@@ -22,8 +19,16 @@ collision_layer = 8
 collision_mask = 17
 script = ExtResource("1_54jiv")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_tcvu8")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_b6yqb")
+
+[node name="BulletTrace" type="Line2D" parent="Sprite2D"]
+top_level = true
+width = 1.0
+width_curve = SubResource("Curve_72t2l")
+default_color = Color(1, 1, 0.988235, 1)
+gradient = SubResource("Gradient_mrehe")
+script = ExtResource("3_b6yqb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(9, 0)

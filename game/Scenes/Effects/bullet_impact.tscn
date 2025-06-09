@@ -1,31 +1,30 @@
-[gd_scene load_steps=6 format=3 uid="uid://jaxwhis5luuf"]
+[gd_scene load_steps=4 format=3 uid="uid://jaxwhis5luuf"]
 
 [ext_resource type="Script" uid="uid://cfgji3fapf0bc" path="res://Scenes/Effects/bullet_impact.gd" id="1_e1pnb"]
-[ext_resource type="Script" uid="uid://cbttyaoyly3bi" path="res://Scenes/Effects/spark.gd" id="2_t0mj7"]
+[ext_resource type="Texture2D" uid="uid://djcbv3dj6ipke" path="res://Assets/UI/particles/spark.png" id="2_u6ujp"]
 
-[sub_resource type="Gradient" id="Gradient_t0mj7"]
-colors = PackedColorArray(1, 0.647059, 0, 1, 1, 1, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_u6ujp"]
-gradient = SubResource("Gradient_t0mj7")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e1pnb"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u6ujp"]
 particle_flag_disable_z = true
-emission_shape_offset = Vector3(1, 1, 1)
-initial_velocity_min = 50.0
-initial_velocity_max = 150.0
-gravity = Vector3(0, 98, 0)
-color_ramp = SubResource("GradientTexture1D_u6ujp")
+spread = 5.0
+initial_velocity_min = 20.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, -50, 0)
+scale_min = 0.3
+scale_max = 0.6
+color = Color(1, 1, 1, 0.392157)
 
 [node name="bullet_impact" type="Node2D"]
 script = ExtResource("1_e1pnb")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="Spark" type="GPUParticles2D" parent="."]
+z_index = 5
 emitting = false
+amount = 5
+texture = ExtResource("2_u6ujp")
+lifetime = 0.5
 one_shot = true
-explosiveness = 1.0
-process_material = SubResource("ParticleProcessMaterial_e1pnb")
+explosiveness = 0.5
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_u6ujp")
 
-[node name="Spark" type="Sprite2D" parent="GPUParticles2D"]
-scale = Vector2(0.5, 0.5)
-script = ExtResource("2_t0mj7")
+[node name="Timer" type="Timer" parent="."]
