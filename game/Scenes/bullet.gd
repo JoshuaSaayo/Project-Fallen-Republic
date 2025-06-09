@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed := 1000.0
+@export var speed := 3000.0
 @export var damage := 10
 @export var lifetime: float = 1.5
 
@@ -27,7 +27,10 @@ func handle_collision(collision: KinematicCollision2D):
 
 	var hit_position = collision.get_position()
 	var collider = collision.get_collider()
-
+	if collider.is_in_group("Destructible"):
+		if collider.has_method("apply_damage"):
+			collider.apply_damage(damage)
+			
 	if collider and collider.is_in_group("Enemy"):
 		if collider.has_method("take_damage"):
 			collider.take_damage(damage)

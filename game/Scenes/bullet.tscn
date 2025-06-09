@@ -8,11 +8,11 @@
 size = Vector2(5, 2)
 
 [sub_resource type="Curve" id="Curve_ycag2"]
-_data = [Vector2(0.00549451, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.589221, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_ycag2"]
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.392157)
+colors = PackedColorArray(1, 1, 1, 0.592157, 0.956977, 0.956977, 4.62055e-06, 1)
 
 [node name="Bullet" type="CharacterBody2D"]
 collision_layer = 2
@@ -31,6 +31,6 @@ texture = ExtResource("2_oduel")
 top_level = true
 width = 1.0
 width_curve = SubResource("Curve_ycag2")
-default_color = Color(1, 1, 0.988235, 1)
+default_color = Color(0.870588, 0.835294, 0, 1)
 gradient = SubResource("Gradient_ycag2")
 script = ExtResource("3_ycag2")
