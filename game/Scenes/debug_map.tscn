@@ -1182,6 +1182,10 @@ texture = ExtResource("10_ctkch")
 [node name="destructible_crate" parent="DestructibleObjects" instance=ExtResource("13_bxtru")]
 position = Vector2(257, 198)
 
+[node name="destructible_crate2" parent="DestructibleObjects" instance=ExtResource("13_bxtru")]
+position = Vector2(42, 684)
+drop_weapon_id = "vk-pdw"
+
 [node name="HyundaiMx7" type="Sprite2D" parent="DestructibleObjects"]
 position = Vector2(669, 699)
 texture = ExtResource("8_1on00")
@@ -1199,4 +1203,4 @@ texture = ExtResource("12_tyore")
 [node name="PickableWeapons" type="Node" parent="."]
 
 [node name="PickableWeapon" parent="PickableWeapons" instance=ExtResource("9_60603")]
-position = Vector2(55, 669)
+position = Vector2(534, 594)

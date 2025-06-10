@@ -1,7 +1,7 @@
 extends Gun
 
 const DAMAGE = 28
-const FIRE_RATE = 0.2  # Time between shots (600 RPM)
+const FIRE_RATE = 0.196  # Time between shots (600 RPM)
 const MAG_SIZE = 12
 const RELOAD_TIME = 1.8
 const MAG_RESERVE = 40
