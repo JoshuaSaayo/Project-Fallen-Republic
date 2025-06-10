@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://dr7yisp1to7bd"]
 
-[ext_resource type="Texture2D" uid="uid://cfumu10gebl6f" path="res://Assets/UI/particles/blood_decal.png" id="1_bdxxx"]
 [ext_resource type="Script" uid="uid://dylhqifeu4bsa" path="res://Scenes/Effects/blood_decal.gd" id="1_ookh1"]
+[ext_resource type="Texture2D" uid="uid://d08cxdn0y8mgs" path="res://Assets/UI/particles/DECAL_BLOODSPOT.png" id="2_ookh1"]
 
 [node name="blood_decal" type="Node2D"]
 script = ExtResource("1_ookh1")
 
 [node name="BloodDecal" type="Sprite2D" parent="."]
 z_index = 1
-texture = ExtResource("1_bdxxx")
+texture = ExtResource("2_ookh1")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0

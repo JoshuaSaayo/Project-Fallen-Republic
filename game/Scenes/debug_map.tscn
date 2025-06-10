@@ -1177,10 +1177,10 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("10_ctkch")
 
-[node name="DestructibleObjects" type="Node" parent="."]
+[node name="DestructibleObjects" type="Node" parent="." groups=["Destructible"]]
 
 [node name="destructible_crate" parent="DestructibleObjects" instance=ExtResource("13_bxtru")]
-position = Vector2(151, 213)
+position = Vector2(257, 198)
 
 [node name="HyundaiMx7" type="Sprite2D" parent="DestructibleObjects"]
 position = Vector2(669, 699)

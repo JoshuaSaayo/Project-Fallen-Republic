@@ -7,7 +7,7 @@ const WEAPON_DATA := {
 		"display_name": "KP-12",
 		"thumbnail": preload("res://Assets/Guns/gun_thumbnails/KP-12 Chetrra [TT-33 Tokarev].png"),
 		"weapon_thumbnail": preload("res://Assets/Guns/pickable_weapons/KP-12-PICKABLE.png"),
-		"type": "Pistol",
+		"type": "PISTOL",
 		"damage": 28,
 		"fire_rate": "300 RPM",
 		"mag_size": 8,
@@ -144,17 +144,17 @@ func show_weapon_info(weapon_id: String) -> void:
 		return
 	
 	# Update details panel
-	details_panel.name.text = data.get("display_name", weapon_id)
+	details_panel.name.text = data.get("display_name", weapon_id).to_upper()
 	details_panel.image.texture = data.get("thumbnail", null)
-	details_panel.description.text = data.get("description", "")
+	details_panel.description.text = data.get("description", "").to_upper()
 	
 	# Update stats panel
-	stats_panel.type.text = "Type: %s" % data.get("type", "N/A")
-	stats_panel.damage.text = "Damage: %s" % data.get("damage", 0)
-	stats_panel.mag_size.text = "Mag Size: %s" % data.get("mag_size", 0)
-	stats_panel.max_reserve.text = "Max Reserve: %s" % data.get("max_reserve", 0)
-	stats_panel.fire_rate.text = "Fire Rate: %s" % data.get("fire_rate", "N/A")
-	stats_panel.reload_time.text = "Reload Time: %s" % data.get("reload_time", 0)
+	stats_panel.type.text = "TYPE: %s" % data.get("type", "N/A").to_upper()
+	stats_panel.damage.text = "DAMAGE: %s" % data.get("damage", 0)
+	stats_panel.mag_size.text = "MAG SIZE: %s" % data.get("mag_size", 0)
+	stats_panel.max_reserve.text = "MAX RESERVE: %s" % data.get("max_reserve", 0)
+	stats_panel.fire_rate.text = "FIRE RATE: %s" % data.get("fire_rate", "N/A")
+	stats_panel.reload_time.text = "RELOAD TIME: %s" % data.get("reload_time", 0)
 	
 	selected_weapon_id = weapon_id
 

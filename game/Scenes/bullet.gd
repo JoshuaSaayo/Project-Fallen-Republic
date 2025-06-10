@@ -22,6 +22,9 @@ func _physics_process(delta):
 		handle_collision(collision)
 		queue_free()
 
+func get_damage() -> int:
+	return damage
+	
 func handle_collision(collision: KinematicCollision2D):
 	has_hit = true
 

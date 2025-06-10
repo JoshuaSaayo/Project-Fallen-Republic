@@ -58,12 +58,48 @@ Game researcher tasks
 
 	🔳cutscene 2
 	🔳cutscene 3
-🔳 weapon descriptions
+✅ weapon descriptions
+
+   ✅SMG
+
 	✅VK-PDW
+	✅VK-PDWSD
+	✅KP-S13
+	✅MRS-C9
+	✅PSH-41
+	✅M133
+   ✅AR
+	✅VK-V9
+   	✅KR-85C1
+        ✅TVR-995
+   ✅PISTOLS
+	✅TY-23
+	✅KP-12
+   ✅SHOTGUN
+	✅TVR-10
+   	✅LP-07
+
+
+🔳 SOUND PRODUCING
+   🔳SMG
+
+	🔳VK-PDW (PDW)
+	🔳VK-PDWSD (PDW SUPRESSED)
+	🔳KP-S13 (MP-40)
+	🔳MRS-C9 (MP5 MW 2 2023)
+	🔳PSH-41 (PPSH41 CODM)
+	🔳M133 (
+   🔳AR
 	🔳VK-V9
+   	🔳KR-85C1
+        🔳TVR-995
+   🔳PISTOLS
 	🔳TY-23
 	🔳KP-12
-	🔳KR-85C1
+   🔳SHOTGUN
+	🔳TVR-10
+   	🔳LP-07
+
 🔳 story dialogues
 
 Assets maker tasks
