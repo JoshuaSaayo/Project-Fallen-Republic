@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://b02no0jqgnptb"]
 
 [ext_resource type="Script" uid="uid://disljinwbhfnj" path="res://Scenes/Guns/VK-V9.gd" id="1_10c7e"]
-[ext_resource type="AudioStream" uid="uid://dld40jjpg4lxo" path="res://Assets/Sounds/bullet_sounds/M4A1_Sound.wav" id="2_jm58s"]
-[ext_resource type="AudioStream" uid="uid://bwhn3vvapyo14" path="res://Assets/Sounds/reload_sounds/Reload_Sound(AR).wav" id="3_wrhfg"]
+[ext_resource type="AudioStream" uid="uid://h677fohcc3s" path="res://Assets/Sounds/bullet_sounds/VK-V9PDW_SHOOT.wav" id="2_dsjth"]
+[ext_resource type="AudioStream" uid="uid://diq6hq2br174p" path="res://Assets/Sounds/reload_sounds/VK-V9PDW_RELOAD.wav" id="3_ptkh8"]
 
-[node name="SMG" type="Node2D"]
+[node name="VK-V9" type="Node2D"]
 script = ExtResource("1_10c7e")
 
 [node name="ShotSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_jm58s")
+stream = ExtResource("2_dsjth")
 
 [node name="ReloadSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_wrhfg")
+stream = ExtResource("3_ptkh8")

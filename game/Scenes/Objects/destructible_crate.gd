@@ -1,22 +1,17 @@
-extends Node2D
+extends StaticBody2D
 
 @export var drop_weapon_id: String = "vk-v9"
 @export var drop_ammo: int = 40
 @export var max_health := 50
+
 var health := max_health
 
-func _ready():
-	pass
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("Entered by: ", body.name)
-	if body.has_method("get_damage"):
-		print("Bullet damage: ", body.get_damage())
-		apply_damage(body.get_damage())
-		body.queue_free()
+@onready var health_bar: ProgressBar = $HealthBar
 
 func apply_damage(amount: int) -> void:
 	health -= amount
+	health_bar.value = health
+	health_bar.visible = true
 	if health <= 0:
 		break_crate()
 
