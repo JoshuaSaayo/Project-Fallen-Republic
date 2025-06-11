@@ -42,8 +42,12 @@ func try_shoot(owner_node: Node2D):
 	var bullet = bullet_scene.instantiate()
 	bullet.global_position = fire_position
 	bullet.rotation = direction.angle()
+
 	if bullet.has_method("set_direction"):
 		bullet.set_direction(direction)
+
+	bullet.damage = damage  # ✅ Set weapon damage into bullet
+
 	owner_node.get_tree().current_scene.add_child(bullet)
 
 	# Sound

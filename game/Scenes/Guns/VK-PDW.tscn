@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://dftnttyogw5yy"]
 
 [ext_resource type="Script" uid="uid://dlh24djixv4vf" path="res://Scenes/Guns/VK-PDW.gd" id="1_wesui"]
-[ext_resource type="AudioStream" uid="uid://dld40jjpg4lxo" path="res://Assets/Sounds/bullet_sounds/M4A1_Sound.wav" id="2_ruwr0"]
-[ext_resource type="AudioStream" uid="uid://bwhn3vvapyo14" path="res://Assets/Sounds/reload_sounds/Reload_Sound(AR).wav" id="3_r3sjq"]
+[ext_resource type="AudioStream" uid="uid://d0r6hqigha7cx" path="res://Assets/Sounds/bullet_sounds/VK-PDWSD_SHOOT.wav" id="2_2vsiv"]
+[ext_resource type="AudioStream" uid="uid://0x11l2h1vd1t" path="res://Assets/Sounds/reload_sounds/VK-PDWSD_RELOAD.wav" id="3_mwm6f"]
 
 [node name="VK-PDW" type="Node2D"]
 script = ExtResource("1_wesui")
 
 [node name="ShotSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_ruwr0")
+stream = ExtResource("2_2vsiv")
 
 [node name="ReloadSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_r3sjq")
+stream = ExtResource("3_mwm6f")
