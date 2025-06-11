@@ -1179,10 +1179,10 @@ texture = ExtResource("10_ctkch")
 
 [node name="DestructibleObjects" type="Node" parent="." groups=["Destructible"]]
 
-[node name="destructible_crate" parent="DestructibleObjects" instance=ExtResource("13_bxtru")]
+[node name="destructible_crate" parent="DestructibleObjects" groups=["Destructible"] instance=ExtResource("13_bxtru")]
 position = Vector2(257, 198)
 
-[node name="destructible_crate2" parent="DestructibleObjects" instance=ExtResource("13_bxtru")]
+[node name="destructible_crate2" parent="DestructibleObjects" groups=["Destructible"] instance=ExtResource("13_bxtru")]
 position = Vector2(42, 684)
 drop_weapon_id = "vk-pdw"
 
