@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://c4f3eo36ftght"]
+[gd_scene load_steps=18 format=4 uid="uid://c4f3eo36ftght"]
 
 [ext_resource type="Script" uid="uid://bs4p0isy0hiqi" path="res://Scenes/debug_world.gd" id="1_5a7ea"]
 [ext_resource type="PackedScene" uid="uid://qmfhx80ymt3g" path="res://Scenes/player.tscn" id="2_8j60k"]
@@ -7,11 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://3qb0dcshhcdn" path="res://Assets/Tileset/Tilemap_day.png" id="5_fo5ed"]
 [ext_resource type="Texture2D" uid="uid://c85y5h461g4f6" path="res://Assets/Tileset/TILEMAPS_PROLOGUE.png" id="6_frd8m"]
 [ext_resource type="PackedScene" uid="uid://ltl3a2bm1ma4" path="res://Scenes/pause_menu.tscn" id="7_gnyyd"]
-[ext_resource type="Texture2D" uid="uid://cbjh1ma6v6a3r" path="res://Assets/Objects/HYUNDAI MX6.png" id="8_1on00"]
 [ext_resource type="PackedScene" uid="uid://bhyr726uenttx" path="res://Scenes/pickable_weapon.tscn" id="9_60603"]
 [ext_resource type="Texture2D" uid="uid://boe6jqw4j4jm4" path="res://Assets/UI/crosshair/CROSSHAIR.png" id="10_ctkch"]
 [ext_resource type="PackedScene" uid="uid://cqb0bl8n7umx5" path="res://Scenes/inventory.tscn" id="11_i7f47"]
-[ext_resource type="Texture2D" uid="uid://b0xmau7cn0vwh" path="res://Assets/Objects/LandRanger.png" id="12_tyore"]
+[ext_resource type="PackedScene" uid="uid://b84pu0bc4s0ro" path="res://Scenes/Objects/vehicles.tscn" id="11_tyore"]
 [ext_resource type="PackedScene" uid="uid://dvwlquev2rxj3" path="res://Scenes/Objects/destructible_crate.tscn" id="13_bxtru"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tyore"]
@@ -1186,19 +1185,9 @@ position = Vector2(257, 198)
 position = Vector2(42, 684)
 drop_weapon_id = "vk-pdw"
 
-[node name="HyundaiMx7" type="Sprite2D" parent="DestructibleObjects"]
-position = Vector2(669, 699)
-texture = ExtResource("8_1on00")
-
-[node name="LandRanger" type="Sprite2D" parent="DestructibleObjects"]
-position = Vector2(625, 147)
-rotation = 0.62949
-texture = ExtResource("12_tyore")
-
-[node name="LandRanger2" type="Sprite2D" parent="DestructibleObjects"]
-position = Vector2(-46, 662)
-rotation = -1.30664
-texture = ExtResource("12_tyore")
+[node name="vehicles" parent="DestructibleObjects" groups=["Destructible"] instance=ExtResource("11_tyore")]
+position = Vector2(304, 648)
+rotation = 0.989164
 
 [node name="PickableWeapons" type="Node" parent="."]
 
