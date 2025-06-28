@@ -10,6 +10,9 @@ var state = IDLE
 @export var roam_interval := 3.0
 @export var vision_check_rate := 0.2 # How often to check line of sight (seconds)
 @export var dead_enemy_scene := preload("res://Scenes/dead_enemy.tscn")
+@export var dropped_weapon_scene: PackedScene = preload("res://Scenes/pickable_weapon.tscn")
+@export var dropped_weapon_id: String = "vk-pdw"
+@export var dropped_weapon_ammo: int = 30
 
 @onready var enemy_anim: AnimatedSprite2D = $EnemyAnim
 @onready var progress_bar: ProgressBar = $ProgressBar
@@ -163,6 +166,7 @@ func take_damage(amount: int) -> void:
 	progress_bar.value = life
 	if life <= 0:
 		replace_with_dead_enemy()
+		drop_weapon()
 		
 func replace_with_dead_enemy() -> void:
 	var dead_enemy = dead_enemy_scene.instantiate()
@@ -170,3 +174,10 @@ func replace_with_dead_enemy() -> void:
 	dead_enemy.rotation = rotation
 	get_parent().add_child(dead_enemy)
 	queue_free()
+
+func drop_weapon():
+	var weapon = dropped_weapon_scene.instantiate() as PickableWeapon
+	weapon.weapon_id = dropped_weapon_id
+	weapon.ammo_included = dropped_weapon_ammo
+	weapon.global_position = global_position
+	get_parent().add_child(weapon)

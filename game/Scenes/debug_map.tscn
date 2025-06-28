@@ -1150,13 +1150,22 @@ tile_set = SubResource("TileSet_5ukr8")
 position = Vector2(11, 605)
 
 [node name="Enemy2" parent="Enemies" groups=["Enemy"] instance=ExtResource("3_5a7ea")]
-position = Vector2(535, 736)
+position = Vector2(13, 666)
+dropped_weapon_id = "kp-12"
 
 [node name="Enemy3" parent="Enemies" groups=["Enemy"] instance=ExtResource("3_5a7ea")]
-position = Vector2(500, 113)
+position = Vector2(653, 743)
+dropped_weapon_id = "vk-v9"
 
 [node name="Enemy4" parent="Enemies" groups=["Enemy"] instance=ExtResource("3_5a7ea")]
-position = Vector2(-586, 338)
+position = Vector2(644, 661)
+dropped_weapon_id = "kp-12"
+
+[node name="Enemy5" parent="Enemies" groups=["Enemy"] instance=ExtResource("3_5a7ea")]
+position = Vector2(657, 250)
+
+[node name="Enemy6" parent="Enemies" groups=["Enemy"] instance=ExtResource("3_5a7ea")]
+position = Vector2(549, 316)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
