@@ -1,8 +1,9 @@
 extends Node2D
 
 func _ready():
+	if has_node("AudioStreamPlayer2D"):
+		$AudioStreamPlayer2D.play()
 	$Timer.start()
-	$AudioStreamPlayer2D.play()
 
-func _on_timer_timeout() -> void:
+func _on_Timer_timeout():
 	queue_free()
