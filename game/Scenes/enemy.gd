@@ -8,6 +8,7 @@ var state = IDLE
 @export var attack_cooldown := 0.5
 @export var roam_radius := 100.0
 @export var roam_interval := 3.0
+@export var vision_check_rate := 0.2 # How often to check line of sight (seconds)
 
 @onready var enemy_anim: AnimatedSprite2D = $EnemyAnim
 @onready var progress_bar: ProgressBar = $ProgressBar
@@ -21,6 +22,8 @@ var target: Node2D = null
 var attack_timer := 0.0
 var roam_target := Vector2.ZERO
 var roam_timer := 0.0
+var vision_timer := 0.0
+var has_line_of_sight := false
 
 func _ready() -> void:
 	detection_area.body_entered.connect(_on_player_detected)
@@ -31,6 +34,12 @@ func _process(delta: float) -> void:
 	if target:
 		var target_dir = (target.global_position - global_position).normalized()
 		rotation = lerp_angle(rotation, target_dir.angle(), 5 * delta)
+	
+	# Update vision timer
+	vision_timer -= delta
+	if vision_timer <= 0 and target:
+		check_line_of_sight()
+		vision_timer = vision_check_rate
 
 func _physics_process(delta: float) -> void:
 	match state:
@@ -40,6 +49,23 @@ func _physics_process(delta: float) -> void:
 			chase_behavior(delta)
 		ATTACKING:
 			attack_behavior(delta)
+
+func check_line_of_sight() -> void:
+	if not target:
+		has_line_of_sight = false
+		return
+	
+	# Perform raycast to check for obstacles
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsRayQueryParameters2D.create(
+		global_position,
+		target.global_position,
+		collision_mask,
+		[self] # Exclude self from collision check
+	)
+	
+	var result = space_state.intersect_ray(query)
+	has_line_of_sight = not result.has("collider") or result.collider == target
 
 func idle_behavior() -> void:
 	roam_timer -= get_process_delta_time()
@@ -61,9 +87,18 @@ func idle_behavior() -> void:
 		rotation = lerp_angle(rotation, direction.angle(), 5 * get_physics_process_delta_time())
 
 func chase_behavior(_delta) -> void:
-	if !target: return
+	if !target: 
+		state = IDLE
+		return
 	
-	nav_agent.target_position = target.global_position
+	# Only update path if we have line of sight
+	if has_line_of_sight:
+		nav_agent.target_position = target.global_position
+	else:
+		# If we lose line of sight, stop moving
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
 	
 	if !nav_agent.is_navigation_finished():
 		var next_pos = nav_agent.get_next_path_position()
@@ -72,12 +107,17 @@ func chase_behavior(_delta) -> void:
 	
 	gun_pivot.look_at(target.global_position)
 	
-	if global_position.distance_to(target.global_position) < attack_range:
+	if global_position.distance_to(target.global_position) < attack_range and has_line_of_sight:
 		state = ATTACKING
 
 func attack_behavior(delta: float) -> void:
 	if !target: 
 		state = IDLE
+		return
+	
+	# Check if we still have line of sight to attack
+	if not has_line_of_sight:
+		state = CHASING
 		return
 	
 	gun_pivot.look_at(target.global_position)
@@ -105,13 +145,17 @@ func shoot() -> void:
 
 func _on_player_detected(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-			target = body
-			state = CHASING
+		target = body
+		state = CHASING
+		# Immediately check line of sight when detecting player
+		check_line_of_sight()
+		vision_timer = vision_check_rate
 
 func _on_player_lost(body: Node2D) -> void:
 	if body == target:
 		target = null
 		state = IDLE
+		has_line_of_sight = false
 		
 func take_damage(amount: int) -> void:
 	life -= amount
