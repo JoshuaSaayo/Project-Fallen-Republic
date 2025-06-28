@@ -14,7 +14,6 @@ var state = IDLE
 @onready var detection_area: Area2D = $DetectionArea
 @onready var nav_agent: NavigationAgent2D = $NavAgent
 @onready var gun_pivot: Marker2D = $GunPivot
-@onready var ray_cast_2d: RayCast2D = $GunPivot/RayCast2D
 @onready var muzzle_flash: Sprite2D = $GunPivot/MuzzleFlash
 
 var life := 100
@@ -32,8 +31,6 @@ func _process(delta: float) -> void:
 	if target:
 		var target_dir = (target.global_position - global_position).normalized()
 		rotation = lerp_angle(rotation, target_dir.angle(), 5 * delta)
-		ray_cast_2d.target_position = target.global_position - ray_cast_2d.global_position
-		ray_cast_2d.force_raycast_update()
 
 func _physics_process(delta: float) -> void:
 	match state:
@@ -108,11 +105,6 @@ func shoot() -> void:
 
 func _on_player_detected(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		var to_target = body.global_position - ray_cast_2d.global_position
-		ray_cast_2d.target_position = to_target
-		ray_cast_2d.force_raycast_update()
-
-		if !ray_cast_2d.is_colliding() or ray_cast_2d.get_collider().is_in_group("Player"):
 			target = body
 			state = CHASING
 
