@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bngciq3dk0pdm"]
+
+[ext_resource type="Script" uid="uid://cdopnqsac4lre" path="res://Scenes/Guns/ty-23.gd" id="1_eqmas"]
+
+[node name="ty-23" type="Node2D"]
+script = ExtResource("1_eqmas")
+
+[node name="ShotSound" type="AudioStreamPlayer2D" parent="."]
+
+[node name="ReloadSound" type="AudioStreamPlayer2D" parent="."]

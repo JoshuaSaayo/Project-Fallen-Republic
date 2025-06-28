@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqgo3xmmjnxt0"]
+
+[ext_resource type="Script" uid="uid://bjay3gdri8ai1" path="res://Scenes/Guns/kr_85c_1.gd" id="1_ivvs8"]
+
+[node name="kr-85c1" type="Node2D"]
+script = ExtResource("1_ivvs8")
+
+[node name="ShotSound" type="AudioStreamPlayer2D" parent="."]
+
+[node name="ReloadSound" type="AudioStreamPlayer2D" parent="."]

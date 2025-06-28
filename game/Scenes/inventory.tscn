@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cqb0bl8n7umx5"]
 
 [ext_resource type="Script" uid="uid://dvmw1jjob3d4m" path="res://Scenes/inventory.gd" id="1_k1vlg"]
-[ext_resource type="Texture2D" uid="uid://cw3eaqhekyb6l" path="res://Assets/Guns/gun_thumbnails/VK-PDW (QBZ191+X95 HYBRID).png" id="1_wdn4f"]
+[ext_resource type="Texture2D" uid="uid://cw3eaqhekyb6l" path="res://Assets/Guns/gun_thumbnails/VK-PDW.png" id="1_wdn4f"]
 [ext_resource type="FontFile" uid="uid://dx7jut1h280y8" path="res://Assets/Fonts/ANDALEMO.TTF" id="2_0n8tc"]
 [ext_resource type="FontFile" uid="uid://dwbwitgdeqx42" path="res://Scenes/ANDALEMO.TTF" id="4_k1vlg"]
 

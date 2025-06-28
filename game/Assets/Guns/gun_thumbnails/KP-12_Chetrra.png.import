@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw3eaqhekyb6l"
-path="res://.godot/imported/VK-PDW (QBZ191+X95 HYBRID).png-743e308808b572616bb0fb1855a1f317.ctex"
+uid="uid://b2v3k0mvl4sme"
+path="res://.godot/imported/KP-12_Chetrra.png-17800c6ff1d116eac3e4689a5d20ae53.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/gun_thumbnails/VK-PDW (QBZ191+X95 HYBRID).png"
-dest_files=["res://.godot/imported/VK-PDW (QBZ191+X95 HYBRID).png-743e308808b572616bb0fb1855a1f317.ctex"]
+source_file="res://Assets/Guns/gun_thumbnails/KP-12_Chetrra.png"
+dest_files=["res://.godot/imported/KP-12_Chetrra.png-17800c6ff1d116eac3e4689a5d20ae53.ctex"]
 
 [params]
 

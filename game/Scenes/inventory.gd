@@ -5,7 +5,7 @@ extends Control
 const WEAPON_DATA := {
 	"kp-12": {
 		"display_name": "KP-12",
-		"thumbnail": preload("res://Assets/Guns/gun_thumbnails/KP-12 Chetrra [TT-33 Tokarev].png"),
+		"thumbnail": preload("res://Assets/Guns/gun_thumbnails/KP-12_Chetrra.png"),
 		"weapon_thumbnail": preload("res://Assets/Guns/pickable_weapons/KP-12-PICKABLE.png"),
 		"type": "PISTOL",
 		"damage": 28,
@@ -15,9 +15,21 @@ const WEAPON_DATA := {
 		"reload_time": 1.8,
 		"description": "Compact and durable sidearm with a long history."
 	},
+	"ty-23": {
+		"display_name": "KR-85C1",
+		"thumbnail": preload("res://Assets/Guns/gun_thumbnails/TY-23_Naginata.png"),
+		"weapon_thumbnail": preload("res://Assets/Guns/pickable_weapons/TY-23-PICKABLE.png"),
+		"type": "PISTOL",
+		"damage": 32,
+		"fire_rate": "400 RPM",
+		"mag_size": 15,
+		"max_reserve": 60,
+		"reload_time": 1.6,
+		"description": "A modular battle rifle platform built for adaptability."
+	},
 	"vk-pdw": {
 		"display_name": "VK-PDW",
-		"thumbnail": preload("res://Assets/Guns/gun_thumbnails/VK-PDW (QBZ191+X95 HYBRID).png"),
+		"thumbnail": preload("res://Assets/Guns/gun_thumbnails/VK-PDW.png"),
 		"weapon_thumbnail": preload("res://Assets/Guns/pickable_weapons/VK-PDW-PICKABLE.png"),
 		"type": "SMG",
 		"damage": 24,
@@ -29,7 +41,7 @@ const WEAPON_DATA := {
 	},
 	"vk-v9": {
 		"display_name": "VK-V9",
-		"thumbnail": preload("res://Assets/Guns/gun_thumbnails/VK-V9 (QBZ191+X95 HYBRID).png"),
+		"thumbnail": preload("res://Assets/Guns/gun_thumbnails/VK-V9.png"),
 		"weapon_thumbnail": preload("res://Assets/Guns/pickable_weapons/VK-V9-PICKABLE.png"),
 		"type": "SMG",
 		"damage": 30,
@@ -37,6 +49,18 @@ const WEAPON_DATA := {
 		"mag_size": 30,
 		"max_reserve": 120,
 		"reload_time": 2.4,
+		"description": "A modular battle rifle platform built for adaptability."
+	},
+	"kr-85c1": {
+		"display_name": "KR-85C1",
+		"thumbnail": preload("res://Assets/Guns/gun_thumbnails/KR-85C1_HK416.png"),
+		"weapon_thumbnail": preload("res://Assets/Guns/pickable_weapons/KR-85C1-PICKABLE.png"),
+		"type": "AR",
+		"damage": 34,
+		"fire_rate": "680 RPM",
+		"mag_size": 30,
+		"max_reserve": 150,
+		"reload_time": 2.6,
 		"description": "A modular battle rifle platform built for adaptability."
 	},
 }

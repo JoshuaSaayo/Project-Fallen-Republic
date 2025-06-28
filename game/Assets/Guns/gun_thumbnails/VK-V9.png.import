@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1i322e5gpycx"
-path="res://.godot/imported/KR-85C1 - HK416.png-3fa8ed7c18d17177cd0beff5cbac9636.ctex"
+uid="uid://bt4w5cifnd4fc"
+path="res://.godot/imported/VK-V9.png-f26cbf61d2630a30b7e28c99cbe0ce9f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/gun_thumbnails/KR-85C1 - HK416.png"
-dest_files=["res://.godot/imported/KR-85C1 - HK416.png-3fa8ed7c18d17177cd0beff5cbac9636.ctex"]
+source_file="res://Assets/Guns/gun_thumbnails/VK-V9.png"
+dest_files=["res://.godot/imported/VK-V9.png-f26cbf61d2630a30b7e28c99cbe0ce9f.ctex"]
 
 [params]
 

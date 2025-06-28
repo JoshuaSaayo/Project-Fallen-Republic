@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bt4w5cifnd4fc"
-path="res://.godot/imported/VK-V9 (QBZ191+X95 HYBRID).png-7f3de0b1794b6bca05b1edd461d8b2b5.ctex"
+uid="uid://cw3eaqhekyb6l"
+path="res://.godot/imported/VK-PDW.png-e63f73e907c2c06a38195e3a108fadfa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/gun_thumbnails/VK-V9 (QBZ191+X95 HYBRID).png"
-dest_files=["res://.godot/imported/VK-V9 (QBZ191+X95 HYBRID).png-7f3de0b1794b6bca05b1edd461d8b2b5.ctex"]
+source_file="res://Assets/Guns/gun_thumbnails/VK-PDW.png"
+dest_files=["res://.godot/imported/VK-PDW.png-e63f73e907c2c06a38195e3a108fadfa.ctex"]
 
 [params]
 

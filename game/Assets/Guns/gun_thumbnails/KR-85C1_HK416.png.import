@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2v3k0mvl4sme"
-path="res://.godot/imported/KP-12 Chetrra [TT-33 Tokarev].png-1549864c71ac56ca578f6c9fa3deac70.ctex"
+uid="uid://d1i322e5gpycx"
+path="res://.godot/imported/KR-85C1_HK416.png-75a54d6ccfed26f46c2e668a07f1cfcf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Guns/gun_thumbnails/KP-12 Chetrra [TT-33 Tokarev].png"
-dest_files=["res://.godot/imported/KP-12 Chetrra [TT-33 Tokarev].png-1549864c71ac56ca578f6c9fa3deac70.ctex"]
+source_file="res://Assets/Guns/gun_thumbnails/KR-85C1_HK416.png"
+dest_files=["res://.godot/imported/KR-85C1_HK416.png-75a54d6ccfed26f46c2e668a07f1cfcf.ctex"]
 
 [params]
 
