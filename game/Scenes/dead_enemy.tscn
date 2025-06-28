@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cco25p2ugpe2y"]
+
+[ext_resource type="Texture2D" uid="uid://wvvqv2uhmrge" path="res://Assets/Enemy/KPCU GUARD-01_DEAD.png" id="1_37vxm"]
+
+[node name="dead_enemy" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_37vxm")

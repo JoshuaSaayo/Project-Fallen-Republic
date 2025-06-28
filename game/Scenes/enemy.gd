@@ -9,6 +9,7 @@ var state = IDLE
 @export var roam_radius := 100.0
 @export var roam_interval := 3.0
 @export var vision_check_rate := 0.2 # How often to check line of sight (seconds)
+@export var dead_enemy_scene := preload("res://Scenes/dead_enemy.tscn")
 
 @onready var enemy_anim: AnimatedSprite2D = $EnemyAnim
 @onready var progress_bar: ProgressBar = $ProgressBar
@@ -161,4 +162,11 @@ func take_damage(amount: int) -> void:
 	life -= amount
 	progress_bar.value = life
 	if life <= 0:
-		queue_free()
+		replace_with_dead_enemy()
+		
+func replace_with_dead_enemy() -> void:
+	var dead_enemy = dead_enemy_scene.instantiate()
+	dead_enemy.global_position = global_position
+	dead_enemy.rotation = rotation
+	get_parent().add_child(dead_enemy)
+	queue_free()
