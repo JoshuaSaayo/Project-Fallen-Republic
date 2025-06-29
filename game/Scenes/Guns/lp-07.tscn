@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d1kh4w6b8m73o"]
 
-[ext_resource type="Script" uid="uid://cylcoo4a0x3c3" path="res://Scenes/Guns/lp_07.gd" id="1_l1asi"]
+[ext_resource type="Script" uid="uid://cylcoo4a0x3c3" path="res://Scenes/Guns/lp-07.gd" id="1_l1asi"]
 [ext_resource type="AudioStream" uid="uid://cu0iwgsnoyxtf" path="res://Assets/Sounds/bullet_sounds/LP10_SHOOT.wav" id="2_bfs4c"]
 [ext_resource type="AudioStream" uid="uid://cfhnk37q0pk8u" path="res://Assets/Sounds/reload_sounds/LP10_RELOAD.wav" id="3_f32du"]
 

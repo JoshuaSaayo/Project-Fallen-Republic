@@ -6,7 +6,6 @@ signal life_value
 @onready var ammo_label: Label = $CanvasLayer/HBoxContainer/AmmoLabel
 @onready var health_bar: ProgressBar = $CanvasLayer/HealthBar
 @onready var weapon_slot: Node = $WeaponSlot
-@onready var pickup_prompt: Label = $PickupPrompt
 
 var max_health := 100
 var current_health := max_health
@@ -132,11 +131,6 @@ func update_ammo_display() -> void:
 		ammo_label.modulate = Color.RED if gun.ammo_in_mag == 0 else Color.WHITE
 		if gun.reloading:
 			ammo_label.text += " (Reloading...)"
-
-func show_pickup_prompt(should_show: bool, weapon_name: String = "") -> void:
-	if should_show:
-		pickup_prompt.text = "Press E to pick up %s" % weapon_name
-	pickup_prompt.visible = should_show
 
 func show_notification(message: String) -> void:
 	if has_node("CanvasLayer/Notification"):
