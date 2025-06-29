@@ -1,0 +1,90 @@
+[gd_scene load_steps=13 format=3 uid="uid://b84pu0bc4s0ro"]
+
+[ext_resource type="Script" uid="uid://qd74q2uv8sid" path="res://Scenes/Objects/vehicle.gd" id="1_11aox"]
+[ext_resource type="Texture2D" uid="uid://b0xmau7cn0vwh" path="res://Assets/Objects/LandRanger.png" id="2_quq83"]
+[ext_resource type="Texture2D" uid="uid://bob0a2p0se8jc" path="res://Assets/Objects/LandRanger_exploded.png" id="3_fdsut"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pe0u3"]
+size = Vector2(52, 105)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_11aox"]
+bg_color = Color(0, 0, 0, 0.301961)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_quq83"]
+bg_color = Color(0, 0.72549, 0.172549, 1)
+
+[sub_resource type="Gradient" id="Gradient_11aox"]
+offsets = PackedFloat32Array(0.508621, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fdsut"]
+gradient = SubResource("Gradient_11aox")
+
+[sub_resource type="Curve" id="Curve_11aox"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_fdsut"]
+curve = SubResource("Curve_11aox")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_11aox"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 20.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_fdsut")
+color_ramp = SubResource("GradientTexture1D_fdsut")
+
+[sub_resource type="Environment" id="Environment_11aox"]
+background_mode = 3
+glow_enabled = true
+glow_levels/1 = 1.0
+glow_levels/2 = 1.0
+glow_levels/4 = 1.0
+glow_levels/6 = 1.0
+glow_levels/7 = 1.0
+glow_blend_mode = 1
+fog_enabled = true
+volumetric_fog_enabled = true
+adjustment_enabled = true
+
+[node name="vehicle" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_11aox")
+
+[node name="IntactVehicle" type="Sprite2D" parent="."]
+texture = ExtResource("2_quq83")
+
+[node name="ExplodedVehicle" type="Sprite2D" parent="."]
+texture = ExtResource("3_fdsut")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_pe0u3")
+
+[node name="Healthbar" type="ProgressBar" parent="."]
+offset_left = 44.0
+offset_top = -36.0
+offset_right = 48.0
+offset_bottom = -9.0
+scale = Vector2(3.21284, 3.21284)
+theme_override_styles/background = SubResource("StyleBoxFlat_11aox")
+theme_override_styles/fill = SubResource("StyleBoxFlat_quq83")
+value = 50.0
+fill_mode = 3
+show_percentage = false
+
+[node name="ExplosionParticles" type="GPUParticles2D" parent="."]
+self_modulate = Color(1, 0.647059, 0, 1)
+emitting = false
+amount = 80
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_11aox")
+
+[node name="Glow" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_11aox")

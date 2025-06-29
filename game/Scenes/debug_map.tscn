@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bhyr726uenttx" path="res://Scenes/pickable_weapon.tscn" id="9_60603"]
 [ext_resource type="Texture2D" uid="uid://boe6jqw4j4jm4" path="res://Assets/UI/crosshair/CROSSHAIR.png" id="10_ctkch"]
 [ext_resource type="PackedScene" uid="uid://cqb0bl8n7umx5" path="res://Scenes/inventory.tscn" id="11_i7f47"]
-[ext_resource type="PackedScene" uid="uid://b84pu0bc4s0ro" path="res://Scenes/Objects/vehicles.tscn" id="11_tyore"]
+[ext_resource type="PackedScene" uid="uid://b84pu0bc4s0ro" path="res://Scenes/Objects/vehicle.tscn" id="11_tyore"]
 [ext_resource type="PackedScene" uid="uid://dvwlquev2rxj3" path="res://Scenes/Objects/destructible_crate.tscn" id="13_bxtru"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tyore"]
@@ -1035,10 +1035,6 @@ drop_weapon_id = "kr-85c1"
 position = Vector2(-80, 653)
 drop_weapon_id = "ty-23"
 
-[node name="vehicles" parent="DestructibleObjects" groups=["Destructible"] instance=ExtResource("11_tyore")]
-position = Vector2(204, 690)
-rotation = 1.5927
-
 [node name="PickableWeapons" type="Node" parent="."]
 
 [node name="PickableWeapon" parent="PickableWeapons" instance=ExtResource("9_60603")]
@@ -1048,3 +1044,7 @@ weapon_id = "lp-07"
 [node name="PickableWeapon2" parent="PickableWeapons" instance=ExtResource("9_60603")]
 position = Vector2(318, 618)
 weapon_id = "tvr-10"
+
+[node name="vehicle" parent="." instance=ExtResource("11_tyore")]
+position = Vector2(515, 679)
+rotation = 1.57696

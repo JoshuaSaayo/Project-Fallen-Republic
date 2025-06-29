@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4thkqprv21c7"]
-
-[ext_resource type="Texture2D" uid="uid://bob0a2p0se8jc" path="res://Assets/Objects/LandRanger_exploded.png" id="1_3cp2m"]
-
-[node name="exploded_vehicle" type="Node2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_3cp2m")
