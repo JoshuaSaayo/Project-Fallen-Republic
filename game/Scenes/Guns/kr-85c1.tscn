@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dv52wwxgxem38"]
+
+[ext_resource type="Script" uid="uid://badwiuqnsj4j5" path="res://Scenes/Guns/kr-85c1.gd" id="1_263ju"]
+[ext_resource type="AudioStream" uid="uid://ceowuj8q0kt2h" path="res://Assets/Sounds/bullet_sounds/KR-56C1_SHOOT.wav" id="2_ww47t"]
+[ext_resource type="AudioStream" uid="uid://cjxmn5qdxq0ye" path="res://Assets/Sounds/reload_sounds/KR-56C1_RELOAD.wav" id="3_f3efr"]
+
+[node name="kr-85c1" type="Node2D"]
+script = ExtResource("1_263ju")
+
+[node name="ShotSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_ww47t")
+
+[node name="ReloadSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_f3efr")
