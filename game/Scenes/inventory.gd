@@ -39,6 +39,18 @@ const WEAPON_DATA := {
 		"reload_time": 2.0,
 		"description": "A compact PDW tailored for CQC operations in dense urban zones."
 	},
+	"kp-s13": {
+		"display_name": "KP-S13",
+		"thumbnail": preload("res://Assets/Guns/gun_thumbnails/KP-S13_Prechan.png"),
+		"weapon_thumbnail": preload("res://Assets/Guns/pickable_weapons/KP-S13-PICKABLE.png"),
+		"type": "SMG",
+		"damage": 24,
+		"fire_rate": "850 RPM",
+		"mag_size": 40,
+		"max_reserve": 140,
+		"reload_time": 2.0,
+		"description": "A rugged, utilitarian SMG made for military police and checkpoint patrols. Emphasizes reliability and burst suppression. Harsh recoil but simple internals make it easy to repair. A staple among frontier forces and smugglers."
+	},
 	"kr-85c1": {
 		"display_name": "KR-85C1",
 		"thumbnail": preload("res://Assets/Guns/gun_thumbnails/KR-85C1_HK416.png"),
