@@ -1029,11 +1029,11 @@ texture = ExtResource("10_ctkch")
 
 [node name="destructible_crate" parent="DestructibleObjects" groups=["Destructible"] instance=ExtResource("13_bxtru")]
 position = Vector2(257, 198)
-drop_weapon_id = "kr-85c1"
+drop_weapon_id = "ty-23"
 
 [node name="destructible_crate2" parent="DestructibleObjects" groups=["Destructible"] instance=ExtResource("13_bxtru")]
 position = Vector2(-80, 653)
-drop_weapon_id = "ty-23"
+drop_weapon_id = "kr_85c_1"
 
 [node name="vehicles" parent="DestructibleObjects" groups=["Destructible"] instance=ExtResource("11_tyore")]
 position = Vector2(204, 690)

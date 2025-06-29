@@ -1,10 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://bngciq3dk0pdm"]
+[gd_scene load_steps=4 format=3 uid="uid://bngciq3dk0pdm"]
 
 [ext_resource type="Script" uid="uid://cdopnqsac4lre" path="res://Scenes/Guns/ty-23.gd" id="1_eqmas"]
+[ext_resource type="AudioStream" uid="uid://il34itksg11g" path="res://Assets/Sounds/bullet_sounds/TY-23_SHOOT.wav" id="2_o44li"]
+[ext_resource type="AudioStream" uid="uid://c3tibrwj18f7v" path="res://Assets/Sounds/reload_sounds/TY-23_RELOAD.wav" id="3_ivyqm"]
 
 [node name="ty-23" type="Node2D"]
 script = ExtResource("1_eqmas")
 
 [node name="ShotSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_o44li")
 
 [node name="ReloadSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ivyqm")

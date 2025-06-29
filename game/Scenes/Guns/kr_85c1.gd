@@ -1,10 +1,10 @@
 extends Gun
 
-const DAMAGE = 34
-const FIRE_RATE = 0.103  # 3.10s / 30 shots
+const DAMAGE = 30
+const FIRE_RATE = 0.0807  # Time between shots (600 RPM)
 const MAG_SIZE = 30
-const RELOAD_TIME = 2.6
-const MAG_RESERVE = 150
+const RELOAD_TIME = 2.4
+const MAG_RESERVE = 120
 
 func _ready():
 	damage = DAMAGE

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://c4o4h0ejypuo3"]
 
 [ext_resource type="Script" uid="uid://p5tsrndkr5rc" path="res://Scenes/Guns/kp_12.gd" id="1_vdfpa"]
-[ext_resource type="AudioStream" uid="uid://il34itksg11g" path="res://Assets/Sounds/bullet_sounds/TY-23_SHOOT.wav" id="2_vdfpa"]
-[ext_resource type="AudioStream" uid="uid://c3tibrwj18f7v" path="res://Assets/Sounds/reload_sounds/TY-23_RELOAD.wav" id="3_cvybu"]
+[ext_resource type="AudioStream" uid="uid://064fwjt01nve" path="res://Assets/Sounds/bullet_sounds/KP-12_SHOOT.wav" id="2_vdfpa"]
+[ext_resource type="AudioStream" uid="uid://cte5y7ghh38ip" path="res://Assets/Sounds/reload_sounds/KP-12_RELOAD.wav" id="3_cvybu"]
 
 [node name="KP-12" type="Node2D"]
 script = ExtResource("1_vdfpa")

@@ -16,7 +16,7 @@ const WEAPON_DATA := {
 		"description": "Compact and durable sidearm with a long history."
 	},
 	"ty-23": {
-		"display_name": "KR-85C1",
+		"display_name": "TY-23",
 		"thumbnail": preload("res://Assets/Guns/gun_thumbnails/TY-23_Naginata.png"),
 		"weapon_thumbnail": preload("res://Assets/Guns/pickable_weapons/TY-23-PICKABLE.png"),
 		"type": "PISTOL",
@@ -25,7 +25,7 @@ const WEAPON_DATA := {
 		"mag_size": 15,
 		"max_reserve": 60,
 		"reload_time": 1.6,
-		"description": "A modular battle rifle platform built for adaptability."
+		"description": "A semi-auto combat pistol with great accuracy and a reinforced slide. Inspired by traditional martial discipline and modern firearms tech. Lightweight, but kicks hard. A favorite among elite agents and SWAT operatives."
 	},
 	"vk-pdw": {
 		"display_name": "VK-PDW",
@@ -39,18 +39,6 @@ const WEAPON_DATA := {
 		"reload_time": 2.0,
 		"description": "A compact PDW tailored for CQC operations in dense urban zones."
 	},
-	"vk-v9": {
-		"display_name": "VK-V9",
-		"thumbnail": preload("res://Assets/Guns/gun_thumbnails/VK-V9.png"),
-		"weapon_thumbnail": preload("res://Assets/Guns/pickable_weapons/VK-V9-PICKABLE.png"),
-		"type": "SMG",
-		"damage": 30,
-		"fire_rate": "720 RPM",
-		"mag_size": 30,
-		"max_reserve": 120,
-		"reload_time": 2.4,
-		"description": "A modular battle rifle platform built for adaptability."
-	},
 	"kr-85c1": {
 		"display_name": "KR-85C1",
 		"thumbnail": preload("res://Assets/Guns/gun_thumbnails/KR-85C1_HK416.png"),
@@ -61,6 +49,18 @@ const WEAPON_DATA := {
 		"mag_size": 30,
 		"max_reserve": 150,
 		"reload_time": 2.6,
+		"description": "Premium-class assault rifle used by elite forces and exported worldwide. Designed with tight tolerances and custom recoil buffering. Exceptionally stable under full-auto fire. Known for its reliability in harsh environments."
+	},
+	"vk-v9": {
+		"display_name": "VK-V9",
+		"thumbnail": preload("res://Assets/Guns/gun_thumbnails/VK-V9.png"),
+		"weapon_thumbnail": preload("res://Assets/Guns/pickable_weapons/VK-V9-PICKABLE.png"),
+		"type": "AR",
+		"damage": 30,
+		"fire_rate": "720 RPM",
+		"mag_size": 30,
+		"max_reserve": 120,
+		"reload_time": 2.4,
 		"description": "A modular battle rifle platform built for adaptability."
 	},
 }
