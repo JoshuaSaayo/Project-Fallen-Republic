@@ -7,6 +7,8 @@ class_name Gun
 @export var mag_size: int = 30
 @export var reload_time: float = 1.8
 @export var bullet_scene: PackedScene
+@export var pellet_count := 1
+@export var spread_angle := 0.0
 
 var ammo_in_mag: int
 var total_reserve_ammo: int = 90
@@ -18,7 +20,7 @@ func _ready():
 	ammo_in_mag = mag_size
 	bullet_scene = preload("res://Scenes/bullet.tscn")
 
-func try_shoot(owner_node: Node2D):
+func try_shoot(owner_node: Node2D) -> bool:
 	if not can_shoot or reloading:
 		return false
 
@@ -30,28 +32,28 @@ func try_shoot(owner_node: Node2D):
 	if time_since_last_shot < fire_rate:
 		return false
 
-	# Fire logic
 	last_shot_time = Time.get_ticks_msec() / 1000.0
 	ammo_in_mag -= 1
 
-	# Get firing positions
 	var fire_position = owner_node.global_position
 	var target_position = owner_node.get_global_mouse_position()
-	var direction = (target_position - fire_position).normalized()
-	
-	# Spawn bullet
-	var bullet = bullet_scene.instantiate()
-	bullet.global_position = fire_position
-	bullet.rotation = direction.angle()
+	var base_direction = (target_position - fire_position).normalized()
 
-	if bullet.has_method("set_direction"):
-		bullet.set_direction(direction)
+	for i in pellet_count:
+		var offset = deg_to_rad(randf_range(-spread_angle / 2.0, spread_angle / 2.0))
+		var direction = base_direction.rotated(offset)
 
-	bullet.damage = damage  # ✅ Set weapon damage into bullet
+		var bullet = bullet_scene.instantiate()
+		bullet.global_position = fire_position
+		bullet.rotation = direction.angle()
 
-	owner_node.get_tree().current_scene.add_child(bullet)
+		if bullet.has_method("set_direction"):
+			bullet.set_direction(direction)
+		bullet.damage = damage
 
-	# Sound
+		owner_node.get_tree().current_scene.add_child(bullet)
+
+	# Play shot sound
 	var shot_sound = get_node_or_null("ShotSound")
 	if shot_sound:
 		shot_sound.play()

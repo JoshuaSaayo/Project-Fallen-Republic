@@ -2,11 +2,11 @@ extends CharacterBody2D
 
 signal life_value
 
-@onready var ammo_label: Label = $CanvasLayer/AmmoLabel
+@onready var weapon_label: Label = $CanvasLayer/HBoxContainer/WeaponLabel
+@onready var ammo_label: Label = $CanvasLayer/HBoxContainer/AmmoLabel
 @onready var health_bar: ProgressBar = $CanvasLayer/HealthBar
-@onready var weapon_slot: Node = $WeaponSlot  # where weapon scene is added
+@onready var weapon_slot: Node = $WeaponSlot
 @onready var pickup_prompt: Label = $PickupPrompt
-@onready var weapon_label: Label = $CanvasLayer/WeaponLabel
 
 var max_health := 100
 var current_health := max_health
@@ -15,16 +15,43 @@ var current_weapons := {}  # Dictionary to store all weapon instances
 var current_weapon_id: String = ""
 var available_weapons := {
 	"kp-12": true  # Player starts with KP-12
-}  # Tracks which weapons player has unlocked
+}
 var inventory := {
+	# Pistols
+	"kp-12": preload("res://Scenes/Guns/kp_12.tscn"),
+	"ty-23": preload("res://Scenes/Guns/ty-23.tscn"),
+	
+	# SMGs
 	"vk-pdw": preload("res://Scenes/Guns/VK-PDW.tscn"),
+	"kp-s13": preload("res://Scenes/Guns/kp-s13.tscn"),
+	
+	# Assault Rifles
 	"vk-v9": preload("res://Scenes/Guns/VK-V9.tscn"),
-	"kp-12": preload("res://Scenes/Guns/kp_12.tscn")
+	"kr-85c1": preload("res://Scenes/Guns/kp-s13.tscn"),
+	
+	# Add more weapons as needed...
+}
+
+# Weapon categories and their variants
+var weapon_categories := {
+	"pistols": ["kp-12", "ty-23"],
+	"smgs": ["vk-pdw", "kp-s13"],
+	"ars": ["vk-v9", "kr-85c1"],
+	"shotguns": ["lp-07", "tvr-10"]
+}
+
+# Track current index for each category
+var current_category_index := {
+	"pistols": 0,
+	"smgs": 0,
+	"ars": 0,
+	"shotguns": 0
 }
 
 func _ready() -> void:
 	health_bar.max_value = max_health
 	health_bar.value = current_health
+	
 	# Pre-instantiate all weapons
 	for weapon_id in inventory:
 		var weapon_instance = inventory[weapon_id].instantiate()
@@ -33,7 +60,7 @@ func _ready() -> void:
 		current_weapons[weapon_id] = weapon_instance
 	
 	equip_weapon("kp-12")  # Default starting weapon
-	
+
 func equip_weapon(weapon_id: String) -> void:
 	if weapon_id == current_weapon_id or not available_weapons.has(weapon_id):
 		return
@@ -48,12 +75,34 @@ func equip_weapon(weapon_id: String) -> void:
 		current_weapon_id = weapon_id
 		update_ammo_display()
 
-			# Update weapon name label
+		# Update weapon name label
 		var gun = current_weapons[weapon_id] as Gun
 		if gun:
 			weapon_label.text = gun.display_name
 		else:
-			weapon_label.text = weapon_id  # fallback if cast fails
+			weapon_label.text = weapon_id
+
+func cycle_weapon_category(category: String) -> void:
+	if not weapon_categories.has(category):
+		return
+	
+	var weapons_in_category = weapon_categories[category]
+	if weapons_in_category.size() == 0:
+		return
+	
+	# Get only available weapons in this category
+	var available_in_category = []
+	for weapon_id in weapons_in_category:
+		if available_weapons.get(weapon_id, false):
+			available_in_category.append(weapon_id)
+	
+	if available_in_category.size() == 0:
+		return
+	
+	# Cycle to next weapon in category
+	current_category_index[category] = (current_category_index[category] + 1) % available_in_category.size()
+	var weapon_to_equip = available_in_category[current_category_index[category]]
+	equip_weapon(weapon_to_equip)
 
 func add_weapon_to_inventory(weapon_id: String, ammo: int = 0) -> void:
 	if not available_weapons.has(weapon_id):
@@ -98,11 +147,13 @@ func show_notification(message: String) -> void:
 
 func _input(event):
 	if event.is_action_pressed("weapon_1"):
-		equip_weapon("kp-12")
+		cycle_weapon_category("pistols")
 	elif event.is_action_pressed("weapon_2"):
-		equip_weapon("vk-v9")
+		cycle_weapon_category("smgs")
 	elif event.is_action_pressed("weapon_3"):
-		equip_weapon("vk-pdw")
+		cycle_weapon_category("ars")
+	elif event.is_action_pressed("weapon_4"):
+		cycle_weapon_category("shotguns")
 		
 func take_damage(damage_amount: int, hit_position: Vector2, hit_direction: Vector2):
 	current_health -= damage_amount

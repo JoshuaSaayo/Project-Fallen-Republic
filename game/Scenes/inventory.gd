@@ -55,7 +55,7 @@ const WEAPON_DATA := {
 		"display_name": "KR-85C1",
 		"thumbnail": preload("res://Assets/Guns/gun_thumbnails/KR-85C1_HK416.png"),
 		"weapon_thumbnail": preload("res://Assets/Guns/pickable_weapons/KR-85C1-PICKABLE.png"),
-		"type": "AR",
+		"type": "ASSAULT",
 		"damage": 34,
 		"fire_rate": "680 RPM",
 		"mag_size": 30,
@@ -67,7 +67,7 @@ const WEAPON_DATA := {
 		"display_name": "VK-V9",
 		"thumbnail": preload("res://Assets/Guns/gun_thumbnails/VK-V9.png"),
 		"weapon_thumbnail": preload("res://Assets/Guns/pickable_weapons/VK-V9-PICKABLE.png"),
-		"type": "AR",
+		"type": "ASSAULT",
 		"damage": 30,
 		"fire_rate": "720 RPM",
 		"mag_size": 30,
@@ -75,6 +75,30 @@ const WEAPON_DATA := {
 		"reload_time": 2.4,
 		"description": "A modular battle rifle platform built for adaptability."
 	},
+	"lp-07": {
+		"display_name": "LP-07",
+		"thumbnail": preload("res://Assets/Guns/gun_thumbnails/LP-07.png"),
+		"weapon_thumbnail": preload("res://Assets/Guns/pickable_weapons/LP-07-PICKABLE.png"),
+		"type": "SHOTGUN",
+		"damage": 90,
+		"fire_rate": "220 RPM",
+		"mag_size": 12,
+		"max_reserve": 48,
+		"reload_time": 3.5,
+		"description": "The LP-07 is a modular semi-automatic shotgun tailored for versatility in jungle and urban warfare. Its light polymer frame and adjustable stock make it ideal for mobile units. Frequently used by Kalayaan’s marines and APTO"
+	},
+	"tvr-10": {
+		"display_name": "TVR-10",
+		"thumbnail": preload("res://Assets/Guns/gun_thumbnails/TVR-10.png"),
+		"weapon_thumbnail": preload("res://Assets/Guns/pickable_weapons/TVR-10-PICKABLE.png"),
+		"type": "SHOTGUN",
+		"damage": 105,
+		"fire_rate": "220 RPM",
+		"mag_size": 10,
+		"max_reserve": 40,
+		"reload_time": 3,
+		"description": "A rugged, no-nonsense pump-action shotgun designed for urban breaching and riot control. Its integrated recoil compensator allows tight spread control even with heavy loads. A favorite among Tianshu riot police and special response forces. Though heavy, it's reliable and brutally effective at close range."
+	}
 }
 
 ### Nodes
