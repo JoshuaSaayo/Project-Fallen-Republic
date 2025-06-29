@@ -6,6 +6,7 @@
 
 [node name="ty-23" type="Node2D"]
 script = ExtResource("1_eqmas")
+display_name = "TY-23 PISTOL"
 
 [node name="ShotSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_o44li")

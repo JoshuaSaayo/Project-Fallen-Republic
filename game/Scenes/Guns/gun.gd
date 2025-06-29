@@ -1,6 +1,7 @@
 extends Node2D
 class_name Gun
 
+@export var display_name: String = "Unnamed Weapon"
 @export var damage: int = 10
 @export var fire_rate: float = 0.1  # Seconds between shots
 @export var mag_size: int = 30
@@ -59,6 +60,9 @@ func try_shoot(owner_node: Node2D):
 		reload()
 
 	return true
+
+func add_ammo(amount: int) -> void:
+	total_reserve_ammo += amount
 	
 func reload():
 	if reloading or ammo_in_mag == mag_size or total_reserve_ammo == 0:

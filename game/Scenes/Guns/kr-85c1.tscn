@@ -6,6 +6,7 @@
 
 [node name="kr-85c1" type="Node2D"]
 script = ExtResource("1_263ju")
+display_name = "KR-85C1 ASSAULT"
 
 [node name="ShotSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_ww47t")

@@ -6,6 +6,7 @@ signal life_value
 @onready var health_bar: ProgressBar = $CanvasLayer/HealthBar
 @onready var weapon_slot: Node = $WeaponSlot  # where weapon scene is added
 @onready var pickup_prompt: Label = $PickupPrompt
+@onready var weapon_label: Label = $CanvasLayer/WeaponLabel
 
 var max_health := 100
 var current_health := max_health
@@ -36,16 +37,23 @@ func _ready() -> void:
 func equip_weapon(weapon_id: String) -> void:
 	if weapon_id == current_weapon_id or not available_weapons.has(weapon_id):
 		return
-	
+
 	# Hide current weapon
 	if current_weapon_id != "" and current_weapons.has(current_weapon_id):
 		current_weapons[current_weapon_id].visible = false
-	
+
 	# Show new weapon
 	if current_weapons.has(weapon_id):
 		current_weapons[weapon_id].visible = true
 		current_weapon_id = weapon_id
 		update_ammo_display()
+
+			# Update weapon name label
+		var gun = current_weapons[weapon_id] as Gun
+		if gun:
+			weapon_label.text = gun.display_name
+		else:
+			weapon_label.text = weapon_id  # fallback if cast fails
 
 func add_weapon_to_inventory(weapon_id: String, ammo: int = 0) -> void:
 	if not available_weapons.has(weapon_id):
@@ -59,8 +67,8 @@ func add_weapon_to_inventory(weapon_id: String, ammo: int = 0) -> void:
 		
 		# Update inventory UI
 		var inventory_ui = get_tree().get_first_node_in_group("Inventory")
-		if inventory_ui and inventory_ui.has_method("add_weapon_to_list"):
-			inventory_ui.add_weapon_to_list(weapon_id)
+	if weapon_id == current_weapon_id and current_weapons.has(weapon_id):
+		current_weapons[weapon_id].add_ammo(ammo)
 	
 	# Add ammo if the weapon is currently equipped
 	if weapon_id == current_weapon_id and current_weapons.has(weapon_id):

@@ -6,6 +6,7 @@
 
 [node name="KP-12" type="Node2D"]
 script = ExtResource("1_vdfpa")
+display_name = "KP-12 PISTOL"
 
 [node name="ShotSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_vdfpa")

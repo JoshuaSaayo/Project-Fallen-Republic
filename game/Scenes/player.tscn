@@ -51,11 +51,19 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_cvnsp")
 value = 44.0
 
 [node name="AmmoLabel" type="Label" parent="CanvasLayer"]
-offset_left = 103.0
-offset_top = 100.0
-offset_right = 214.0
-offset_bottom = 123.0
-text = "Ammo: 30 / 90"
+offset_left = 140.0
+offset_top = 101.0
+offset_right = 251.0
+offset_bottom = 124.0
+text = "Ammo: ?? / ??"
+
+[node name="WeaponLabel" type="Label" parent="CanvasLayer"]
+offset_left = 2.0
+offset_top = 101.0
+offset_right = 42.0
+offset_bottom = 124.0
+pivot_offset = Vector2(106, 33)
+text = "WEAPON NAME"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
@@ -66,10 +74,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="WeaponSlot" type="Node" parent="."]
-
-[node name="PickupPrompt" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
