@@ -114,7 +114,6 @@ func add_weapon_to_inventory(weapon_id: String, ammo: int = 0) -> void:
 		current_weapons[weapon_id] = weapon_instance
 		
 		# Update inventory UI
-		var inventory_ui = get_tree().get_first_node_in_group("Inventory")
 	if weapon_id == current_weapon_id and current_weapons.has(weapon_id):
 		current_weapons[weapon_id].add_ammo(ammo)
 	

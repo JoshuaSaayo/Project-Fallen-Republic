@@ -1,7 +1,7 @@
 extends Gun
 
 const DAMAGE = 9
-const FIRE_RATE = 0.7
+const FIRE_RATE = 0.2
 const MAG_SIZE = 12
 const RELOAD_TIME = 3.5
 const MAG_RESERVE = 48
