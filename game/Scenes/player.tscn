@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://qmfhx80ymt3g"]
+[gd_scene load_steps=7 format=3 uid="uid://qmfhx80ymt3g"]
 
 [ext_resource type="Script" uid="uid://d04k6lbfactvy" path="res://Scenes/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://d1hlm1sem5dva" path="res://Assets/Player/player_meele/(TSP-UC) – Vulture Division.png" id="3_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://dln6vj78fto53" path="res://Scenes/Guns/melee_weapon.tscn" id="3_vgqql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8j60k"]
 size = Vector2(22, 20)
@@ -74,6 +75,9 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="WeaponSlot" type="Node" parent="."]
+
+[node name="melee_weapon" parent="." instance=ExtResource("3_vgqql")]
+position = Vector2(94.6569, -13.3684)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

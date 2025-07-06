@@ -6,6 +6,8 @@ signal life_value
 @onready var ammo_label: Label = $CanvasLayer/HBoxContainer/AmmoLabel
 @onready var health_bar: ProgressBar = $CanvasLayer/HealthBar
 @onready var weapon_slot: Node = $WeaponSlot
+@onready var melee_weapon: Node2D = $melee_weapon
+
 
 var max_health := 100
 var current_health := max_health
@@ -147,6 +149,9 @@ func _input(event):
 		cycle_weapon_category("ars")
 	elif event.is_action_pressed("weapon_4"):
 		cycle_weapon_category("shotguns")
+	if event.is_action_pressed("melee_attack"):
+		if melee_weapon and melee_weapon.has_method("attack"):
+			melee_weapon.attack()
 		
 func take_damage(damage_amount: int, hit_position: Vector2, hit_direction: Vector2):
 	current_health -= damage_amount
