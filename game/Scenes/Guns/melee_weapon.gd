@@ -9,18 +9,13 @@ func attack():
 	if not can_attack:
 		return
 
+	print("Melee attack triggered!")
 	can_attack = false
-	$Area2D.monitoring = true
+	$Area2D.monitoring = true  # Enable collision detection
 
-	# Optional: play animation
-	if $AnimationPlayer:
-		$AnimationPlayer.play("swing")
-
-	# Reset after short time
 	await get_tree().create_timer(0.15).timeout
-	$Area2D.monitoring = false
+	$Area2D.monitoring = false  # Disable right after short window
 
-	# Cooldown before next attack
 	await get_tree().create_timer(cooldown).timeout
 	can_attack = true
 

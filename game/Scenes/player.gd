@@ -216,6 +216,12 @@ func _physics_process(_delta) -> void:
 		if gun.reloading:
 			ammo_label.text += " (Reloading...)"
 
+func _process(_delta):
+	if melee_weapon:
+		var direction = (get_global_mouse_position() - global_position).normalized()
+		melee_weapon.global_rotation = direction.angle()
+		melee_weapon.global_position = global_position + direction * 20  # 20 pixels in front of player
+		
 func _on_timer_timeout() -> void:
 	max_health -= 1 
 	emit_signal("life_value", max_health)

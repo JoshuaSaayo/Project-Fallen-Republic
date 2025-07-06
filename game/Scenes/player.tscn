@@ -22,6 +22,9 @@ script = ExtResource("1_cvnsp")
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_8j60k")
 
+[node name="melee_weapon" parent="." instance=ExtResource("3_vgqql")]
+position = Vector2(94.6569, -13.3684)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_6t5aa")
 offset = Vector2(12, 0)
@@ -75,9 +78,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="WeaponSlot" type="Node" parent="."]
-
-[node name="melee_weapon" parent="." instance=ExtResource("3_vgqql")]
-position = Vector2(94.6569, -13.3684)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
